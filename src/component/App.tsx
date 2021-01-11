@@ -1,4 +1,4 @@
-import './App.css';
+import '../style/App.scss';
 import React from 'react';
 
 function App() {
