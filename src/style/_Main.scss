@@ -1,0 +1,87 @@
+@mixin randomColor {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  transition: all 5s;
+  z-index: 0;
+}
+
+.Main-red {
+  @include randomColor;
+  background-color: $red;
+}
+.Main-orange {
+  @include randomColor;
+  background-color: $orange;
+}
+.Main-blue {
+  @include randomColor;
+  background-color: $blue;
+}
+.Main-yellow {
+  @include randomColor;
+  background-color: $yellow;
+}
+.Main-cyan {
+  @include randomColor;
+  background-color: $cyan;
+}
+.Main-lime {
+  @include randomColor;
+  background-color: $lime;
+}
+.Main-teal {
+  @include randomColor;
+  background-color: $teal;
+}
+.Main-violet {
+  @include randomColor;
+  background-color: $violet;
+}
+
+button {
+  width: 100px;
+}
+
+.waveBox {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  transform: translate3d(0 ,0, 0);
+  z-index: -1;
+}
+
+@mixin wave {
+  opacity: .3;
+  position: absolute;
+  top: 50%;
+  left: -45%;
+  background: rgb(226, 226, 226);
+  width: 170vw;
+  height: 300vh;
+  transform-origin: 50% 48%;
+  border-radius: 43%;
+  animation: drift 14000ms infinite linear;
+}
+
+.wave-one {
+  @include wave;
+}
+
+.wave-two {
+  @include wave;
+  animation: drift 15000ms infinite linear;
+  opacity: .1;
+  background-color: white;
+  left: -30%;
+  top: 47%;
+  border-radius: 39%;
+}
+
+@keyframes drift {
+  from { transform: rotate(0deg); }
+  from { transform: rotate(360deg); }
+}

@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
+import color from './color';
 
 const rootReducer = combineReducers({
-  //counter
+  color
 });
 
 export default rootReducer;
+export type RootState = ReturnType<typeof rootReducer>;
