@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useScrollSpin } from '../hooks/useScrollSpin';
 
 const MainList: React.FC = () => {
 
+
   return(
-    <div className='sound-list'>
+    <div className='sound-list' id='1'>
       <SingleSoundCard/>
     </div>
   );
