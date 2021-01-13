@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MainHeaderContainer from '../containers/MainHeaderContainer';
 import MainList from './MainList';
+import MainFavContainer from '../containers/MainFavContainer';
 
 interface MainProps {
   color: string;
@@ -30,13 +31,14 @@ const Main: React.FC<MainProps> = ({
 
 
   const generateRandomColor = () => {
-    setInterval(changeColorRandom, 10000);
+    setInterval(changeColorRandom, 7000);
   }
 
 
   return(
     <main className={`Main-${color}`}>
       <MainHeaderContainer />
+      <MainFavContainer />
       <div className='waveBox'>
         <div className='wave-one'></div>
         <div className='wave-two'></div>
