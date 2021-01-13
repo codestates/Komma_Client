@@ -1,7 +1,6 @@
 // 액션
 const START_TIMER = 'timer/START_TIMER'as const;
 const STOP_TIMER = 'timer/STOP_TIMER'as const;
-const PAUSE_TIMER = 'timer/PAUSE_TIMER'as const;
 const ADD_TEN_MIN = 'timer/ADD_TEN_MIN'as const;
 const REMOVE_TEN_MIN = 'timer/REMOVE_TEN_MIN'as const;
 const REMOVE_ONE_SEC = 'timer/REMOVE_ONE_SEC'as const;
@@ -10,7 +9,6 @@ const HANDLE_ENDING_MODAL = 'timer/HANDLE_ENDING_MODAL'as const;
 // 액션 생성 함수
 export const startTimer = () => ({ type: START_TIMER });
 export const stopTimer = () => ({ type: STOP_TIMER });
-export const pauseTimer = () => ({ type: PAUSE_TIMER });
 export const addTenMin = () => ({ type: ADD_TEN_MIN });
 export const removeTenMin = () => ({ type: REMOVE_TEN_MIN });
 export const removeOneSec = () => ({ type: REMOVE_ONE_SEC });
@@ -19,9 +17,8 @@ export const handleEndingModal = () => ({ type: HANDLE_ENDING_MODAL });
 // 액션 타입
 type TimerAction =
   | ReturnType<typeof startTimer> | ReturnType<typeof stopTimer>
-  | ReturnType<typeof pauseTimer> | ReturnType<typeof addTenMin>
-  | ReturnType<typeof removeTenMin> | ReturnType<typeof removeOneSec>
-  | ReturnType<typeof handleEndingModal>
+  | ReturnType<typeof addTenMin> | ReturnType<typeof removeTenMin> 
+  | ReturnType<typeof removeOneSec> | ReturnType<typeof handleEndingModal>
 
 // 스테이트 초기값
 interface TimerState {
@@ -44,8 +41,6 @@ const timer = (state = initialState, action: TimerAction) => {
       return Object.assign({}, state, {isCounting: true})
     case STOP_TIMER:
       return Object.assign({}, state, {isCounting: false, minute: 0, seconds: 0})
-    case PAUSE_TIMER:
-      return Object.assign({}, state, {isCounting: false})
     case ADD_TEN_MIN:
       return state.minute < 120 ? Object.assign({}, state, {minute: state.minute + 10}) : state
     case REMOVE_TEN_MIN:

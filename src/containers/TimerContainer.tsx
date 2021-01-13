@@ -5,7 +5,6 @@ import { Timer } from '../component/MainHeader';
 import {
   startTimer,
   stopTimer,
-  pauseTimer,
   addTenMin,
   removeTenMin,
   removeOneSec,
@@ -14,7 +13,6 @@ import {
 
 const TimerContainer: React.FC = () => {
   const isCounting = useSelector((state: RootState) => state.timer.isCounting);
-  const isEndingModalOn = useSelector((state: RootState) => state.timer.isEndingModalOn);
   const minute = useSelector((state: RootState) => state.timer.minute);
   const seconds = useSelector((state: RootState) => state.timer.seconds);
   const dispatch = useDispatch();
@@ -24,9 +22,6 @@ const TimerContainer: React.FC = () => {
   };
   const stopToTimer = () => {
     dispatch(stopTimer());
-  };
-  const pauseToTimer = () => {
-    dispatch(pauseTimer());
   };
   const addTenMinute = () => {
     dispatch(addTenMin());
@@ -46,10 +41,8 @@ const TimerContainer: React.FC = () => {
       isCounting={isCounting}
       minute={minute}
       seconds={seconds}
-      isEndingModalOn={isEndingModalOn}
       startToTimer={startToTimer}
       stopToTimer={stopToTimer}
-      pauseToTimer={pauseToTimer}
       addTenMinute={addTenMinute}
       removeTenMinute={removeTenMinute}
       removeOneSeconds={removeOneSeconds}

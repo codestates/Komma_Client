@@ -21,12 +21,10 @@ const MainHeader: React.FC<MainHeaderProps> = ({ isLogin }) => {
 
 interface TimerProps {
   isCounting: boolean;
-  isEndingModalOn: boolean;
   minute: number;
   seconds: number;
   startToTimer: () => void;
   stopToTimer: () => void;
-  pauseToTimer: () => void;
   addTenMinute: () => void;
   removeTenMinute: () => void;
   removeOneSeconds: () => void;
@@ -37,18 +35,15 @@ export const Timer: React.FC<TimerProps> = ({
   isCounting,
   minute,
   seconds,
-  isEndingModalOn,
   startToTimer,
   stopToTimer,
-  pauseToTimer,
   addTenMinute,
   removeTenMinute,
   removeOneSeconds,
   handlingEndingModal
 }) => {
 
-  const handleCounting = (e: React.MouseEvent<HTMLDivElement>) => {
-    const message = e.currentTarget.innerHTML;
+  const handleCounting = () => {
     // 시간이 설정 안되어있으면 거절 메시지
     const currentTime = document.querySelector('.time')?.textContent;
     if(currentTime === '00 : 00') {
@@ -68,14 +63,7 @@ export const Timer: React.FC<TimerProps> = ({
         removeOneSeconds(); // function for spend one sec
       }
     }, 1000);
-    console.log(message)
   }
-  
-  const pauseTimer = (interval: NodeJS.Timeout): void => {
-    clearInterval(interval);
-    console.log('Pause');
-  }
-
 
   return(
     <span className='timer-container'>
@@ -85,8 +73,8 @@ export const Timer: React.FC<TimerProps> = ({
         <div className='timer-minus' onClick={removeTenMinute}>-10</div>
         {
           !isCounting ?
-          <div className='timer-start' onClick={(e) => handleCounting(e)}>Start</div> :
-          <div className='timer-start' onClick={(e) => handleCounting(e)}>Pause</div>
+          <div className='timer-start' onClick={handleCounting}>Start</div> :
+          <div className='timer-start' onClick={stopToTimer}>Clear</div>
         }
       </div>
     </span>
