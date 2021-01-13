@@ -2,12 +2,19 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../modules';
 import { Timer } from '../component/MainHeader';
-import { startTimer, stopTimer, pauseTimer, addTenMin, removeTenMin, removeOneSec } from '../modules/timer';
+import {
+  startTimer,
+  stopTimer,
+  pauseTimer,
+  addTenMin,
+  removeTenMin,
+  removeOneSec,
+  handleEndingModal
+} from '../modules/timer';
 
 const TimerContainer: React.FC = () => {
   const isCounting = useSelector((state: RootState) => state.timer.isCounting);
-  const counterDuration = useSelector((state: RootState) => state.timer.counterDuration);
-  const elapseTime = useSelector((state: RootState) => state.timer.elapseTime);
+  const isEndingModalOn = useSelector((state: RootState) => state.timer.isEndingModalOn);
   const minute = useSelector((state: RootState) => state.timer.minute);
   const seconds = useSelector((state: RootState) => state.timer.seconds);
   const dispatch = useDispatch();
@@ -30,20 +37,23 @@ const TimerContainer: React.FC = () => {
   const removeOneSeconds = () => {
     dispatch(removeOneSec());
   }
+  const handlingEndingModal = () => {
+    dispatch(handleEndingModal());
+  }
 
   return (
     <Timer 
       isCounting={isCounting}
-      counterDuration={counterDuration}
-      elapseTime={elapseTime}
       minute={minute}
       seconds={seconds}
+      isEndingModalOn={isEndingModalOn}
       startToTimer={startToTimer}
       stopToTimer={stopToTimer}
       pauseToTimer={pauseToTimer}
       addTenMinute={addTenMinute}
       removeTenMinute={removeTenMinute}
       removeOneSeconds={removeOneSeconds}
+      handlingEndingModal={handlingEndingModal}
     />
   );
 }

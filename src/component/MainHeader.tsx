@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useEffect } from 'react';
 import TimerContainer from '../containers/TimerContainer';
 import logo from '../img/logo.png';
 
@@ -21,8 +21,7 @@ const MainHeader: React.FC<MainHeaderProps> = ({ isLogin }) => {
 
 interface TimerProps {
   isCounting: boolean;
-  counterDuration: number;
-  elapseTime: number;
+  isEndingModalOn: boolean;
   minute: number;
   seconds: number;
   startToTimer: () => void;
@@ -31,43 +30,65 @@ interface TimerProps {
   addTenMinute: () => void;
   removeTenMinute: () => void;
   removeOneSeconds: () => void;
+  handlingEndingModal: () => void;
 }
 
 export const Timer: React.FC<TimerProps> = ({
   isCounting,
-  counterDuration,
-  elapseTime,
   minute,
   seconds,
+  isEndingModalOn,
   startToTimer,
   stopToTimer,
   pauseToTimer,
   addTenMinute,
   removeTenMinute,
-  removeOneSeconds
+  removeOneSeconds,
+  handlingEndingModal
 }) => {
 
-
-  const handleCounting = () => {
+  const handleCounting = (e: React.MouseEvent<HTMLDivElement>) => {
+    const message = e.currentTarget.innerHTML;
+    // 시간이 설정 안되어있으면 거절 메시지
+    const currentTime = document.querySelector('.time')?.textContent;
+    if(currentTime === '00 : 00') {
+      return alert('시간 맞춰주세요! 이거는 임시 알럿창');
+    }
+    // isCount 상태를 변경하고 1초마다 카운팅 시작
     startToTimer();
     const timerId = setInterval(() => {
-      if(!isCounting) {
+      const currentTime = document.querySelector('.time')?.textContent;
+      if(currentTime === '00 : 00') {
         console.log('타이머 끝내기');
-        clearInterval(timerId);
+        clearInterval(timerId); // shut down setInterval
+        stopToTimer(); // isCount to false
+        handlingEndingModal(); // isEndingModalOn to true
       }
       else {
-        removeOneSeconds();
+        removeOneSeconds(); // function for spend one sec
       }
     }, 1000);
+    console.log(message)
+  }
+  
+  const pauseTimer = (interval: NodeJS.Timeout): void => {
+    clearInterval(interval);
+    console.log('Pause');
   }
 
 
   return(
     <span className='timer-container'>
-      <p className='time'>{`${minute < 10 ? '0' + minute : minute} : ${seconds < 10 ? '0' + seconds : seconds}`}</p>
-      <button className='timer-button' onClick={addTenMinute}>+</button>
-      <button className='timer-button' onClick={removeTenMinute}>-</button>
-      <button className='timer-start' onClick={handleCounting}>{isCounting ? 'Pause' : 'Start'}</button>
+      <p className='time' >{`${minute < 10 ? '0' + minute : minute} : ${seconds < 10 ? '0' + seconds : seconds}`}</p>
+      <div className='timer-buttons'>
+        <div className='timer-plus' onClick={addTenMinute}>+10</div>
+        <div className='timer-minus' onClick={removeTenMinute}>-10</div>
+        {
+          !isCounting ?
+          <div className='timer-start' onClick={(e) => handleCounting(e)}>Start</div> :
+          <div className='timer-start' onClick={(e) => handleCounting(e)}>Pause</div>
+        }
+      </div>
     </span>
   );
 }
