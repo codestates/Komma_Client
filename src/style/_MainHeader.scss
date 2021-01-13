@@ -1,4 +1,5 @@
 .header {
+  position: relative;
   width: 100vw;
   height: 60px;
   box-shadow: 1px 1px 5px 0.5px rgb(82, 82, 82);
@@ -9,4 +10,55 @@
   height: 35px;
   margin-left: 1vw;
   margin-top: 15px;
+}
+
+.menu-container {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  margin-top: 25px;
+  margin-right: 1vw;
+}
+
+.menu {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  margin-top: 25px;
+  margin-right: 3vw;
+  color: white;
+  cursor: pointer;
+  transition: color 1s;
+}
+
+.menu::before {
+  content: '';
+  position: absolute;
+  left: -50%;
+  top: 50%;
+  width: 200%;
+  height: 1px;
+  background: #ffffff;
+  display: block;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform 0.4s cubic-bezier(1, 0, 0, 1)
+}
+
+.menu:hover {
+  color: darken(white, 20%);
+}
+
+.menu:hover::before {
+  transform: scale(1, 1);
+  transform-origin: right top;
+}
+
+.timer-container {
+  position: absolute;
+  width: 100px;
+  height: 80%;
+  background-color: $red;
+  top: 0;
+  left: 50%;
 }

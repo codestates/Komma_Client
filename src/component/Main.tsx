@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import MainHeader from './Main-header';
+import MainHeaderContainer from '../containers/MainHeaderContainer';
+import MainList from './MainList';
 
 interface MainProps {
   color: string;
@@ -35,7 +36,7 @@ const Main: React.FC<MainProps> = ({
 
   return(
     <main className={`Main-${color}`}>
-      <MainHeader />
+      <MainHeaderContainer />
       <div className='waveBox'>
         <div className='wave-one'></div>
         <div className='wave-two'></div>
@@ -49,6 +50,7 @@ const Main: React.FC<MainProps> = ({
       <button onClick={changeColorLime}>Lime</button>
       <button onClick={changeColorTeal}>Teal</button>
       <button onClick={generateRandomColor}>Random</button>
+      <MainList/>
     </main>
   );
 }
