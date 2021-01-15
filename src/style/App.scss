@@ -27,6 +27,7 @@ body {
   line-height: 1;
   box-sizing: border-box;
 	overflow: hidden;
+	font-family: 'Quicksand', sans-serif;
 }
 ol, ul {
 	list-style: none;
@@ -58,6 +59,7 @@ $yellow: #ffe066;
 $orange: #ffc078;
 $colorList: $red, $pink, $grape, $violet, $indigo, $blue, $cyan, $teal, $green, $lime, $yellow, $orange;
 
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 @import './Main.scss';
 @import './MainHeader.scss';
 @import './MainList.scss';
