@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MainHeaderContainer from '../containers/MainHeaderContainer';
 import MainList from './MainList';
 import MainFavContainer from '../containers/MainFavContainer';
+import MainSelectContainer from '../containers/MainSelectedContainer';
 
 interface MainProps {
   color: string;
@@ -39,6 +40,7 @@ const Main: React.FC<MainProps> = ({
     <main className={`Main-${color}`}>
       <MainHeaderContainer />
       <MainFavContainer />
+      <MainSelectContainer />
       <div className='waveBox'>
         <div className='wave-one'></div>
         <div className='wave-two'></div>

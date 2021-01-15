@@ -1,0 +1,46 @@
+.selectedBar {
+  position: absolute;
+  width: 225px;
+  height: 300px;
+  right: 10px;
+  top: 80px;
+  transition: all 0.7s cubic-bezier(0.68, -0.15, 0.265, 1.55);
+  &.hide {
+    right: -200px;
+  }
+}
+
+.selectedList {
+  position: absolute;
+  background-color: rgba(85, 85, 85, 0.151);
+  width: 200px;
+  height: 300px;
+  border-radius: 20px;
+  right: 0;
+}
+
+.selectedButton {
+  position: absolute;
+  width: 25px;
+  height: 80px;
+  top: 30px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: rgba(110, 110, 110, 0.267);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  & img {
+    width: 70%;
+    height: auto;
+    transform: rotate(-45deg);
+    transition: transform .4s;
+  }
+  &.hide {
+    & img {
+      transform: rotate(0deg);
+    }
+  }
+}
+
