@@ -26,7 +26,8 @@ footer, header, hgroup, menu, nav, section {
 body {
   line-height: 1;
   box-sizing: border-box;
-  overflow: hidden;
+	overflow: hidden;
+	font-family: 'Quicksand', sans-serif;
 }
 ol, ul {
 	list-style: none;
@@ -44,3 +45,19 @@ table {
 	border-spacing: 0;
 }
 //-------------------------------------------------------------
+$red: #ffa9a9;
+$violet: #b197fc;
+$blue: #74c0fc;
+$cyan: #66d9e8;
+$teal: #63e6be;
+$lime: #c0eb75;
+$yellow: #ffe066;
+$orange: #ffc078;
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+@import './Main.scss';
+@import './MainHeader.scss';
+@import './MainList.scss';
+@import './MainFav.scss';
+@import './MainSelected.scss';
+@import './Signin_up.scss';
