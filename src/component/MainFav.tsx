@@ -23,7 +23,7 @@ const MainFav: React.FC<MainFavColor> = ({ color }) => {
     <nav className='fav-container'>
       <div className='fav-icons'>
         <span className='fav-icons-desc'>
-          Playlist ,
+          Mixtape ,
         </span>
         <span className='fav-icons-add'>
           <img src={img_add} alt=''/>

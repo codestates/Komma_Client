@@ -1,6 +1,8 @@
 import React from 'react';
 import selected from '../modules/selected';
-import plus from '../img/list-button.png'
+import plus from '../img/list-button.png';
+import small_plus from '../img/plus.png';
+import sleep from '../img/sleep.png';
 
 interface SelectedProps {
   isListBarOpen: boolean;
@@ -15,7 +17,11 @@ const MainSelected: React.FC<SelectedProps> = ({ isListBarOpen, handleList }) =>
         <img src={plus} alt='' />
       </div>
       <div className='selectedList'>
-
+        <p>PlayList ,</p>
+        <div className='list-container'>
+          <SingleList/>
+          <SingleList/>
+        </div>
       </div>
     </aside>
   );
@@ -24,7 +30,11 @@ const MainSelected: React.FC<SelectedProps> = ({ isListBarOpen, handleList }) =>
 export const SingleList: React.FC = () => {
 
   return(
-    <div></div>
+    <div className='list-single'>
+      <img id='img' src={sleep} alt=''/>
+      <p>사운드 바</p>
+      <img id='x' src={small_plus} alt='' />
+    </div>
   );
 }
 
