@@ -7,6 +7,18 @@ interface MainHeaderProps {
   handleLoginModal: () => void;
 }
 
+interface TimerProps {
+  isCounting: boolean;
+  minute: number;
+  seconds: number;
+  startToTimer: () => void;
+  stopToTimer: () => void;
+  addTenMinute: () => void;
+  removeTenMinute: () => void;
+  removeOneSeconds: () => void;
+  handlingEndingModal: () => void;
+}
+
 const MainHeader: React.FC<MainHeaderProps> = ({ isLogin, handleLoginModal }) => {
 
 
@@ -22,18 +34,6 @@ const MainHeader: React.FC<MainHeaderProps> = ({ isLogin, handleLoginModal }) =>
       }
     </header>
   );
-}
-
-interface TimerProps {
-  isCounting: boolean;
-  minute: number;
-  seconds: number;
-  startToTimer: () => void;
-  stopToTimer: () => void;
-  addTenMinute: () => void;
-  removeTenMinute: () => void;
-  removeOneSeconds: () => void;
-  handlingEndingModal: () => void;
 }
 
 export const Timer: React.FC<TimerProps> = ({

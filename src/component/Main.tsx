@@ -4,10 +4,12 @@ import MainList from './MainList';
 import MainFavContainer from '../containers/MainFavContainer';
 import MainSelectContainer from '../containers/MainSelectedContainer';
 import SigninContainer from '../containers/SigninContainer';
+import Ending from './Ending';
 
 interface MainProps {
   color: string;
   isLoginModalOn: boolean;
+  isEndingModalOn: boolean;
   changeColorRed: () => void;
   changeColorBlue: () => void;
   changeColorViolet: () => void;
@@ -17,11 +19,13 @@ interface MainProps {
   changeColorLime: () => void;
   changeColorTeal: () => void;
   changeColorRandom: () => void;
+  handleEndingModal: () => void;
 }
 
 const Main: React.FC<MainProps> = ({
   color,
   isLoginModalOn,
+  isEndingModalOn,
   changeColorRed,
   changeColorBlue,
   changeColorViolet,
@@ -30,7 +34,8 @@ const Main: React.FC<MainProps> = ({
   changeColorCyan,
   changeColorLime,
   changeColorTeal,
-  changeColorRandom
+  changeColorRandom,
+  handleEndingModal
 }) => {
 
 
@@ -59,6 +64,7 @@ const Main: React.FC<MainProps> = ({
       <button onClick={generateRandomColor}>Random</button>
       <MainList/>
       { isLoginModalOn ? <SigninContainer /> : null }
+      { isEndingModalOn ? <Ending handleEndingModal={handleEndingModal}/> : null }
     </main>
   );
 }

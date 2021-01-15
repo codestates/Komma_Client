@@ -4,7 +4,6 @@ import comma from '../img/comma.png';
 import logo from '../img/logo.png'
 import unlock from '../img/password.svg';
 import email from '../img/email.svg';
-import { handleLoginModal } from '../modules/signin';
 
 
 interface SigninProps {
@@ -26,8 +25,8 @@ const Signin: React.FC<SigninProps> = ({
   return (
     <div className='darkbackground'>
       <section className='total-container'>
-        <img className='comma' src={comma} />
-        <img className='sign-komma' src={logo} />
+        <img className='comma' src={comma} alt=''/>
+        <img className='sign-komma' src={logo} alt=''/>
         <p className='sign-desc'>ⓒ Copyright 2021. deul-eo-jo Co. all rights reserved.</p>
         {
           isSignupModalOn ?
@@ -36,11 +35,11 @@ const Signin: React.FC<SigninProps> = ({
             <img className='signin-x' src={x} alt='' onClick={handleLoginModal} />
             <p className='signin-title'>Sign In</p>
             <div className='email'>
-              <img src={email}></img>
+              <img src={email} alt=''></img>
               <input type='text' placeholder='E-mail'></input>
             </div>
             <div className='password'>
-              <img src={unlock}></img>
+              <img src={unlock} alt=''></img>
               <input type='password' placeholder='Password'></input>
             </div>
             <p className='sign-error'>This message is dummy error!</p>
@@ -67,15 +66,15 @@ const Signup: React.FC<SignupProps> = ({ handleLoginModal, handleSignupModal }) 
       <img className='signin-x' src={x} alt='' onClick={handleLoginModalForSignup} />
       <p className='signin-title'>Sign Up</p>
       <div className='email'>
-        <img src={email}></img>
+        <img src={email} alt=''></img>
         <input type='text' placeholder='E-mail'></input>
       </div>
       <div className='password'>
-        <img src={unlock}></img>
+        <img src={unlock} alt=''></img>
         <input type='password' placeholder='Password'></input>
       </div>
       <div className='password repeat'>
-        <img src={unlock}></img>
+        <img src={unlock} alt=''></img>
         <input type='password' placeholder='Repeat Password'></input>
       </div>
       <p className='sign-error'>This message is dummy error!</p>

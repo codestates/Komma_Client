@@ -10,13 +10,15 @@ import {
   changeColorCyan,
   changeColorTeal,
   changeColorLime,
-  changeColorRandom
+  changeColorRandom,
 } from '../modules/color';
+import { handleEndingModal } from '../modules/timer';
 import Main from '../component/Main';
 
 const MainContainer: React.FC = () => {
   const backgroundColor = useSelector((state: RootState) => state.color.backgroundColor);
   const isLoginModalOn = useSelector((state: RootState) => state.signin.isLoginModalOn);
+  const isEndingModalOn = useSelector((state: RootState) => state.timer.isEndingModalOn);
   const dispatch = useDispatch();
 
   const changeColorToRed = () => {
@@ -46,11 +48,15 @@ const MainContainer: React.FC = () => {
   const changeColorToYellow = () => {
     dispatch(changeColorYellow());
   };
+  const handlingEndingModal = () => {
+    dispatch(handleEndingModal());
+  };
 
   return (
     <Main
       color={backgroundColor}
       isLoginModalOn={isLoginModalOn}
+      isEndingModalOn={isEndingModalOn}
       changeColorRed={changeColorToRed}
       changeColorBlue={changeColorToBlue}
       changeColorViolet={changeColorToViolet}
@@ -60,6 +66,7 @@ const MainContainer: React.FC = () => {
       changeColorTeal={changeColorToTeal}
       changeColorLime={changeColorToLime}
       changeColorRandom={changeColorToRandom}
+      handleEndingModal={handlingEndingModal}
     />
   );
 }
