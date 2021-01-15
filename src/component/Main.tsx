@@ -3,9 +3,11 @@ import MainHeaderContainer from '../containers/MainHeaderContainer';
 import MainList from './MainList';
 import MainFavContainer from '../containers/MainFavContainer';
 import MainSelectContainer from '../containers/MainSelectedContainer';
+import SigninContainer from '../containers/SigninContainer';
 
 interface MainProps {
   color: string;
+  isLoginModalOn: boolean;
   changeColorRed: () => void;
   changeColorBlue: () => void;
   changeColorViolet: () => void;
@@ -19,6 +21,7 @@ interface MainProps {
 
 const Main: React.FC<MainProps> = ({
   color,
+  isLoginModalOn,
   changeColorRed,
   changeColorBlue,
   changeColorViolet,
@@ -55,6 +58,7 @@ const Main: React.FC<MainProps> = ({
       <button onClick={changeColorTeal}>Teal</button>
       <button onClick={generateRandomColor}>Random</button>
       <MainList/>
+      { isLoginModalOn ? <SigninContainer /> : null }
     </main>
   );
 }

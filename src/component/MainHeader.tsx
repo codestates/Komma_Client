@@ -4,9 +4,10 @@ import logo from '../img/logo.png';
 
 interface MainHeaderProps {
   isLogin: boolean;
+  handleLoginModal: () => void;
 }
 
-const MainHeader: React.FC<MainHeaderProps> = ({ isLogin }) => {
+const MainHeader: React.FC<MainHeaderProps> = ({ isLogin, handleLoginModal }) => {
 
 
   return(
@@ -14,7 +15,11 @@ const MainHeader: React.FC<MainHeaderProps> = ({ isLogin }) => {
       <img src={logo} alt='' className='logo'/>
       {/*isLogin ? <TimerContainer /> : null*/}
       <TimerContainer/>
-      <span className='menu'>{isLogin ? 'Setting' : 'Login'}</span>
+      {
+        !isLogin ?
+        <span className='menu' onClick={handleLoginModal} >Login</span> :
+        <span className='menu' >Setting</span>
+      }
     </header>
   );
 }

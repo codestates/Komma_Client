@@ -16,6 +16,7 @@ import Main from '../component/Main';
 
 const MainContainer: React.FC = () => {
   const backgroundColor = useSelector((state: RootState) => state.color.backgroundColor);
+  const isLoginModalOn = useSelector((state: RootState) => state.signin.isLoginModalOn);
   const dispatch = useDispatch();
 
   const changeColorToRed = () => {
@@ -49,6 +50,7 @@ const MainContainer: React.FC = () => {
   return (
     <Main
       color={backgroundColor}
+      isLoginModalOn={isLoginModalOn}
       changeColorRed={changeColorToRed}
       changeColorBlue={changeColorToBlue}
       changeColorViolet={changeColorToViolet}
