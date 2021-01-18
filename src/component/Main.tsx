@@ -6,6 +6,7 @@ import MainSelectContainer from '../containers/MainSelectedContainer';
 import SigninContainer from '../containers/SigninContainer';
 import Ending from './Ending';
 import SettingContainer from '../containers/SettingContainer';
+import axios from 'axios';
 
 interface MainProps {
   color: string;
@@ -22,6 +23,14 @@ const Main: React.FC<MainProps> = ({
   isSettingModalOn,
   handleEndingModal
 }) => {
+
+  const serverTestPing = () => {
+    axios.get('https://kommaa.shop').then(res => console.log(res))
+  }
+
+  useEffect(() => {
+    serverTestPing();
+  })
 
   return(
     <main className={`Main-${color}`}>

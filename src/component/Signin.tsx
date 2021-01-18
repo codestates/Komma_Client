@@ -22,6 +22,11 @@ const Signin: React.FC<SigninProps> = ({
   handleSignupModal,
   handleLoginModal
 }) => {
+
+  const login = () => {
+    
+  }
+
   return (
     <div className='darkbackground'>
       <section className='total-container'>

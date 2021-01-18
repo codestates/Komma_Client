@@ -6,18 +6,30 @@ interface SettingProps {
   isSettingModalOn: boolean;
   isDarkMode: boolean;
   color: string;
+  email:string;
+  userInfoChangeMode: boolean;
+  currentPassword: string;
+  newPassword: string;
+  repeatPassword: string;
   handleSettingModal: () => void;
   handleDarkMode: () => void;
   changeColor: (inputColor: string) => void;
+  handleUserInfoChangeMode: () => void;
 }
 
 const Setting: React.FC<SettingProps> = ({
   isSettingModalOn,
   isDarkMode,
   color,
+  email,
+  userInfoChangeMode,
+  currentPassword,
+  newPassword,
+  repeatPassword,
   handleSettingModal,
   handleDarkMode,
-  changeColor
+  changeColor,
+  handleUserInfoChangeMode
 }) => {
 
 
@@ -27,6 +39,42 @@ const Setting: React.FC<SettingProps> = ({
         <img className='setting-x' src={x} alt='' onClick={handleSettingModal} />
         <article className='setting-userinfo'>
           <header className='setting-userinfo-title'>UserInfo</header>
+          <div className='email-container'>
+            <p className='title'>E-mail</p>
+            <p className='content'>{email}</p>
+          </div>
+          <div className='password-container'>
+            <p className='title'>Password</p>
+            {
+              userInfoChangeMode ?
+              <input type='password' placeholder='Current Password' className='content edit'></input> :
+              <p className='content'>******</p>
+            }
+          </div>
+          {
+            userInfoChangeMode ?
+            <div className='new-password-container'>
+              <input type='password' placeholder='New Password' className='content edit'></input>
+            </div> :
+            null
+          }
+          {
+            userInfoChangeMode ?
+            <div className='repeat-password-container'>
+              <input type='password' placeholder='Repeat Password' className='content edit'></input>
+            </div> :
+            null
+          }
+          {
+            userInfoChangeMode ?
+            <button className='' onClick={handleUserInfoChangeMode}>Update Userinfo</button> :
+            <button className='' onClick={handleUserInfoChangeMode}>Edit Userinfo</button>
+          }
+          {
+            userInfoChangeMode ? 
+            null :
+            <button className=''>Logout</button>
+          }
         </article>
         <div className='setting-center'></div>
         <article className='setting-general'>

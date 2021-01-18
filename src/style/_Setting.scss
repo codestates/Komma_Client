@@ -29,6 +29,49 @@
     font-size: 25px;
     font-weight: bold;
   }
+  & .email-container {
+    width: 60%;
+    margin-bottom: 20px;
+    & .title {
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    & .content {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid skyblue;
+    }
+  }
+  & .password-container {
+    width: 60%;
+    margin-bottom: 10px;
+    & .title {
+      margin-bottom: 15px;
+    }
+    & .content {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid skyblue;
+    }
+  }
+  & .new-password-container {
+    width: 60%;
+    margin-bottom: 10px;
+    & .content {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid skyblue;
+    }
+  }
+  & .repeat-password-container {
+    width: 60%;
+    margin-bottom: 10px;
+    & .content {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid skyblue;
+    }
+  }
 }
 
 .setting-center {
