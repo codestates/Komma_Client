@@ -1,0 +1,96 @@
+.intro_Set{
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+
+.intro_Main{
+  background-color: #02343F;
+  width: 100vw;
+  height: 100vh;
+
+}
+
+.intro_Header{
+  display: flex;
+  height: 10vh;
+
+
+}
+.intro_logo{
+  position: relative;
+  color:#F0EDCC;
+  font-size: 50px;
+  font-family: 'Gothic A1', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
+  left : 22vw;
+  top: 6vh
+}
+.kommaImg{
+  width:6px;
+}
+
+.intro_body{
+  height: 81vh;
+}
+
+.description_Main{
+  position: relative;
+  font-size: 80px;
+  width: 52vw;
+  color: #F0EDCC;
+  top: 20vh;
+  left : 22vw;
+  font-family: 'Gothic A1', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+}
+
+.intro_MainImg{
+position: relative;
+float: right ;
+width: 400px;
+right: 15vw;
+top:5vh;
+
+}
+.intro_Mainbutton{
+  position:relative; 
+  width: 180px;
+  height: 60px;
+  font-size: 20px;
+  border-radius: 30px;
+  color: #02343F;
+  background-color:#F0EDCC ;
+  border: none;
+  top: 35vh;
+  left : 22vw;
+  font-family: 'Gothic A1', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.intro_Mainbutton:hover{
+  width: 195px;
+  height: 65px;
+  font-size:25px;
+  transition: all .85s cubic-bezier(.77,0,.175,1);
+}
+
+.intro_next{
+  position: relative;
+  width: 50px;
+  height: 40px;
+  top: 45vh;
+  left: 48.5vw;
+}
+
+.description_1{
+  position: relative;
+  color: #F0EDCC;
+  top:25vh;
+  left : 22vw;
+  font-size: 20px;
+  font-family: 'Gothic A1', sans-serif;
+}
+.blank{
+  margin-top: 10px;
+}

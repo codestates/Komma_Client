@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './component/App';
+import AppContainer from './containers/AppContainer';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './modules';
@@ -10,11 +10,9 @@ import "slick-carousel/slick/slick-theme.css";
 
 const store = createStore(rootReducer, composeWithDevTools());
 
-const store = createStore(rootReducer, composeWithDevTools());
-
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <AppContainer />
   </Provider>,
   document.getElementById('root')
 );

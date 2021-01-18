@@ -9,14 +9,13 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-redux": "^7.1.15",
-<<<<<<< HEAD
-=======
+    "@types/react-router": "^5.1.11",
     "@types/react-slick": "^0.23.4",
->>>>>>> 51f18e86af62ae230d8dfa48f0b5669076879974
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
+    "react-reveal": "^1.2.2",
     "react-scripts": "4.0.1",
     "react-slick": "^0.27.14",
     "redux": "^4.0.5",
