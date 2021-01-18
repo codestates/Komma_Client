@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../modules'
-import IntroFn1 from '../../component/Intro/IntroFn1'
+import Footer from '../../component/Intro/IntroFooter'
 import { handleIntro } from '../../modules/intro'
 
-function IntroFn1Container() {
+function IntroFooterContainer() {
   const isIntro = useSelector((state: RootState) => state.intro.isIntro)
   const dispatch = useDispatch()
 
@@ -13,11 +13,11 @@ function IntroFn1Container() {
   }
 
   return (
-    <IntroFn1
+    <Footer
       isIntro={isIntro}
       onHandleIntro={onHandleIntro}
     />
   )
 }
 
-export default IntroFn1Container
+export default IntroFooterContainer

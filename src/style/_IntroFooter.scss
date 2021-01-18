@@ -1,0 +1,28 @@
+.introFooter{
+  display: flex;
+  background-color: #F0EDCC;
+  height: 25vh;
+  overflow: hidden;
+}
+.introFooter_description{
+  position:relative; 
+  font-size: 40px;
+  color:#428e92;
+  left: 34vw;
+  font-family: 'Gothic A1', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.introFooter_button{
+  position:relative; 
+  width: 180px;
+  height: 60px;
+  font-size: 20px;
+  border-radius: 30px;
+  background-color: #428e92;
+  color:#F0EDCC ;
+  border: none;
+  left: 13vw;
+  top:8vh;
+  font-family: 'Gothic A1', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
+}
