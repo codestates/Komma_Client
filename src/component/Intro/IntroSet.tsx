@@ -1,10 +1,12 @@
 import React from 'react';
-import IntroMainContainer from '../../containers/IntroContainers/IntroMainContainer'
+import IntroFn1Container from '../../containers/IntroContainers/IntroFn1Container';
+import IntroMainContainer from '../../containers/IntroContainers/IntroMainContainer';
 
 function Intro() {
   return (
-    <div className ="intro_Set">
+    <div className="intro_Set">
       <IntroMainContainer />
+      <IntroFn1Container/>
     </div>
   )
 }
