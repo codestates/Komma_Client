@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MainHeaderContainer from '../containers/MainHeaderContainer';
-import MainList from './MainList';
+import MainList, { ListTutorial } from './MainList';
 import MainFavContainer from '../containers/MainFavContainer';
 import MainSelectContainer from '../containers/MainSelectedContainer';
 import SigninContainer from '../containers/SigninContainer';
@@ -38,6 +38,7 @@ const Main: React.FC<MainProps> = ({
       <MainFavContainer />
       <MainSelectContainer />
       <MainList />
+      <ListTutorial />
       <div className='waveBox'>
         <div className='wave-one'></div>
         <div className='wave-two'></div>
