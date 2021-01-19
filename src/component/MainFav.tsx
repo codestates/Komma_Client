@@ -15,7 +15,7 @@ const MainFav: React.FC<MainFavColor> = ({ color }) => {
     dots: false,
     infinite: false,
     speed: 1000,
-    slidesToShow: 3.4,
+    slidesToShow: 3.9,
     slidesToScroll: 2.5
   }
 

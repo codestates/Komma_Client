@@ -37,11 +37,11 @@ const Main: React.FC<MainProps> = ({
       <MainHeaderContainer />
       <MainFavContainer />
       <MainSelectContainer />
+      <MainList />
       <div className='waveBox'>
         <div className='wave-one'></div>
         <div className='wave-two'></div>
       </div>
-      <MainList/>
       { isLoginModalOn ? <SigninContainer /> : null }
       { isEndingModalOn ? <Ending handleEndingModal={handleEndingModal}/> : null }
       { isSettingModalOn ? <SettingContainer /> : null }

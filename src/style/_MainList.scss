@@ -1,20 +1,58 @@
+@mixin on-circle($item-count, $circle-size, $item-size) {
+  width:  $circle-size;
+  height: $circle-size;
+  border-radius: 50%; 
+  > * {
+    display: block;
+    position: absolute;
+    top:  50%; 
+    left: 50%;
+    width:  $item-size;
+    height: $item-size;
+    margin: -($item-size / 2);
+  
+    $angle: (360 / $item-count);
+    $rot: 0;
+
+    @for $i from 1 through $item-count {
+      &:nth-of-type(#{$i}) {
+        transform: 
+          rotate($rot * 1deg) 
+          translate($circle-size / 2)
+          rotate(90deg) 
+      }
+      $rot: $rot + $angle;
+    }
+  }
+}
+
 .sound-list {
   position: absolute;
-  width: 1200px;
-  height: 1200px;
-  border: 1px solid black;
+  @include on-circle($item-count: 30, $circle-size: 1200px, $item-size: 150px);
+  background-color: tomato;
+  //transform: rotate(90deg);
   border-radius: 50%;
   margin-left: -600px;
   left: 50vw;
-  top: 50vh;
+  top: 65vh;
+  transition: transform 0.1s;
+  z-index: 2;
 }
 
 .sound-card {
   position: absolute;
-  width: 180px;
-  height: 220px;
-  background-color: rebeccapurple;
-  top: 0;
-  left: 43%;
-  border-radius: 20%;
+  background-color: rgba(255, 255, 255, 0);
+  height: 150px;
+  border-radius: 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 1s;
+  & img {
+    width: 50%;
+  }
+  & p {
+    margin-top: 20px;
+  }
 }
