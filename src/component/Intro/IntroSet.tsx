@@ -13,7 +13,7 @@ function Intro() {
       <IntroFn1 />
       <IntroFn2 />
       <IntroFn3 />
-      <IntroFooterContainer/>
+      {/* <IntroFooterContainer/> */}
     </div>
   )
 }

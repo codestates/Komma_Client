@@ -34,7 +34,7 @@ interface ColorState {
 }
 
 const initialState: ColorState = {
-  backgroundColor: 'blue',
+  backgroundColor: 'teal',
 }
 
 // 리듀서

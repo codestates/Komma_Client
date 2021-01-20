@@ -1,35 +1,58 @@
 .intro_Fn3{
-  background-color: #F0EDCC ;
-  height: 75vh;
-}
-.intro_Fn3_body{
   display: flex;
   height: 80vh;
-  overflow: hidden;
-}
-.bodyKomma3{
-  position: relative;
-  height: 500px;
-  left: 20vw;
-  top:15vh
-  }
 
-.intro_Fn3_description{
+}
+.intro_body3-1{
+  display: flex;
   position: relative;
-  font-size: 90px;
-  left:36vw;
-  top:22vh;
-  color:  #428e92;
-  font-family: 'Gothic A1', sans-serif;
+  background-color: black;
+  margin-top: 15px;
+  height: 70vh;
+  width: 49vw;
+  margin-right: 7px;
+  margin-left: 15px;
+}
+.intro_body3-2{
+  display: flex;
+  position: relative;
+  background-color: #F1F1F3;
+  margin-top: 15px;
+  height: 70vh;
+  width: 49vw;
+  margin-left: 7px;
+  margin-right: 15px;
+}
+.intro_describe3{
+  position: absolute;
+  color:white;
+  font-size: 50px;
   font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 900;
+  left: 340px;
+  top:100px;
+}
+.intro_describe3-2{
+  position: absolute;
+  color:white;
+  font-size: 17px;
+  top:180px;
+  left: 390px;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
-.intro_Fn3_description2{
-  position: relative;
-  color:  #428e92;
-  font-size: 20px;
-  font-family: 'Gothic A1', sans-serif;
-  top: 58vh;
-  left: 7vw;
+.intro_describe4{
+  position: absolute;
+  color:black;
+  font-size: 50px;
+  font-family: 'Noto Sans KR', sans-serif;
+  left: 333px;
+  top:100px;
+}
+.intro_describe4-2{
+  position: absolute;
+  color:black;
+  font-size: 17px;
+  top:180px;
+  left: 388px;
+  font-family: 'Noto Sans KR', sans-serif;
 }

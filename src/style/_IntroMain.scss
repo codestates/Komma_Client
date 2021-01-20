@@ -4,92 +4,114 @@
   overflow-x: hidden;
 }
 
-
+.background{
+  z-index: 1;
+}
 .intro_Main{
-  background-color: #02343F;
+  position: relative;
   width: 100vw;
   height: 100vh;
-
+  overflow: hidden;
+}
+.background{
+  position: absolute;
+  z-index: 0;
+  width: 100vw;
+  height: 110vh;
+}
+.transparency{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.637);
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
 }
 
 .intro_Header{
   display: flex;
-  height: 10vh;
+  height: 15vh;
 
 
 }
 .intro_logo{
   position: relative;
-  color:#F0EDCC;
+  color:white;
   font-size: 50px;
-  font-family: 'Yusei Magic', sans-serif;
-  left : 22vw;
-  top: 6vh
+  font-family: 'Noto Sans KR', sans-serif;
+  left : 16vw;
+  top: 6vh;
 }
 .kommaImg{
   width:6px;
 }
 
 .intro_body{
-  height: 81vh;
+  display: flex;
+  position: relative;
+  width: 100vw;
+  height: 80vh;
 }
 
 .description_Main{
-  position: relative;
+  position: absolute;
   font-size: 80px;
-  width: 52vw;
-  color: #F0EDCC;
-  top: 20vh;
-  left : 22vw;
-  font-family: 'Gothic A1', sans-serif;
+  width: 500px;
+  color: white;
+  top: 150px;
+  left : 280px;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 900;
 }
 
-.intro_MainImg{
-position: relative;
-float: right ;
-width: 400px;
-right: 15vw;
-top:5vh;
-
-}
 .intro_Mainbutton{
   position:relative; 
   width: 180px;
   height: 60px;
   font-size: 20px;
   border-radius: 30px;
-  color: #02343F;
-  background-color:#F0EDCC ;
+  color: black;
+  background-color:white ;
   border: none;
-  top: 35vh;
-  left : 22vw;
-  font-family: 'Gothic A1', sans-serif;
+  top: 90px;
   font-family: 'Noto Sans KR', sans-serif;
+  z-index: 999;
 }
-.intro_Mainbutton:hover{
-  width: 195px;
-  height: 65px;
-  font-size:25px;
-  transition: all .85s cubic-bezier(.77,0,.175,1);
+
+.macbook{
+  position:absolute;
+  width: 899px;
+  height: 475px;
+  left: 537px;
+  top:14px;
+  z-index: 4;
+
+}
+.windowcard{
+  position: absolute;
+  width: 667.5px;
+  bottom:340px;
+  left:655px;
+  z-index: 3;
+}
+.window{
+  position: absolute;
 }
 
 .intro_next{
-  position: relative;
+  position: absolute;
   width: 50px;
-  height: 40px;
-  top: 45vh;
+  height: 30px;
+  bottom: 15vh;
   left: 48.5vw;
+  top:77vh;
 }
 
 .description_1{
   position: relative;
-  color: #F0EDCC;
-  top:25vh;
-  left : 22vw;
+  color: white;
+  top:4vh;
   font-size: 20px;
-  font-family: 'Gothic A1', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 .blank{
   margin-top: 17px;
