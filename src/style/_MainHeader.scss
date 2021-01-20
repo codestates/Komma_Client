@@ -56,16 +56,20 @@
 
 .timer-container {
   position: absolute;
-  width: 200px;
+  width: 140px;
   height: 70%;
   display: flex;
   flex-direction: column;
   background-color: rgba(252, 252, 252, 0.411);
-  border-radius: 15px;
+  border-radius: 20px;
   top: 0;
   left: 50%;
-  margin-left: -100px;
+  margin-left: -70px;
   margin-top: 10px;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.075);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .time {
@@ -74,7 +78,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 22px;
+  color: rgb(70, 70, 70);
 }
 
 .timer-buttons {
@@ -86,18 +91,63 @@
 }
 
 @mixin buttons {
-  width: 100px;
-  background-color: rgba(155, 155, 155, 0.253);
+  position: absolute;
+  top: 6px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(252, 252, 252, 0.411);
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.075);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .timer-plus {
   @include buttons;
+  left: -80px;
+  &:active {
+    box-shadow: inset 1px 1px 10px 1px rgba(0, 0, 0, 0.075);
+    background-color: darken($color: rgba(252, 252, 252, 0.411), $amount: 5%);
+  }
+  & img {
+    width: 50%;
+  }
 }
 
 .timer-minus {
   @include buttons;
+  left: -40px;
+  &:active {
+    box-shadow: inset 1px 1px 10px 1px rgba(0, 0, 0, 0.075);
+    background-color: darken($color: rgba(252, 252, 252, 0.411), $amount: 5%);
+  }
+  & img {
+    width: 40%;
+  }
 }
 
 .timer-start {
   @include buttons;
+  left: 150px;
+  &:active {
+    box-shadow: inset 1px 1px 10px 1px rgba(0, 0, 0, 0.075);
+    background-color: darken($color: rgba(252, 252, 252, 0.411), $amount: 5%);
+  }
+  & img {
+    width: 40%;
+    margin-left: 3px;
+  }
+}
+
+.timer-stop {
+  @include buttons;
+  left: 150px;
+  &:active {
+    box-shadow: inset 1px 1px 10px 1px rgba(0, 0, 0, 0.075);
+  }
+  & img {
+    width: 40%;
+  }
 }

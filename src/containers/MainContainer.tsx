@@ -1,65 +1,44 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../modules';
-import {
-  changeColorRed,
-  changeColorBlue,
-  changeColorViolet,
-  changeColorOrange,
-  changeColorYellow,
-  changeColorCyan,
-  changeColorTeal,
-  changeColorLime,
-  changeColorRandom
-} from '../modules/color';
+import { handleEndingModal } from '../modules/timer';
+import { loginStabilizer } from '../modules/signin';
+import { changeColor } from '../modules/color';
+import { handleDarkMode } from '../modules/setting';
 import Main from '../component/Main';
 
 const MainContainer: React.FC = () => {
   const backgroundColor = useSelector((state: RootState) => state.color.backgroundColor);
   const isLoginModalOn = useSelector((state: RootState) => state.signin.isLoginModalOn);
+  const isEndingModalOn = useSelector((state: RootState) => state.timer.isEndingModalOn);
+  const isSettingModalOn = useSelector((state: RootState) => state.setting.isSettingModalOn);
+  const isDarkMode = useSelector((state: RootState) => state.setting.isDarkMode);
   const dispatch = useDispatch();
 
-  const changeColorToRed = () => {
-    dispatch(changeColorRed());
+  const handlingEndingModal = () => {
+    dispatch(handleEndingModal());
   };
-  const changeColorToBlue = () => {
-    dispatch(changeColorBlue());
+  const loginStabilizing = () => {
+    dispatch(loginStabilizer());
   };
-  const changeColorToViolet = () => {
-    dispatch(changeColorViolet());
+  const changingColor = (color: string) => {
+    dispatch(changeColor(color));
   };
-  const changeColorToOrange = () => {
-    dispatch(changeColorOrange());
-  };
-  const changeColorToCyan = () => {
-    dispatch(changeColorCyan());
-  };
-  const changeColorToTeal = () => {
-    dispatch(changeColorTeal());
-  };
-  const changeColorToLime = () => {
-    dispatch(changeColorLime());
-  };
-  const changeColorToRandom = () => {
-    dispatch(changeColorRandom());
-  };
-  const changeColorToYellow = () => {
-    dispatch(changeColorYellow());
-  };
+  const handlingDarkMode = () => {
+    dispatch(handleDarkMode());
+  }
 
   return (
     <Main
       color={backgroundColor}
       isLoginModalOn={isLoginModalOn}
-      changeColorRed={changeColorToRed}
-      changeColorBlue={changeColorToBlue}
-      changeColorViolet={changeColorToViolet}
-      changeColorOrange={changeColorToOrange}
-      changeColorYellow={changeColorToYellow}
-      changeColorCyan={changeColorToCyan}
-      changeColorTeal={changeColorToTeal}
-      changeColorLime={changeColorToLime}
-      changeColorRandom={changeColorToRandom}
+      isEndingModalOn={isEndingModalOn}
+      isSettingModalOn={isSettingModalOn}
+      isDarkMode={isDarkMode}
+      handleEndingModal={handlingEndingModal}
+      loginStabilizer={loginStabilizing}
+      changeColor={changingColor}
+      handleDarkMode={handlingDarkMode}
     />
   );
 }

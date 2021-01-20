@@ -1,64 +1,76 @@
 import React, { useState, useEffect } from 'react';
 import MainHeaderContainer from '../containers/MainHeaderContainer';
-import MainList from './MainList';
+import MainList, { ListTutorial } from './MainList';
 import MainFavContainer from '../containers/MainFavContainer';
 import MainSelectContainer from '../containers/MainSelectedContainer';
 import SigninContainer from '../containers/SigninContainer';
+import Ending from './Ending';
+import SettingContainer from '../containers/SettingContainer';
+import axios from 'axios';
 
 interface MainProps {
   color: string;
   isLoginModalOn: boolean;
-  changeColorRed: () => void;
-  changeColorBlue: () => void;
-  changeColorViolet: () => void;
-  changeColorOrange: () => void;
-  changeColorYellow: () => void;
-  changeColorCyan: () => void;
-  changeColorLime: () => void;
-  changeColorTeal: () => void;
-  changeColorRandom: () => void;
+  isEndingModalOn: boolean;
+  isSettingModalOn: boolean;
+  isDarkMode: boolean;
+  handleEndingModal: () => void;
+  loginStabilizer: () => void;
+  changeColor: (color: string) => void;
+  handleDarkMode: () => void;
 }
 
 const Main: React.FC<MainProps> = ({
   color,
   isLoginModalOn,
-  changeColorRed,
-  changeColorBlue,
-  changeColorViolet,
-  changeColorOrange,
-  changeColorYellow,
-  changeColorCyan,
-  changeColorLime,
-  changeColorTeal,
-  changeColorRandom
+  isEndingModalOn,
+  isSettingModalOn,
+  isDarkMode,
+  handleEndingModal,
+  loginStabilizer,
+  changeColor,
+  handleDarkMode
 }) => {
 
-
-  const generateRandomColor = () => {
-    setInterval(changeColorRandom, 7000);
-  }
-
+  useEffect(() => {
+    let token: any = localStorage.getItem('token')
+    if(JSON.parse(token)) {
+      loginStabilizer(); // 토큰 존재시 로그인상태 유지
+      // 메인페이지 열릴 때 마다 유저정보에 담긴 각각 화면 구성하는 상태 가져와서 갱신
+      let token = localStorage.getItem('token');
+      axios.get(
+        'http://www.kommaa.shop/users/userinfo',
+        { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
+      )
+      .then(res => res.data)
+      .then(data => {
+        // 컬러, 다크모드, 플레이리스트, 현재선택 음악 리스트...?
+        changeColor(data.userInfo.sitecolor);
+        if(isDarkMode !== data.userInfo.darkmode) {
+          handleDarkMode();
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    }
+    console.log('로그인유지 작동');
+  })
 
   return(
     <main className={`Main-${color}`}>
       <MainHeaderContainer />
       <MainFavContainer />
       <MainSelectContainer />
+      <MainList />
+      <ListTutorial />
       <div className='waveBox'>
         <div className='wave-one'></div>
         <div className='wave-two'></div>
       </div>
-      <button onClick={changeColorRed}>Red</button>
-      <button onClick={changeColorBlue}>Blue</button>
-      <button onClick={changeColorViolet}>Violet</button>
-      <button onClick={changeColorOrange}>Orange</button>
-      <button onClick={changeColorYellow}>Yellow</button>
-      <button onClick={changeColorCyan}>Cyan</button>
-      <button onClick={changeColorLime}>Lime</button>
-      <button onClick={changeColorTeal}>Teal</button>
-      <button onClick={generateRandomColor}>Random</button>
-      <MainList/>
       { isLoginModalOn ? <SigninContainer /> : null }
+      { isEndingModalOn ? <Ending handleEndingModal={handleEndingModal}/> : null }
+      { isSettingModalOn ? <SettingContainer /> : null }
     </main>
   );
 }
