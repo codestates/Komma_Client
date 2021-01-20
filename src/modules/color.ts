@@ -18,7 +18,7 @@ interface ColorState {
   backgroundColor: string;
 }
 
-const initialState: ColorState = {
+const initialState: ColorState | any = {
   backgroundColor: 'blue',
 }
 
@@ -26,11 +26,29 @@ const initialState: ColorState = {
 const color = (state = initialState, action: ColorAction) => {
   switch(action.type) {
     case CHANGE_COLOR:
-      return Object.assign({}, state, { backgroundColor: action.payload.inputColor })
+      return changeColors(state, action);
     default:
       return state;
   }
 }
+
+let interval: any;
+
+const changeColors = (state: ColorState, action: ColorAction) => {
+  clearInterval(interval);
+  console.log('컬러 인터벌 끝')
+  if(action.payload.inputColor === 'random') {
+    let colors = ['red', 'blue', 'violet', 'orange', 'teal', 'cyan', 'lime', 'yellow'];
+    interval = setInterval(() => {
+      return Object.assign({}, state, { backgroundColor: action.payload.inputColor });
+    }, 7000);
+    console.log('컬러 인터벌 시작')
+  }
+  else {
+    return Object.assign({}, state, { backgroundColor: action.payload.inputColor });
+  }
+}
+
 
 
 

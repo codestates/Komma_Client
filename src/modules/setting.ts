@@ -72,7 +72,7 @@ const setting = (state = initialState, action: SettingAction) => {
     case GET_USERNAME_FROM_SERVER:
       return Object.assign({}, state, {username: action.payload.name})
     case GET_EMAIL_FROM_SERVER:
-      return Object.assign({}, state, {email: getEmailFromServer})
+      return Object.assign({}, state, {email: action.payload.email})
     default:
       return state;
   }

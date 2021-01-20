@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import x from '../img/plus_black.svg';
-import check from '../img/check.png';
 import axios from 'axios';
 
 interface SettingProps {
@@ -49,19 +48,27 @@ const Setting: React.FC<SettingProps> = ({
     )
     .then(res => res.data)
     .then(data => {
-      getUserNameFromServer(data.userInfo.email);
-      getEmailFromServer(data.userInfo.username);
+      getUserNameFromServer(data.userInfo.username);
+      getEmailFromServer(data.userInfo.email);
     })
   })
 
   /* 유저 색상 및 다크모드 변경 */
   const changeTheColor = (color: string) => {
-    let token = localStorage.getItem('token');
+    let token: any = localStorage.getItem('token');
     axios.put(
       'http://www.kommaa.shop/users/userinfoup',
       { sitecolor: color },
-      { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
+      { headers: { authorization: `Bearer ${token}` }, withCredentials: true }
     )
+    /*
+    fetch('http://www.kommaa.shop/users/userinfoup', {
+      method: 'get',
+      headers: {
+        'Authorization': `bearer ${JSON.parse(token)}`,
+      }
+    })
+    */
     .then(res => res.data)
     .then(data => {
       console.log(data);
@@ -89,7 +96,7 @@ const Setting: React.FC<SettingProps> = ({
     axios.put(
       'http://www.kommaa.shop/users/userinfoup',
       { username: name, password: newPwd },
-      { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
+      { headers: { authorization: `Bearer ${token}` }, withCredentials: true }
     )
     .then(res => res.data)
     .then(data => {
@@ -107,7 +114,7 @@ const Setting: React.FC<SettingProps> = ({
     axios.post(
       'http://www.kommaa.shop/users/logout',
       { logout: 'please' },
-      { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
+      { headers: { authorization: `Bearer ${token}` }, withCredentials: true }
     )
     .then(res => res.data)
     .then(data => {
@@ -118,17 +125,20 @@ const Setting: React.FC<SettingProps> = ({
     })
   }
 
-
   return(
     <div className='darkbackground'>
       <section className='setting-container'>
         <img className='setting-x' src={x} alt='' onClick={handleSettingModal} />
         <article className='setting-userinfo'>
           <header className='setting-userinfo-title'>UserInfo</header>
-          <div className='email-container'>
-            <p className='title'>E-mail</p>
-            <p className='content'>{email}</p>
-          </div>
+          {
+            userInfoChangeMode ?
+            null :
+            <div className='email-container'>
+              <p className='title'>E-mail</p>
+              <p className='content'>{email}</p>
+            </div>
+          }
           <div className='name-container'>
             <p className='title'>Username</p>
             {
@@ -161,13 +171,13 @@ const Setting: React.FC<SettingProps> = ({
           }
           {
             userInfoChangeMode ?
-            <button className='' onClick={() => changeUserInfo(nameRef.current.value, newPwdRef.current.value, rePwdRef.current.value)}>Update Userinfo</button> :
-            <button className='' onClick={handleUserInfoChangeMode}>Edit Userinfo</button>
+            <button className='infobtn edit' onClick={() => changeUserInfo(nameRef.current.value, newPwdRef.current.value, rePwdRef.current.value)}>Update Userinfo</button> :
+            <button className='infobtn edit' onClick={handleUserInfoChangeMode}>Edit Userinfo</button>
           }
           {
             userInfoChangeMode ? 
-            null :
-            <button className='' onClick={logout}>Logout</button>
+            <button className='infobtn back' onClick={handleUserInfoChangeMode}>Back</button> :
+            <button className='infobtn logout' onClick={logout}>Logout</button>
           }
         </article>
         <div className='setting-center'></div>

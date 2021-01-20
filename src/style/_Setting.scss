@@ -234,3 +234,24 @@
     }
   }
 }
+
+.infobtn {
+  width: 60%;
+  border: none;
+  border-radius: 10px;
+  color: rgb(41, 41, 41);
+  background-color: lighten($color: $blue, $amount: 5%);
+  margin-top: 5px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.116);
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    background-color: darken($color: $blue, $amount: 1%);
+    box-shadow: inset 1px 1px 5px 1px rgba(0, 0, 0, 0.116);
+  }
+  &.back, &.logout {
+    margin-top: 10px;
+  }
+}
