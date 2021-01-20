@@ -77,10 +77,15 @@
   .signin-title {
     font-size: 40px;
     text-align: center;
-    margin-top: 40px;
+    margin-top: 50px;
+  }
+  .signup-title {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 30px;
   }
   .email {
-    margin-top: 40px;
+    margin-top: 30px;
     width: 200px;
     height: 30px;
     border-bottom: 1px solid rgb(97, 97, 218);
@@ -96,7 +101,7 @@
       &:focus {
         outline: none;
       }
-    } 
+    }
   }
 
   .password {
@@ -121,6 +126,26 @@
       margin-top: 8px;
       margin-bottom: -15px;
     } 
+  }
+
+  .username {
+    margin-top: 8px;
+    width: 200px;
+    height: 30px;
+    border-bottom: 1px solid rgb(97, 97, 218);
+    & img {
+      height: 70%;
+      margin-right: 20px;
+    }
+    & input {
+      position: relative;
+      height: 70%;
+      border: none;
+      top: -3px;
+      &:focus {
+        outline: none;
+      }
+    }
   }
 }
 

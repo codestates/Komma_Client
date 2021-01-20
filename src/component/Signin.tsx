@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import x from '../img/plus_black.svg';
 import comma from '../img/comma.png';
 import logo from '../img/logo.png'
 import unlock from '../img/password.svg';
 import email from '../img/email.svg';
+import axios from 'axios';
 
 
 interface SigninProps {
   isSignupModalOn: boolean;
   handleLoginModal: () => void;
   handleSignupModal: () => void;
+  setToken: (token: string) => void;
+  handleLogin: () => void;
 }
 
 interface SignupProps {
@@ -20,11 +23,43 @@ interface SignupProps {
 const Signin: React.FC<SigninProps> = ({
   isSignupModalOn,
   handleSignupModal,
-  handleLoginModal
+  handleLoginModal,
+  setToken,
+  handleLogin,
 }) => {
 
-  const login = () => {
-    
+
+
+  let emailRef: any = useRef();
+  let passwordRef: any = useRef();
+  let errorRef: any = useRef();
+
+  const login = (email: string, password: string) => {
+    if(!email || !password) {
+      errorRef.current.textContent = '항목을 전부 입력해주세요'
+    }
+    else {
+      axios.post(
+        'http://www.kommaa.shop/users/login',
+        { email: email, password: password },
+        { withCredentials: true }
+      )
+      .then(res => res.data)
+      .then(data => {
+        if(data.message === 'hashPwd exists') {
+          errorRef.current.textContent = '비밀번호를 확인해주세요'
+        }
+        else if(data.message === 'not authorized') {
+          errorRef.current.textContent = '존재하지 않는 이메일 입니다'
+        }
+        else {
+          setToken(data.accessToken);
+          localStorage.setItem('token', JSON.stringify(data.accessToken));
+          handleLogin();
+          handleLoginModal();
+        }
+      })
+    }
   }
 
   return (
@@ -41,14 +76,14 @@ const Signin: React.FC<SigninProps> = ({
             <p className='signin-title'>Sign In</p>
             <div className='email'>
               <img src={email} alt=''></img>
-              <input type='text' placeholder='E-mail'></input>
+              <input type='text' placeholder='E-mail' ref={emailRef}></input>
             </div>
             <div className='password'>
               <img src={unlock} alt=''></img>
-              <input type='password' placeholder='Password'></input>
+              <input type='password' placeholder='Password' ref={passwordRef}></input>
             </div>
-            <p className='sign-error'>This message is dummy error!</p>
-            <button className='sign-button'>Sign In</button>
+            <p className='sign-error' ref={errorRef}></p>
+            <button className='sign-button' onClick={() => login(emailRef.current.value, passwordRef.current.value)}>Sign In</button>
             <p className='sign-desc2'>Don't have an account?<p onClick={handleSignupModal}>Create one</p></p>
           </article>
         }
@@ -66,24 +101,72 @@ const Signup: React.FC<SignupProps> = ({ handleLoginModal, handleSignupModal }) 
     handleLoginModal();
   }
 
+  let emailRef: any = useRef();
+  let nameRef: any = useRef();
+  let passwordRef: any = useRef();
+  let rePasswordRef: any = useRef();
+  let errorRef: any = useRef();
+
+  const signUp = (email: string, username: string, password: string, rePassword: string) => {
+    if(!email || !username || !password || !rePassword) {
+      errorRef.current.textContent = '항목을 전부 입력해주세요';
+    }
+    else if(password !== rePassword) {
+      errorRef.current.textContent = '비밀번호를 확인해주세요'
+    }
+    else {
+      axios.post(
+        'http://www.kommaa.shop/users/signup',
+        { email: email, username: username, password: password },
+        { withCredentials: true }
+      )
+      .then(res => res.data)
+      .then(data => {
+        console.log(data);
+        if(data.message === 'email exists') {
+          errorRef.current.textContent = '존재하는 이메일 입니다'
+        }
+        else {
+          errorRef.current.textContent = ''
+          handleSignupModal();
+          return alert('회원가입이 성공적으로 완료되었습니다!')
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    }
+  }
+
+
+
   return(
     <article className='sign-container'>
       <img className='signin-x' src={x} alt='' onClick={handleLoginModalForSignup} />
-      <p className='signin-title'>Sign Up</p>
+      <p className='signup-title'>Sign Up</p>
       <div className='email'>
         <img src={email} alt=''></img>
-        <input type='text' placeholder='E-mail'></input>
+        <input type='text' placeholder='E-mail' ref={emailRef}></input>
+      </div>
+      <div className='username'>
+        <img src={email} alt=''></img>
+        <input type='text' placeholder='Username' ref={nameRef}></input>
       </div>
       <div className='password'>
         <img src={unlock} alt=''></img>
-        <input type='password' placeholder='Password'></input>
+        <input type='password' placeholder='Password' ref={passwordRef}></input>
       </div>
       <div className='password repeat'>
         <img src={unlock} alt=''></img>
-        <input type='password' placeholder='Repeat Password'></input>
+        <input type='password' placeholder='Repeat Password' ref={rePasswordRef}></input>
       </div>
-      <p className='sign-error'>This message is dummy error!</p>
-      <button className='sign-button'>Sign Up</button>
+      <p className='sign-error' ref={errorRef}></p>
+      <button
+        className='sign-button'
+        onClick={() => signUp(emailRef.current.value, nameRef.current.value, passwordRef.current.value, rePasswordRef.current.value)}
+      >
+        Sign Up
+      </button>
       <p className='sign-desc2'>You have an account?<p onClick={handleSignupModal}>Sign In</p></p>
     </article>
   );

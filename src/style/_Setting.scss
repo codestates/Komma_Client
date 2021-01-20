@@ -33,25 +33,49 @@
     width: 60%;
     margin-bottom: 20px;
     & .title {
+      font-weight: bold;
       margin-top: 30px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
     & .content {
       width: 100%;
       border: none;
       border-bottom: 1px solid skyblue;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  & .name-container {
+    width: 60%;
+    margin-bottom: 20px;
+    & .title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    & .content {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid skyblue;
+      &:focus {
+        outline: none;
+      }
     }
   }
   & .password-container {
     width: 60%;
     margin-bottom: 10px;
     & .title {
-      margin-bottom: 15px;
+      font-weight: bold;
+      margin-bottom: 10px;
     }
     & .content {
       width: 100%;
       border: none;
       border-bottom: 1px solid skyblue;
+      &:focus {
+        outline: none;
+      }
     }
   }
   & .new-password-container {
@@ -61,6 +85,9 @@
       width: 100%;
       border: none;
       border-bottom: 1px solid skyblue;
+      &:focus {
+        outline: none;
+      }
     }
   }
   & .repeat-password-container {
@@ -70,6 +97,9 @@
       width: 100%;
       border: none;
       border-bottom: 1px solid skyblue;
+      &:focus {
+        outline: none;
+      }
     }
   }
 }
