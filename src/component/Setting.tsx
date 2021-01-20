@@ -56,14 +56,14 @@ const Setting: React.FC<SettingProps> = ({
   /* 유저 색상 및 다크모드 변경 */
   const changeTheColor = (color: string) => {
     let token: any = localStorage.getItem('token');
-    axios.put(
+    axios.post(
       'http://www.kommaa.shop/users/userinfoup',
       { sitecolor: color },
       { headers: { authorization: `Bearer ${token}` }, withCredentials: true }
     )
     /*
     fetch('http://www.kommaa.shop/users/userinfoup', {
-      method: 'get',
+      method: 'put',
       headers: {
         'Authorization': `bearer ${JSON.parse(token)}`,
       }
@@ -93,7 +93,7 @@ const Setting: React.FC<SettingProps> = ({
       return alert('비밀번호를 확인해주세요');
     }
     let token = localStorage.getItem('token');
-    axios.put(
+    axios.post(
       'http://www.kommaa.shop/users/userinfoup',
       { username: name, password: newPwd },
       { headers: { authorization: `Bearer ${token}` }, withCredentials: true }

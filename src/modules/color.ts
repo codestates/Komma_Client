@@ -26,7 +26,7 @@ const initialState: ColorState | any = {
 const color = (state = initialState, action: ColorAction) => {
   switch(action.type) {
     case CHANGE_COLOR:
-      return changeColors(state, action);
+      return Object.assign({}, state, { backgroundColor: action.payload.inputColor });
     default:
       return state;
   }

@@ -4,13 +4,15 @@ import signin from './signin';
 import timer from './timer';
 import selected from './selected';
 import setting from './setting';
+import mixtape from './mixtape';
 
 const rootReducer = combineReducers({
   color,
   signin,
   timer,
   selected,
-  setting
+  setting,
+  mixtape
 });
 
 export default rootReducer;
