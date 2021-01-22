@@ -5,6 +5,7 @@ import timer from './timer';
 import selected from './selected';
 import setting from './setting';
 import mixtape from './mixtape';
+import list from './list';
 
 const rootReducer = combineReducers({
   color,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   timer,
   selected,
   setting,
-  mixtape
+  mixtape,
+  list
 });
 
 export default rootReducer;
