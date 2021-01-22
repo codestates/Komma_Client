@@ -89,7 +89,10 @@ const MainList: React.FC<ListProps> = ({
 
   // 서버에서 노래정보 가져오기
   useEffect(() => {
-    axios.get('http://www.kommaa.shop.users.songlist')
+    axios('http://www.kommaa.shop/users/songlist', {
+      method: 'get',
+      headers: { 'Content-Type': 'application/json' }
+    })
     .then(res => res.data)
     .then(data => {
       console.log(data.songlist);
@@ -103,10 +106,10 @@ const MainList: React.FC<ListProps> = ({
         soundList.map((sound) => <SingleSoundCard
         key={sound.id}
         id={sound.id}
-        url={sound.url}
+        url={sound.soundFile}
         title={sound.title}
-        volume={sound.volume}
-        icon={sound.icon}
+        volume={sound.defaltVoulume}
+        icon={sound.iconImg}
         playList={playList}
         soundList={soundList}
         addList={addList}
@@ -146,6 +149,7 @@ const SingleSoundCard: React.FC<SingleSoundProps> = ({
   const value5: any = useRef();
 
   // playlist로 볼륨조작시 아래 볼륨스타일 싱크맞춰주기
+  /*
   useEffect(() => {
     for(let i = 0; i < soundList.length; i ++) {
       if(id === soundList[i].id) {
@@ -158,7 +162,7 @@ const SingleSoundCard: React.FC<SingleSoundProps> = ({
       }
     }
   }, [soundList])
-
+*/
 
 
   // 아이콘 아래 볼륨스타일 선택 시 볼륨조절 함수
