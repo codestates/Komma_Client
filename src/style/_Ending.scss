@@ -1,0 +1,54 @@
+.ending {
+  &.back {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.89);
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+  }
+  &.title {
+    font-size: 35px;
+    margin-top: 110px;
+    font-weight: bold;
+  }
+  &.description {
+    font-size: 25px;
+    margin-top: 70px;
+    text-align: center;
+  }
+  &.exit {
+    width: 120px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.349);
+    margin-top: 30px;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+  }
+  &.share {
+    margin-top: 30px;
+    & p{
+      font-size: 20px;
+      font-weight: bold;
+    }
+    &.icons {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+  &.name {
+    margin-top: 50px;
+  }
+  &.copyright {
+    font-size: 14px;
+    font-weight: thin;
+    margin-top: 10px;
+  }
+}

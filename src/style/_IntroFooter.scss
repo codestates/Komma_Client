@@ -1,0 +1,97 @@
+.introFooterBody{
+  position: relative;
+  height: 71vh;
+}
+
+
+.introFooter{
+  position: absolute;
+  background-color:#1565c0;
+  height: 40vh;
+  width: 98.3vw;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  margin-top: 77px;
+}
+
+.introFooter_description{
+  position: absolute;
+  font-size: 120px;
+  color:white;
+  left: 37vw;
+  top: 8vh;
+  font-family: 'Noto Sans KR', sans-serif;
+  z-index: 1;
+}
+.introFooter_button{
+  position: absolute;; 
+  width: 180px;
+  height: 60px;
+  font-size: 20px;
+  border-radius: 30px;
+  background-color: white;
+  color:#1565c0 ;
+  border: none;
+  left: 44.1vw;
+  top:30vh;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.controlcolor2{
+  position: absolute;
+  background-color: #dabc0e;
+  width: 48.8vw;
+  height: 62px;
+  bottom: 41.5vh;
+}
+
+.footerInformation{
+  position: relative;
+  height: 20vh;
+  width: 98.3vw;
+  top: 41.5vh;;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  background-color: #f1f1f3;
+}
+.information{
+  position: absolute;
+  font-size: 20px;
+  top:5vh;
+  left: 12vw;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.member4{
+  position: absolute;
+  height: 100px;
+  left: 1100px;
+  top:  50px;
+}
+.member3{
+  position: absolute;
+  height: 100px;
+  left: 1480px;
+  top:  50px;
+}
+.member2{
+  position: absolute;
+  height: 100px;
+  left: 1360px;
+  top:   50px;
+}
+.member1{
+  position: absolute;
+  height: 100px;
+  left: 1230px;
+  top:   50px;
+}
+
+.github{
+  position: absolute;
+  font-size: 30px;
+  left: 72vw;
+  top:2vh;
+  font-family: 'Noto Sans KR', sans-serif;
+}
