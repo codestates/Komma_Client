@@ -37,7 +37,7 @@ const initialState: ColorState = {
 const color = (state = initialState, action: ColorAction) => {
   switch(action.type) {
     case CHANGE_COLOR:
-      return Object.assign({}, state, { backgroundColor: action.payload.inputColor });
+      return changeColors(state, action);
     case CHANGE_INTRO_COLOR:
       return Object.assign({}, state, { introColor: action.payload.inputIntroColor });
     default:
@@ -47,20 +47,21 @@ const color = (state = initialState, action: ColorAction) => {
 
 // let interval: any;
 
-// const changeColors = (state: ColorState, action: ColorAction) => {
-//   clearInterval(interval);
-//   console.log('컬러 인터벌 끝')
-//   if(action.payload.inputColor === 'random') {
-//     let colors = ['red', 'blue', 'violet', 'orange', 'teal', 'cyan', 'lime', 'yellow'];
-//     interval = setInterval(() => {
-//       return Object.assign({}, state, { backgroundColor: action.payload.inputColor });
-//     }, 7000);
-//     console.log('컬러 인터벌 시작')
-//   }
-//   else {
-//     return Object.assign({}, state, { backgroundColor: action.payload.inputColor });
-//   }
-// }
+
+const changeColors = (state: ColorState, action: ColorAction) => {
+  clearInterval(interval);
+  console.log('컬러 인터벌 끝')
+  if(action.payload.inputColor === 'random') {
+    let colors = ['red', 'blue', 'violet', 'orange', 'teal', 'cyan', 'lime', 'yellow'];
+    interval = setInterval(() => {
+      return Object.assign({}, state, { backgroundColor: colors[Math.floor(Math.random()*(7-0+1)) + 0] });
+    }, 7000);
+    console.log('컬러 인터벌 시작')
+  }
+  else {
+    return Object.assign({}, state, { backgroundColor: action.payload.inputColor });
+  }
+}
 
 
 

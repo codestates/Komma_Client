@@ -1,39 +1,41 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../modules';
-import MainSelected from '../component/MainSelected';
-import { handleList, addList, deleteList } from '../modules/selected';
-import { setSoundListProperty } from '../modules/list';
+import MainList from '../component/MainList';
+import { addList, deleteList, setList } from '../modules/selected';
+import { getSoundList, setSoundListProperty } from '../modules/list';
 
 const MainSelectedContainer: React.FC = () => {
 
-  const soundList = useSelector((state: RootState) => state.list.soundList);
-  const isListBarOpen = useSelector((state: RootState) => state.selected?.isListBarOpen);
   const playList = useSelector((state: RootState) => state.selected?.playList);
+  const soundList = useSelector((state: RootState) => state.list.soundList);
   const dispatch = useDispatch();
 
-  const handleSelectedList = () => {
-    dispatch(handleList());
-  };
   const addTheList = (item: object) => {
     dispatch(addList(item));
   };
   const deleteTheList = (itemId: number) => {
     dispatch(deleteList(itemId));
   };
+  const setTheList = (list: any[]) => {
+    dispatch(setList(list));
+  };
   const setTheSoundListProperty = (modifiedSoundList: any[]) => {
     dispatch(setSoundListProperty(modifiedSoundList));
   };
+  const getTheSoundList = (modifiedSoundList: any[]) => {
+    dispatch(getSoundList(modifiedSoundList));
+  };
 
   return (
-    <MainSelected
-      soundList={soundList}
-      isListBarOpen={isListBarOpen}
+    <MainList
       playList={playList}
-      handleList={handleSelectedList}
+      soundList={soundList}
       addList={addTheList}
       deleteList={deleteTheList}
+      setList={setTheList}
       setSoundListProperty={setTheSoundListProperty}
+      getSoundList={getTheSoundList}
     />
   );
 }
