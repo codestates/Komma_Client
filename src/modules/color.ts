@@ -37,7 +37,7 @@ const initialState: ColorState = {
 const color = (state = initialState, action: ColorAction) => {
   switch(action.type) {
     case CHANGE_COLOR:
-      return changeColors(state, action);
+      return Object.assign({}, state, { backgroundColor: action.payload.inputColor });
     case CHANGE_INTRO_COLOR:
       return Object.assign({}, state, { introColor: action.payload.inputIntroColor });
     default:
@@ -45,7 +45,8 @@ const color = (state = initialState, action: ColorAction) => {
   }
 }
 
-// let interval: any;
+/*
+let interval: any;
 
 
 const changeColors = (state: ColorState, action: ColorAction) => {
@@ -62,7 +63,7 @@ const changeColors = (state: ColorState, action: ColorAction) => {
     return Object.assign({}, state, { backgroundColor: action.payload.inputColor });
   }
 }
-
+*/
 
 
 
