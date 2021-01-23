@@ -17,6 +17,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	scroll-behavior: smooth;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -26,8 +27,8 @@ footer, header, hgroup, menu, nav, section {
 body {
   line-height: 1;
   box-sizing: border-box;
-	overflow: hidden;
 	font-family: 'Quicksand', sans-serif;
+	overflow: hidden;
 }
 ol, ul {
 	list-style: none;
@@ -71,3 +72,6 @@ $orange: #ff8f00;
 @import'./IntroFooter';
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+@import './Ending.scss';
+@import './Setting.scss';
+

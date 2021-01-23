@@ -2,6 +2,8 @@
   height: 100vh;
   overflow-y: scroll;
   overflow-x: hidden;
+  background-color: black;
+
 }
 
 .background{
@@ -21,7 +23,7 @@
 }
 .transparency{
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.637);
+  background-color: rgba(12, 12, 12, 0.637);
   width: 100vw;
   height: 100vh;
   z-index: 0;
@@ -38,7 +40,7 @@
   color:white;
   font-size: 50px;
   font-family: 'Noto Sans KR', sans-serif;
-  left : 16vw;
+  left : 17vw;
   top: 6vh;
 }
 .kommaImg{
@@ -55,10 +57,10 @@
 .description_Main{
   position: absolute;
   font-size: 80px;
-  width: 500px;
+  width: 80vw;
   color: white;
-  top: 150px;
-  left : 280px;
+  top: 23.5vh;
+  left : 17vw;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 900;
 }
@@ -109,10 +111,25 @@
 .description_1{
   position: relative;
   color: white;
-  top:4vh;
+  top:5vh;
   font-size: 20px;
   font-family: 'Noto Sans KR', sans-serif;
 }
 .blank{
   margin-top: 17px;
+}
+
+.intro_Main_back{
+  position: relative;
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+}
+.intro_Main_back_sentence{
+  position: absolute;
+  font-size: 150px;
+  color: white;
+  font-family: 'Noto Sans KR', sans-serif;
+  top:38vh;
+  left:35vw;
 }

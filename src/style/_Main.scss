@@ -1,11 +1,10 @@
 @mixin randomColor {
-  position: relative;
+  position: fixed;
   display: flex;
   flex-direction: column;
   width: 100vw;
   height: 100vh;
   transition: all 5s;
-  z-index: 0;
 }
 
 .Main-red {

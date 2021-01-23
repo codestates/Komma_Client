@@ -1,27 +1,15 @@
 import React,{ useEffect } from 'react';
 import TimerContainer from '../containers/TimerContainer';
 import logo from '../img/logo.png';
+import minus from '../img/minus-grey.png';
+import plus from '../img/plus-grey.png';
+import start from '../img/start-grey.png';
+import stop from '../img/stop-grey.png';
 
 interface MainHeaderProps {
   isLogin: boolean;
   handleLoginModal: () => void;
-}
-
-const MainHeader: React.FC<MainHeaderProps> = ({ isLogin, handleLoginModal }) => {
-
-
-  return(
-    <header className='header'>
-      <img src={logo} alt='' className='logo'/>
-      {/*isLogin ? <TimerContainer /> : null*/}
-      <TimerContainer/>
-      {
-        !isLogin ?
-        <span className='menu' onClick={handleLoginModal} >Login</span> :
-        <span className='menu' >Setting</span>
-      }
-    </header>
-  );
+  handleSettingModal: () => void;
 }
 
 interface TimerProps {
@@ -34,6 +22,22 @@ interface TimerProps {
   removeTenMinute: () => void;
   removeOneSeconds: () => void;
   handlingEndingModal: () => void;
+}
+
+const MainHeader: React.FC<MainHeaderProps> = ({ isLogin, handleLoginModal, handleSettingModal }) => {
+
+
+  return(
+    <header className='header'>
+      <img src={logo} alt='' className='logo'/>
+      { isLogin ? <TimerContainer /> : null }
+      {
+        !isLogin ?
+        <span className='menu' onClick={handleLoginModal} >Login</span> :
+        <span className='menu' onClick={handleSettingModal}>Setting</span>
+      }
+    </header>
+  );
 }
 
 export const Timer: React.FC<TimerProps> = ({
@@ -73,15 +77,13 @@ export const Timer: React.FC<TimerProps> = ({
   return(
     <span className='timer-container'>
       <p className='time' >{`${minute < 10 ? '0' + minute : minute} : ${seconds < 10 ? '0' + seconds : seconds}`}</p>
-      <div className='timer-buttons'>
-        <div className='timer-plus' onClick={addTenMinute}>+10</div>
-        <div className='timer-minus' onClick={removeTenMinute}>-10</div>
+        <div className='timer-plus' onClick={addTenMinute}><img src={plus} alt=''/></div>
+        <div className='timer-minus' onClick={removeTenMinute}><img src={minus} alt=''/></div>
         {
           !isCounting ?
-          <div className='timer-start' onClick={handleCounting}>Start</div> :
-          <div className='timer-start' onClick={stopToTimer}>Clear</div>
+          <div className='timer-start' onClick={handleCounting}><img src={start} alt=''/></div> :
+          <div className='timer-stop' onClick={stopToTimer}><img src={stop} alt=''/></div>
         }
-      </div>
     </span>
   );
 }

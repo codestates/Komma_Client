@@ -1,4 +1,5 @@
 import React from 'react';
+import IntroFn3Container from '../../containers/IntroContainers/IntroFn3Comtainer';
 import IntroFooterContainer from '../../containers/IntroContainers/IntroFooterContainer';
 import IntroMainContainer from '../../containers/IntroContainers/IntroMainContainer';
 import IntroFn1 from './IntroFn1';
@@ -12,8 +13,8 @@ function Intro() {
       <IntroMainContainer />
       <IntroFn1 />
       <IntroFn2 />
-      <IntroFn3 />
-      {/* <IntroFooterContainer/> */}
+      <IntroFn3Container />
+      <IntroFooterContainer/>
     </div>
   )
 }
