@@ -6,6 +6,7 @@ const HANDLE_CHANGE_USERINFO = 'setting/HANDLE_CHANGE_USERINFO'as const;
 const GET_USERNAME_FROM_SERVER = 'setting/GET_USERNAME_FROM_SERVER'as const;
 const GET_EMAIL_FROM_SERVER = 'setting/GET_EMAIL_FROM_SERVER'as const;
 
+
 //액션 생성 함수
 export const handleSettingModal = () => ({ type: HANDLE_SETTING_MODAL });
 export const handleDarkMode = () => ({ type: HANDLE_DARK_MODE });

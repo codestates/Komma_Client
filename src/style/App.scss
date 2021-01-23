@@ -46,6 +46,7 @@ table {
 	border-spacing: 0;
 }
 //-------------------------------------------------------------
+/*
 $red: #ffa9a9;
 $violet: #b197fc;
 $blue: #74c0fc;
@@ -54,6 +55,16 @@ $teal: #63e6be;
 $lime: #c0eb75;
 $yellow: #ffe066;
 $orange: #ffc078;
+*/
+
+$red: #c62828;
+$violet: #6a1b9a;
+$blue: #1565c0;
+$cyan: #66d9e8;
+$teal: #2e7d32;
+$lime: #b8c63f;
+$yellow: #dabc0e;
+$orange: #ff8f00;
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 @import './Main.scss';
