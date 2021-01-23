@@ -68,7 +68,7 @@ const Main: React.FC<MainProps> = ({
       <div className='waveBox'>
         <div className='wave-one'></div>
         <div className='wave-two'></div>
-      </div>
+      </div> 
       { isLoginModalOn ? <SigninContainer /> : null }
       { isEndingModalOn ? <Ending handleEndingModal={handleEndingModal}/> : null }
       { isSettingModalOn ? <SettingContainer /> : null }

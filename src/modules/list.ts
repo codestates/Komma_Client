@@ -28,7 +28,7 @@ interface ListState {
 }
 
 const initialState: ListState = {
-  soundList: []
+  soundList: sounds
 }
 
 // 리듀서
