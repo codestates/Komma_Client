@@ -1,0 +1,135 @@
+.intro_Set{
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: black;
+
+}
+
+.background{
+  z-index: 1;
+}
+.intro_Main{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.background{
+  position: absolute;
+  z-index: 0;
+  width: 100vw;
+  height: 110vh;
+}
+.transparency{
+  position: absolute;
+  background-color: rgba(12, 12, 12, 0.637);
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+.intro_Header{
+  display: flex;
+  height: 15vh;
+
+
+}
+.intro_logo{
+  position: relative;
+  color:white;
+  font-size: 50px;
+  font-family: 'Noto Sans KR', sans-serif;
+  left : 17vw;
+  top: 6vh;
+}
+.kommaImg{
+  width:6px;
+}
+
+.intro_body{
+  display: flex;
+  position: relative;
+  width: 100vw;
+  height: 80vh;
+}
+
+.description_Main{
+  position: absolute;
+  font-size: 80px;
+  width: 80vw;
+  color: white;
+  top: 23.5vh;
+  left : 17vw;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+}
+
+.intro_Mainbutton{
+  position:relative; 
+  width: 180px;
+  height: 60px;
+  font-size: 20px;
+  border-radius: 30px;
+  color: black;
+  background-color:white ;
+  border: none;
+  top: 90px;
+  font-family: 'Noto Sans KR', sans-serif;
+  z-index: 999;
+}
+
+.macbook{
+  position:absolute;
+  width: 899px;
+  height: 475px;
+  left: 537px;
+  top:14px;
+  z-index: 4;
+
+}
+.windowcard{
+  position: absolute;
+  width: 667.5px;
+  bottom:340px;
+  left:655px;
+  z-index: 3;
+}
+.window{
+  position: absolute;
+}
+
+.intro_next{
+  position: absolute;
+  width: 50px;
+  height: 30px;
+  bottom: 15vh;
+  left: 48.5vw;
+  top:77vh;
+}
+
+.description_1{
+  position: relative;
+  color: white;
+  top:5vh;
+  font-size: 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.blank{
+  margin-top: 17px;
+}
+
+.intro_Main_back{
+  position: relative;
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+}
+.intro_Main_back_sentence{
+  position: absolute;
+  font-size: 150px;
+  color: white;
+  font-family: 'Noto Sans KR', sans-serif;
+  top:38vh;
+  left:35vw;
+}

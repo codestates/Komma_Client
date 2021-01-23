@@ -1,11 +1,23 @@
 import '../style/App.scss';
 import React from 'react';
 import MainContainer from '../containers/MainContainer';
+import Intro from './Intro/IntroSet'
 
-function App() {
+
+
+interface IntroProps {
+  isIntro: boolean;
+
+}
+
+
+const App: React.FC<IntroProps> = ({ isIntro }) => {
+
   return (
-    <MainContainer />
-  );
+    <>
+      {isIntro ? <Intro /> : <MainContainer />}
+    </>
+  )
 }
 
 export default App;

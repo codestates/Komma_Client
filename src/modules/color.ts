@@ -1,5 +1,6 @@
 // 액션
 const CHANGE_COLOR = 'color/CHANGE_COLOR'as const;
+const CHANGE_INTRO_COLOR = 'color/CHANGE_INTRO_COLOR' as const
 
 // 액션 생성 함수
 export const changeColor = (inputColor: string) => ({
@@ -9,17 +10,27 @@ export const changeColor = (inputColor: string) => ({
   }
 });
 
+export const changeIntroColor = (inputIntroColor : string) =>({
+  type: CHANGE_INTRO_COLOR,
+  payload:{
+    inputIntroColor
+  }
+})
+
 // 액션 타입
 type ColorAction =
   | ReturnType<typeof changeColor>
+  | ReturnType<typeof changeIntroColor>
 
 // 스테이트 초기값
 interface ColorState {
   backgroundColor: string;
+  introColor : string;
 }
 
-const initialState: ColorState | any = {
+const initialState: ColorState = {
   backgroundColor: 'blue',
+  introColor :''
 }
 
 // 리듀서
@@ -27,12 +38,15 @@ const color = (state = initialState, action: ColorAction) => {
   switch(action.type) {
     case CHANGE_COLOR:
       return changeColors(state, action);
+    case CHANGE_INTRO_COLOR:
+      return Object.assign({}, state, { introColor: action.payload.inputIntroColor });
     default:
       return state;
   }
 }
 
-let interval: any;
+// let interval: any;
+
 
 const changeColors = (state: ColorState, action: ColorAction) => {
   clearInterval(interval);

@@ -1,0 +1,64 @@
+.intro_Fn1{
+  height: 90h;
+ 
+}
+.intro_body1{
+  background-color: #dabc0e;
+  display: flex;
+  position: relative;
+
+  height: 90vh;
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.imac{
+  position: absolute;
+  height: 700px;
+  left:145px;
+  top:130px;
+  z-index: 1;
+}
+
+.windowcard1{
+  position: relative;
+  width: 1500px;
+  height: 500px;
+  z-index: 0;
+  top:150px;
+  left:100px;
+}
+.img_window{
+  position: absolute;
+  width: 810px;
+  height: 480px;
+  left:75px;
+  
+}
+.intro_Fn1_description{
+  position: absolute;
+  font-size: 70px;
+  left:1020px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 800;
+  top:100px;
+  color:#1D1E20;
+
+}
+.intro_Fn1_description2{
+  position: absolute;
+  font-size: 20px;
+  top:400px;
+  left: 1020px;
+  font-family: 'Noto Sans KR', sans-serif;
+  color:#1D1E20;
+}
+.controlcolor{
+  position: absolute;
+  background-color: #f0f0f2;
+  width: 48.9vw;
+  height: 60px;
+  left:49.56vw;
+  top:91.55vh;
+
+}

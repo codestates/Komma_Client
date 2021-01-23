@@ -102,6 +102,7 @@ const MainList: React.FC<ListProps> = ({
 
   return(
     <div className='sound-list' ref={ref} >
+
       {
         soundList.map((sound) => <SingleSoundCard
         key={sound.id}

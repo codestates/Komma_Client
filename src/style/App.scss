@@ -46,6 +46,7 @@ table {
 	border-spacing: 0;
 }
 //-------------------------------------------------------------
+
 /*
 $red: #ffa9a9;
 $violet: #b197fc;
@@ -73,6 +74,16 @@ $orange: #ff8f00;
 @import './MainFav.scss';
 @import './MainSelected.scss';
 @import './Signin_up.scss';
+
+
+
+@import'./IntroMain';
+@import'./IntroFn1';
+@import'./IntroFn2';
+@import'./IntroFn3';
+@import'./IntroFooter';
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
 @import './Ending.scss';
 @import './Setting.scss';
 
