@@ -75,7 +75,7 @@ const MainList: React.FC = () => {
       <SingleSoundCard/>
       <SingleSoundCard/>
       <SingleSoundCard/>
-      <SingleSoundCard/>
+      <SingleSoundCard/> 
       <SingleSoundCard/>
       <SingleSoundCard/>
       <SingleSoundCard/>
