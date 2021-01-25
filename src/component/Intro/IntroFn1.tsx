@@ -39,7 +39,7 @@ export const Slier = () => {
         <div className='intro_Fn1_description'>
           원하는<div className='blank' />시간과 색을<div className='blank' />지정해보세요
         </div>
-        <div className ='intro_Fn1_description2'>원하는 시간만큼 타이머를 맞추고 원하는 색으로 배경화면을 꾸며보세요!</div>
+        <div className ='intro_Fn1_description2'>원하는 시간만큼 타이머를 맞추고 원하는 색으로<br/>배경화면을 꾸며보세요!</div>
       </div>
     </Slider>
   )

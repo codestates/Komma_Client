@@ -107,10 +107,13 @@ const MainList: React.FC<ListProps> = ({
         soundList.map((sound) => <SingleSoundCard
         key={sound.id}
         id={sound.id}
-        url={sound.url}
+        //url={sound.url}
+        url={sound.soundFile}
         title={sound.title}
-        volume={sound.volume}
-        icon={sound.icon}
+        volume={sound.defaltVoulume}
+        //volume={sound.volume}
+        icon={sound.iconImg}
+        //icon={sound.icon}
         playList={playList}
         soundList={soundList}
         addList={addList}
@@ -150,21 +153,20 @@ const SingleSoundCard: React.FC<SingleSoundProps> = ({
   const value5: any = useRef();
 
   // playlist로 볼륨조작시 아래 볼륨스타일 싱크맞춰주기
-  
   useEffect(() => {
-    for(let i = 0; i < soundList.length; i ++) {
-      if(id === soundList[i].id) {
-        if(audioRef.current.volume !== Number(soundList[i].volume)) {
-          console.log(audioRef.current.volume)
-          console.log(Number(soundList[i].volume))
-          audioRef.current.volume = Number(soundList[i].volume);
-          editVolumeStyle();
-        }
-      }
-    }
-  }, [soundList])
-  
-
+    // for(let i = 0; i < soundList.length; i ++) {
+    //   if(id === soundList[i].id) {
+    //     if(audioRef.current.volume !== Number(soundList[i].defaltVoulume)) {
+    //       console.log(audioRef.current.volume)
+    //       console.log(Number(soundList[i].defaltVoulume))
+    //       audioRef.current.volume = Number(soundList[i].defaltVoulume);
+    //       editVolumeStyle();
+    //     }
+    //   }
+    // }
+    audioRef.current.volume = Number(volume);
+    editVolumeStyle();
+  })
 
   // 아이콘 아래 볼륨스타일 선택 시 볼륨조절 함수
   const handleVolume = () => {
@@ -181,7 +183,7 @@ const SingleSoundCard: React.FC<SingleSoundProps> = ({
     // 스테이트 목록에도 변경한 볼륨 동기화
     for(let i = 0; i < modifiedSoundList.length; i ++) {
       if(id === modifiedSoundList[i].id) {
-        modifiedSoundList[i].volume = audio.volume;
+        modifiedSoundList[i].defaltVoulume = audio.volume;
         setSoundListProperty(modifiedSoundList);
       }
     }
@@ -258,6 +260,22 @@ const SingleSoundCard: React.FC<SingleSoundProps> = ({
     }
   }
 
+  // 플레이리스트 삭제 시 원판 이미지&재생 도 동기화
+  useEffect(() => {
+    let isOn = false;
+    let audio = audioRef.current;
+    let img = imgRef.current;
+    for(let i = 0; i < playList.length; i ++) {
+      if(id === playList[i].id) {
+        isOn = true;
+      }
+    }
+    if(!isOn) {
+      audio.pause();
+      img.style.width = '50%';
+      img.style.top = '0px';
+    }
+  })
 
 
   return(

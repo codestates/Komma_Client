@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../modules';
 import MainSelected from '../component/MainSelected';
-import { handleList, addList, deleteList } from '../modules/selected';
+import { handleList, addList, deleteList, setList } from '../modules/selected';
 import { setSoundListProperty } from '../modules/list';
 
 const MainSelectedContainer: React.FC = () => {
@@ -24,6 +24,9 @@ const MainSelectedContainer: React.FC = () => {
   const setTheSoundListProperty = (modifiedSoundList: any[]) => {
     dispatch(setSoundListProperty(modifiedSoundList));
   };
+  const setTheList = (modifiedSoundList: any[]) => {
+    dispatch(setList(modifiedSoundList));
+  };
 
   return (
     <MainSelected
@@ -34,6 +37,7 @@ const MainSelectedContainer: React.FC = () => {
       addList={addTheList}
       deleteList={deleteTheList}
       setSoundListProperty={setTheSoundListProperty}
+      setList={setTheList}
     />
   );
 }
