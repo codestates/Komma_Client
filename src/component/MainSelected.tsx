@@ -59,7 +59,7 @@ const MainSelected: React.FC<SelectedProps> = ({
             //volume={sound.volume}
             url={sound.url}
             icon={sound.img}
-            volume={sound.volume}
+            volume={sound.defaltVoulume}
             deleteList={deleteList}
             setSoundListProperty={setSoundListProperty}
             setList={setList}
@@ -92,6 +92,7 @@ export const SingleList: React.FC<SingleListProps> = ({
   useEffect(() => {
     value5.current.style.opacity = '0.2';
     value4.current.style.opacity = '0.2';
+    value3.current.style.opacity = '0.2';
   }, []);
 
 
@@ -100,16 +101,20 @@ export const SingleList: React.FC<SingleListProps> = ({
     for(let i = 0; i < soundList.length; i ++) {
       if(id === soundList[i].id) {
         let modifiedSoundList = soundList.slice()
-        if(Number(modifiedSoundList[i].volume) < 1) {
-          modifiedSoundList[i].volume = Number(modifiedSoundList[i].volume) + 0.2;
+        if(Number(modifiedSoundList[i].defaltVoulume) < 1) {
+          modifiedSoundList[i].defaltVoulume = Number(modifiedSoundList[i].defaltVoulume) + 0.2;
+          if(modifiedSoundList[i].defaltVoulume === 0.6000000000000001) {
+            modifiedSoundList[i].defaltVoulume = 0.6;
+          }
           console.log(modifiedSoundList[i].title)
-          console.log(modifiedSoundList[i].volume)
+          console.log(modifiedSoundList[i].defaltVoulume)
         }
         else {
-          modifiedSoundList[i].volume = 0.2;
-          console.log(modifiedSoundList[i].volume);
+          modifiedSoundList[i].defaltVoulume = 0.2;
+          console.log(modifiedSoundList[i].defaltVoulume);
         }
         setSoundListProperty(modifiedSoundList);
+        editVolumeStyle(id);
       }
     }
   }
@@ -141,35 +146,35 @@ export const SingleList: React.FC<SingleListProps> = ({
     for(let i = 0; i < soundList.length; i ++) {
       if(id === soundList[i].id) {
         let audio = soundList[i];
-        if(audio.volume === 1) {
+        if(audio.defaltVoulume === 1) {
           value1.current.style.opacity = '1';
           value2.current.style.opacity = '1';
           value3.current.style.opacity = '1';
           value4.current.style.opacity = '1';
           value5.current.style.opacity = '1';
         }
-        else if(audio.volume === 0.8) {
+        else if(audio.defaltVoulume === 0.8) {
           value1.current.style.opacity = '1';
           value2.current.style.opacity = '1';
           value3.current.style.opacity = '1';
           value4.current.style.opacity = '1';
           value5.current.style.opacity = '0.2';
         }
-        else if(audio.volume === 0.6 || audio.volume === 0.5) {
+        else if(audio.defaltVoulume === 0.6) {
           value1.current.style.opacity = '1';
           value2.current.style.opacity = '1';
           value3.current.style.opacity = '1';
           value4.current.style.opacity = '0.2';
           value5.current.style.opacity = '0.2';
         }
-        else if(audio.volume === 0.4) {
+        else if(audio.defaltVoulume === 0.4) {
           value1.current.style.opacity = '1';
           value2.current.style.opacity = '1';
           value3.current.style.opacity = '0.2';
           value4.current.style.opacity = '0.2';
           value5.current.style.opacity = '0.2';
         }
-        else if(audio.volume === 0.2) {
+        else if(audio.defaltVoulume === 0.2) {
           value1.current.style.opacity = '1';
           value2.current.style.opacity = '0.2';
           value3.current.style.opacity = '0.2';

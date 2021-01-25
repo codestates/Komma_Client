@@ -153,20 +153,20 @@ const SingleSoundCard: React.FC<SingleSoundProps> = ({
   const value5: any = useRef();
 
   // playlist로 볼륨조작시 아래 볼륨스타일 싱크맞춰주기
-  /*
   useEffect(() => {
-    for(let i = 0; i < soundList.length; i ++) {
-      if(id === soundList[i].id) {
-        if(audioRef.current.volume !== Number(soundList[i].defaltVoulume)) {
-          console.log(audioRef.current.volume)
-          console.log(Number(soundList[i].defaltVoulume))
-          audioRef.current.volume = Number(soundList[i].defaltVoulume);
-          editVolumeStyle();
-        }
-      }
-    }
-  }, [soundList])
-  */
+    // for(let i = 0; i < soundList.length; i ++) {
+    //   if(id === soundList[i].id) {
+    //     if(audioRef.current.volume !== Number(soundList[i].defaltVoulume)) {
+    //       console.log(audioRef.current.volume)
+    //       console.log(Number(soundList[i].defaltVoulume))
+    //       audioRef.current.volume = Number(soundList[i].defaltVoulume);
+    //       editVolumeStyle();
+    //     }
+    //   }
+    // }
+    audioRef.current.volume = Number(volume);
+    editVolumeStyle();
+  })
 
   // 아이콘 아래 볼륨스타일 선택 시 볼륨조절 함수
   const handleVolume = () => {
