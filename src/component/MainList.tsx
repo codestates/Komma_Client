@@ -107,10 +107,10 @@ const MainList: React.FC<ListProps> = ({
         soundList.map((sound) => <SingleSoundCard
         key={sound.id}
         id={sound.id}
-        url={sound.url/*soundFile*/}
+        url={sound.url}
         title={sound.title}
-        volume={sound.volume/*defaltVoulume*/}
-        icon={sound.icon/*Img*/}
+        volume={sound.volume}
+        icon={sound.icon}
         playList={playList}
         soundList={soundList}
         addList={addList}
@@ -163,7 +163,7 @@ const SingleSoundCard: React.FC<SingleSoundProps> = ({
       }
     }
   }, [soundList])
-
+  
 
 
   // 아이콘 아래 볼륨스타일 선택 시 볼륨조절 함수
