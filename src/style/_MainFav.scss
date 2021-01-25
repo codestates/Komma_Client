@@ -1,9 +1,18 @@
+
+.fav_body{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  
+}
 .fav-container {
   position: absolute;
   width: 650px;
   height: 150px;
   left: 50vw;
-  top: 20vh;
+  top: 10vh;
   margin-left: -325px;
   display: flex;
   flex-direction: column;
@@ -174,4 +183,64 @@
   &.teal {
     box-shadow: inset 10px 0px 10px 0px $teal;
   }
+}
+.favModalBody{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.747);
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.favModalBox{
+ position: absolute;
+ display: inline-flex;
+ width: 45vw;
+ height: 50vh;
+ background-color: white;
+ z-index: 5;
+ flex-wrap: wrap; 
+ align-content: flex-start;
+ border-radius: 30px;
+}
+.fav_icon{
+  height: 80px;
+  margin-left: 44px;
+  margin-top: 50px;
+}
+
+.fav_icon1{
+  height: 80px;
+  margin-left: 44px;
+  margin-top: 50px;
+}
+
+
+.fav_x{
+  position: absolute;
+  height: 25px;
+  right: 1vw;
+  top:1.4vh;
+}
+.fav_input{
+  position: absolute;
+  font-size: 40px;
+  left:12vw;
+  top:32vh;
+}
+.fav_button{
+  position: absolute;
+  font-size: 30px;
+  width: 100px;
+  top:43vh;
+  left:20vw;
+}
+
+.fav_delet_x{
+  position:absolute;
+  height: 13px;
+  margin-left: 110px;
+  margin-top: 8px;
 }

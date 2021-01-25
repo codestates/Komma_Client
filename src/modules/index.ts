@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
   selected,
   intro,
   setting,
-  mixtape
+  mixtape,
 });
 
 export default rootReducer;

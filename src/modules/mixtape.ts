@@ -7,10 +7,10 @@ const DELETE_ITEM = 'mixtape/DELETE_ITEM'as const;
 //액션 생성 함수
 export const handleDeleteMode = () => ({ type: HANDLE_DELETE_MODE });
 export const handleListAddModal = () => ({ type: HANDLE_LIST_ADD_MODAL });
-export const addItem = (item: any) => ({
+export const addItem = (item: any ) => ({
   type: ADD_ITEM,
   payload: {
-    item
+    item,
   }
 });
 export const deleteItem = (itemId: number) => ({
