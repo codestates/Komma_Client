@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MainHeaderContainer from '../containers/MainHeaderContainer';
-import MainList, { ListTutorial } from './MainList';
+import { ListTutorial } from './MainList';
+import MainListContainer from '../containers/MainListContainer';
 import MainFavContainer from '../containers/MainFavContainer';
 import MainSelectContainer from '../containers/MainSelectedContainer';
 import SigninContainer from '../containers/SigninContainer';
@@ -62,12 +63,12 @@ const Main: React.FC<MainProps> = ({
       <MainHeaderContainer />
       <MainFavContainer />
       <MainSelectContainer />
-      <MainList />
+      <MainListContainer />
       <ListTutorial />
       <div className='waveBox'>
         <div className='wave-one'></div>
         <div className='wave-two'></div>
-      </div>
+      </div> 
       { isLoginModalOn ? <SigninContainer /> : null }
       { isEndingModalOn ? <Ending handleEndingModal={handleEndingModal}/> : null }
       { isSettingModalOn ? <SettingContainer /> : null }

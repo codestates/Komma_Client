@@ -2,7 +2,7 @@ import React from 'react';
 import macbook from '../../img/macbook.png';
 import Zoom from 'react-reveal/Zoom'
 import Fade from 'react-reveal/Fade';
-import next from '../../img/next.png'
+import next from '../../img/Next.png'
 import Flash from 'react-reveal/Flash';
 import background from '../../img/background.png'
 import Pulse from 'react-reveal/Pulse';

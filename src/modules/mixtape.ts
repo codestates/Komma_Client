@@ -59,6 +59,9 @@ const deleteItemFromState = (state: MixtapeState, action: any) => {
     if(state.mixtapes[i] === action.payload.itemId) {
       return Object.assign({}, state, {mixtapes: state.mixtapes.splice(i, 1)})
     }
+    else {
+      return state;
+    }
   }
 }
 
