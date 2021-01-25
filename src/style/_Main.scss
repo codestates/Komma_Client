@@ -39,6 +39,42 @@
   @include randomColor;
   background-color: $violet;
 }
+.Main-random {
+  background-color: $orange;
+  @include randomColor;
+  &-1 {
+    background-color: $red;
+    @include randomColor;
+  }
+  &-2 {
+    background-color: $orange;
+    @include randomColor;
+  }
+  &-3 {
+    background-color: $blue;
+    @include randomColor;
+  }
+  &-4 {
+    background-color: $yellow;
+    @include randomColor;
+  }
+  &-5 {
+    background-color: $teal;
+    @include randomColor;
+  }
+  &-6 {
+    background-color: $cyan;
+    @include randomColor;
+  }
+  &-7 {
+    background-color: $violet;
+    @include randomColor;
+  }
+  &-8 {
+    background-color: $lime;
+    @include randomColor;
+  }
+}
 
 button {
   width: 100px;
@@ -84,3 +120,4 @@ button {
   from { transform: rotate(0deg); }
   from { transform: rotate(360deg); }
 }
+

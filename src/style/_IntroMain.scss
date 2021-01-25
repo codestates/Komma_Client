@@ -66,7 +66,7 @@
 }
 
 .intro_Mainbutton{
-  position:relative; 
+  position: relative; 
   width: 180px;
   height: 60px;
   font-size: 20px;
@@ -77,6 +77,15 @@
   top: 90px;
   font-family: 'Noto Sans KR', sans-serif;
   z-index: 999;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.514);
+  cursor: pointer;
+  transition: all 1s;
+  &:hover {
+    box-shadow: inset 2px 0.5px 7px 1px rgba(0, 0, 0, 0.329);
+  }
+  &:focus {
+    outline: none;
+  }
 }
 
 .macbook{
