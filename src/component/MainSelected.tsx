@@ -13,10 +13,12 @@ interface SelectedProps {
   addList: (item: object) => void;
   deleteList: (itemId: number) => void;
   setSoundListProperty: (modifiedSoundList: any[]) => void;
+  setList: (modifiedList: any[]) => void;
 }
 
 interface SingleListProps {
   soundList: any[];
+  playList: any[];
   id: number;
   title: string;
   url: string;
@@ -24,6 +26,7 @@ interface SingleListProps {
   volume: string;
   deleteList: (itemId: number) => void;
   setSoundListProperty: (modifiedSoundList: any[]) => void;
+  setList: (modifiedList: any[]) => void;
 }
 
 const MainSelected: React.FC<SelectedProps> = ({
@@ -33,7 +36,8 @@ const MainSelected: React.FC<SelectedProps> = ({
   handleList,
   addList,
   deleteList,
-  setSoundListProperty
+  setSoundListProperty,
+  setList
 }) => {
 
   return(
@@ -47,13 +51,18 @@ const MainSelected: React.FC<SelectedProps> = ({
           {playList?.map((sound) => <SingleList
             key={sound.id}
             soundList={soundList}
+            playList={playList}
             id={sound.id}
             title={sound.title}
+            //url={sound.url}
+            //icon={sound.icon}
+            //volume={sound.volume}
             url={sound.url}
-            icon={sound.icon}
+            icon={sound.img}
             volume={sound.volume}
             deleteList={deleteList}
             setSoundListProperty={setSoundListProperty}
+            setList={setList}
           />)}
         </div>
       </div>
@@ -63,13 +72,15 @@ const MainSelected: React.FC<SelectedProps> = ({
 
 export const SingleList: React.FC<SingleListProps> = ({
   soundList,
+  playList,
   title,
   id,
   url,
   icon,
   volume,
   deleteList,
-  setSoundListProperty
+  setSoundListProperty,
+  setList
 }) => {
 
   const value1: any = useRef();
@@ -99,6 +110,24 @@ export const SingleList: React.FC<SingleListProps> = ({
           console.log(modifiedSoundList[i].volume);
         }
         setSoundListProperty(modifiedSoundList);
+      }
+    }
+  }
+
+  // 리스트 삭제 버튼 
+  const deleteButton = (id: number) => {
+    for(let i = 0; i < playList.length; i ++) {
+      if(playList[i].id === id) {
+        let copiedPlayList = playList.slice();
+        copiedPlayList.splice(i, 1);
+        setList(copiedPlayList);
+      }
+    }
+    for(let i = 0; i < soundList.length; i ++) {
+      if(soundList[i].id === id) {
+        let copiedSoundList = soundList.slice();
+        copiedSoundList[i].play = false;
+        setSoundListProperty(copiedSoundList);
       }
     }
   }
@@ -154,7 +183,7 @@ export const SingleList: React.FC<SingleListProps> = ({
 
   return(
     <div className='list-single'>
-      <img id='img' src={icon} alt=''/>
+      <img className='soundimg' src={icon} alt='' />
       <div className='sound-bar-list'>
         <span className='slider-rail-list' onClick={() => controlVolume(id)}>
           <span className='slider-value-list 5' ref={value1}/>
@@ -164,7 +193,7 @@ export const SingleList: React.FC<SingleListProps> = ({
           <span className='slider-value-list 1' ref={value5}/>
         </span>
       </div>
-      <img id='x' src={small_plus} alt='' onClick={() => deleteList(id)}/>
+      <img id='x' src={small_plus} alt='' onClick={() => deleteButton(id)}/>
     </div>
   );
 }

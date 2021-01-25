@@ -1,19 +1,22 @@
 .intro_Fn1{
-  height: 90vh;
+  height: 90h;
  
 }
 .intro_body1{
   background-color: #dabc0e;
   display: flex;
   position: relative;
+
   height: 90vh;
-  margin: 15px;
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 .imac{
   position: absolute;
-  height: 85%;
-  left: 12%;
-  top: 16%;
+  height: 700px;
+  left:145px;
+  top:130px;
   z-index: 1;
 }
 

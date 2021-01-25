@@ -49,6 +49,7 @@
   & .name-container {
     width: 60%;
     margin-bottom: 20px;
+    margin-top: 20px;
     & .title {
       font-weight: bold;
       margin-bottom: 10px;
@@ -108,7 +109,7 @@
   position: absolute;
   height: 70%;
   width: 10px;
-  border-left: 1px solid $blue;
+  border-left: 1px solid $blue2;
   top: 20%;
   left: 250px;
   z-index: 5;
@@ -128,7 +129,7 @@
     font-weight: bold;
     margin-bottom: 30px;
   }
-  &-color {
+  &-colors {
     width: 80%;
     height: 160px;
     //background-color: rosybrown;
@@ -190,46 +191,11 @@
       }
       & .random {
         @include color;
-        background-color: grey;
+        background-color: rgb(255, 255, 255);
       }
       & .no {
         @include color;
         background-color: grey;
-      }
-    }
-  }
-  &-darkmode {
-    width: 80%;
-    height: 90px;
-    //background-color: royalblue;
-    & h1 {
-      margin-bottom: 25px;
-    }
-    & .darkmode {
-      width: 80px;
-      height: 30px;
-      border: 6px solid rgb(43, 43, 43);
-      border-radius: 20px;
-      cursor: pointer;
-      & .pointer {
-        position: absolute;
-        background-color: red;
-        top: 260px;
-        left: 40px;
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        transition: all .55s cubic-bezier(.77,0,.175,1);
-      }
-      & .pointer-on {
-        position: absolute;
-        background-color: red;
-        top: 260px;
-        left: 87px;
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        transition: all .55s cubic-bezier(.77,0,.175,1);
       }
     }
   }
@@ -240,7 +206,7 @@
   border: none;
   border-radius: 10px;
   color: rgb(41, 41, 41);
-  background-color: lighten($color: $blue, $amount: 5%);
+  background-color: lighten($color: $blue2, $amount: 5%);
   margin-top: 5px;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.116);
   cursor: pointer;
@@ -248,7 +214,7 @@
     outline: none;
   }
   &:active {
-    background-color: darken($color: $blue, $amount: 1%);
+    background-color: darken($color: $blue2, $amount: 1%);
     box-shadow: inset 1px 1px 5px 1px rgba(0, 0, 0, 0.116);
   }
   &.back, &.logout {
