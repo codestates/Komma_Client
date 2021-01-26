@@ -146,6 +146,9 @@ export const SingleFav: React.FC<SingleFavProps> = ({
       }
     } else {
       favRef.current.className = 'fav-single-active'
+      for (let j = 0; j < soundList.length; j++) {
+        modifiedSoundlist[j].play = false;
+      }
       for (let i = 0; i < mixtapes.length; i++) {
         if (mixtapes[i].playlists.id === id) {
           modifiedMixtapes[i].playlists.play = true;
