@@ -62,6 +62,12 @@ const Signin: React.FC<SigninProps> = ({
     }
   }
 
+  const keyUp = (e: any) => {
+    if(e.keyCode === 13) {
+      login(emailRef.current.value, passwordRef.current.value);
+    }
+  }
+
   return (
     <div className='darkbackground'>
       <section className='total-container'>
@@ -76,11 +82,11 @@ const Signin: React.FC<SigninProps> = ({
             <p className='signin-title'>Sign In</p>
             <div className='email'>
               <img src={email} alt=''></img>
-              <input type='text' placeholder='E-mail' ref={emailRef}></input>
+              <input type='text' placeholder='E-mail' ref={emailRef} onKeyUp={(e) => keyUp(e)}></input>
             </div>
             <div className='password'>
               <img src={unlock} alt=''></img>
-              <input type='password' placeholder='Password' ref={passwordRef}></input>
+              <input type='password' placeholder='Password' ref={passwordRef} onKeyUp={(e) => keyUp(e)}></input>
             </div>
             <p className='sign-error' ref={errorRef}></p>
             <button className='sign-button' onClick={() => login(emailRef.current.value, passwordRef.current.value)}>Sign In</button>
@@ -132,8 +138,11 @@ const Signup: React.FC<SignupProps> = ({ handleLoginModal, handleSignupModal }) 
           return alert('회원가입이 성공적으로 완료되었습니다!')
         }
       })
-      .catch(err => {
-        console.log(err);
+      .catch(error => {
+        console.log(error.response);
+        if(error.response.status === 409) {
+          errorRef.current.textContent = '존재하는 이메일 입니다'
+        }
       })
     }
   }

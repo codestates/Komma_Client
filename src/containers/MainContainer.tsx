@@ -5,6 +5,8 @@ import { handleEndingModal } from '../modules/timer';
 import { loginStabilizer } from '../modules/signin';
 import { changeColor, handleRandomOn } from '../modules/color';
 import { handleDarkMode } from '../modules/setting';
+import { setMixtapeProperty } from '../modules/mixtape';
+import { setSoundListProperty } from '../modules/list';
 import Main from '../component/Main';
 
 const MainContainer: React.FC = () => {
@@ -14,6 +16,8 @@ const MainContainer: React.FC = () => {
   const isSettingModalOn = useSelector((state: RootState) => state.setting.isSettingModalOn);
   const isDarkMode = useSelector((state: RootState) => state.setting.isDarkMode);
   const isRandomOn = useSelector((state: RootState) => state.color.isRandomOn);
+  const mixtape = useSelector((state: RootState) => state.mixtape?.mixtapes);
+  const soundList = useSelector((state: RootState) => state.list.soundList);
   const dispatch = useDispatch();
 
   const handlingEndingModal = () => {
@@ -31,6 +35,12 @@ const MainContainer: React.FC = () => {
   const handlingRandomOn = () => {
     dispatch(handleRandomOn());
   }
+  const settingMixtapeProperty = (modifiedMixtape: any[]) => {
+    dispatch(setMixtapeProperty(modifiedMixtape));
+  }
+  const settingSoundListProperty = (modifiedSoundList: any[]) => {
+    dispatch(setSoundListProperty(modifiedSoundList));
+  }
 
   return (
     <Main
@@ -40,11 +50,15 @@ const MainContainer: React.FC = () => {
       isSettingModalOn={isSettingModalOn}
       isDarkMode={isDarkMode}
       isRandomOn={isRandomOn}
+      mixtape={mixtape}
+      soundList={soundList}
       handleEndingModal={handlingEndingModal}
       loginStabilizer={loginStabilizing}
       changeColor={changingColor}
       handleDarkMode={handlingDarkMode}
       handleRandomOn={handleRandomOn}
+      setSoundListProperty={settingSoundListProperty}
+      setMixtapeProperty={settingMixtapeProperty}
     />
   );
 }

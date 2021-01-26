@@ -8,6 +8,8 @@ import SigninContainer from '../containers/SigninContainer';
 import Ending from './Ending';
 import SettingContainer from '../containers/SettingContainer';
 import axios from 'axios';
+import { getSoundList } from '../modules/list';
+import mixtape from '../modules/mixtape';
 
 interface MainProps {
   color: string;
@@ -16,11 +18,15 @@ interface MainProps {
   isSettingModalOn: boolean;
   isDarkMode: boolean;
   isRandomOn: boolean;
+  mixtape?: any[];
+  soundList: any[];
   handleEndingModal: () => void;
   loginStabilizer: () => void;
   changeColor: (color: string) => void;
   handleDarkMode: () => void;
   handleRandomOn: () => void;
+  setMixtapeProperty: (modifiedMixtape: any[]) => void;
+  setSoundListProperty: (modifiedSoundList: any[]) => void;
 }
 
 const Main: React.FC<MainProps> = ({
@@ -30,12 +36,34 @@ const Main: React.FC<MainProps> = ({
   isSettingModalOn,
   isDarkMode,
   isRandomOn,
+  mixtape,
+  soundList,
   handleEndingModal,
   loginStabilizer,
   changeColor,
   handleDarkMode,
-  handleRandomOn
+  handleRandomOn,
+  setMixtapeProperty,
+  setSoundListProperty
 }) => {
+
+  useEffect(() => {
+    let modifiedSoundList = soundList.slice();
+
+    if(isEndingModalOn) {
+      for(let i = 0; i < soundList.length; i ++) {
+        modifiedSoundList[i].play = false;
+        setSoundListProperty(modifiedSoundList);
+      }
+      if(mixtape) {
+        let modifiedMixtape = mixtape.slice();
+        for(let i = 0; i < mixtape.length; i ++) {
+          modifiedMixtape[i].playlists.play = false;
+        }
+        setMixtapeProperty(modifiedMixtape);
+      }
+    }
+  })
 
   useEffect(() => {
     let token: any = localStorage.getItem('token')

@@ -172,13 +172,7 @@ const SingleSoundCard: React.FC<SingleSoundProps> = ({
           imgRef.current.style.width = '50%';
           imgRef.current.style.top = '0px';
           // 플레이 리스트에서 제거
-          let modifiedPlayList = playList.slice();
-          for(let j = 0; j < playList.length; j ++) {
-            if(id === playList[j].id) {
-              modifiedPlayList.splice(j, 1);
-              setList(modifiedPlayList);
-            } 
-          }
+          deleteList(id);
         }
       }
     }
