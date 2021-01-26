@@ -53,7 +53,7 @@ const initialState: MixtapeState = {
         "icon": " https://i.imgur.com/TsyGxBq.png",
         "savesongs": [
           {
-            defaltVoulume: "0.2",
+            defaultVolume: 0.2,
             iconImg: "https://i.imgur.com/95VnNXx.png",
             id: 13,
             play: false,
@@ -61,7 +61,7 @@ const initialState: MixtapeState = {
             title: "우산속비",
           },
           {
-            defaltVoulume: "0.2",
+            defaultVolume: 0.2,
             iconImg: "https://i.imgur.com/3pU0OMh.png",
             id: 7,
             play: false,
@@ -69,7 +69,7 @@ const initialState: MixtapeState = {
             title: "세탁기"
           },
           {
-            defaltVoulume: "0.4",
+            defaultVolume: 0.4,
             iconImg: "https://i.imgur.com/IDhr3MR.png",
             id: 16,
             play: false,
@@ -89,7 +89,7 @@ const initialState: MixtapeState = {
         "icon": " https://i.imgur.com/gi1x3TN.png",
         "savesongs": [
           {
-            defaltVoulume: "0.4",
+            defaultVolume: 0.4,
             iconImg: "https://i.imgur.com/hiMe7BV.png",
             id: 15,
             play: false,
@@ -97,7 +97,7 @@ const initialState: MixtapeState = {
             title: "장작",
           },
           {
-            defaltVoulume: "0.2",
+            defaultVolume: 0.2,
             iconImg: "https://i.imgur.com/3pU0OMh.png",
             id: 7,
             play: false,
@@ -105,7 +105,7 @@ const initialState: MixtapeState = {
             title: "세탁기"
           },
           {
-            defaltVoulume: "0.2",
+            defaultVolume: 0.2,
             iconImg: "https://i.imgur.com/nG59YQq.png",
             id: 9,
             play: false,
@@ -126,7 +126,7 @@ const initialState: MixtapeState = {
         "icon": "https://i.imgur.com/mc87bg6.png",
         "savesongs": [
           {
-            defaltVoulume: "0.2",
+            defaultVolume: 0.2,
             iconImg: "https://i.imgur.com/nG59YQq.png",
             id: 9,
             play: false,
@@ -134,7 +134,7 @@ const initialState: MixtapeState = {
             title: "심해",
           },
           {
-            defaltVoulume: "0.4",
+            defaultVolume: 0.4,
             iconImg: "https://i.imgur.com/lWziGz2.png",
             id: 8,
             play: false,
@@ -142,7 +142,7 @@ const initialState: MixtapeState = {
             title: "시골밤"
           },
           {
-            defaltVoulume: "0.2",
+            defaultVolume: 0.2,
             iconImg: "https://i.imgur.com/74yfFhN.png",
             id: 1,
             play: false,
@@ -162,7 +162,7 @@ const initialState: MixtapeState = {
         "icon": "https://i.imgur.com/vR7MiCh.png",
         "savesongs": [
           {
-            defaltVoulume: "0.2",
+            defaultVolume: 0.2,
             iconImg: "https://i.imgur.com/74yfFhN.png",
             id: 1,
             play: false,
@@ -170,7 +170,7 @@ const initialState: MixtapeState = {
             title: "귀뚜라미"
           },
           {
-            defaltVoulume: "0.4",
+            defaultVolume: 0.4,
             iconImg: "https://i.imgur.com/hiMe7BV.png",
             id: 15,
             play: false,

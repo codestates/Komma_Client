@@ -110,7 +110,7 @@ const MainList: React.FC<ListProps> = ({
         id={sound.id}
         url={sound.soundFile}
         title={sound.title}
-        volume={sound.defaltVolume}
+        volume={sound.defaultVolume}
         icon={sound.iconImg}
         play={sound.play}
         playList={playList}
@@ -205,8 +205,8 @@ const SingleSoundCard: React.FC<SingleSoundProps> = ({
   useEffect(() => {
     for(let i = 0; i < soundList.length; i ++) {
       if(id === soundList[i].id) {
-        editVolumeStyle(soundList[i].defaltVolume)
-        audioRef.current.volume = soundList[i].defaltVolume
+        editVolumeStyle(soundList[i].defaultVolume)
+        audioRef.current.volume = soundList[i].defaultVolume
       }
     }
   })
@@ -216,13 +216,13 @@ const SingleSoundCard: React.FC<SingleSoundProps> = ({
     let modifiedSoundList = soundList.slice();
     for(let i = 0; i < soundList.length; i ++) {
       if(id === soundList[i].id) {
-        if(soundList[i].defaltVolume < 1) {
-          modifiedSoundList[i].defaltVolume = Number((modifiedSoundList[i].defaltVolume + 0.2).toFixed(1));
+        if(soundList[i].defaultVolume < 1) {
+          modifiedSoundList[i].defaultVolume = Number((modifiedSoundList[i].defaultVolume + 0.2).toFixed(1));
         }
         else {
-          modifiedSoundList[i].defaltVolume = 0.2;
+          modifiedSoundList[i].defaultVolume = 0.2;
         }
-        console.log(modifiedSoundList[i].defaltVolume)
+        console.log(modifiedSoundList[i].defaultVolume)
         setSoundListProperty(modifiedSoundList);
       }
     }
