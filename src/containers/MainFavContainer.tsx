@@ -8,6 +8,7 @@ import { addItem } from '../modules/mixtape';
 import { deleteItem } from '../modules/mixtape';
 import { setSoundListProperty } from '../modules/list'
 import { setMixtapeProperty } from '../modules/mixtape'
+import { handleSelectedIcon } from '../modules/mixtape'
 
 const MainFavContainer: React.FC = () => {
   const backgroundColor = useSelector((state: RootState) => state.color.backgroundColor);
@@ -15,6 +16,7 @@ const MainFavContainer: React.FC = () => {
   const isDeleteMode = useSelector((state: RootState) => state.mixtape?.isDeleteMode);
   const soundList = useSelector((state: RootState) => state.list.soundList)
   const mixtapes = useSelector((state: RootState) => state.mixtape?.mixtapes)
+  const selectedIcon = useSelector((state:RootState) => state.mixtape?.selectedIcon)
   const playList = useSelector((state: RootState) => state.selected.playList)
   const dispatch = useDispatch();
 
@@ -36,6 +38,9 @@ const MainFavContainer: React.FC = () => {
   const onsetMixtapeProperty = (modifiedMixtape: any[]) => {
     dispatch(setMixtapeProperty(modifiedMixtape))
   }
+  const onhandleSelectedIcon=(icon:string) =>{
+    dispatch(handleSelectedIcon(icon))
+  }
   return (
     <MainFav
       color={backgroundColor}
@@ -44,6 +49,8 @@ const MainFavContainer: React.FC = () => {
       isDeleteMode={isDeleteMode}
       mixtapes={mixtapes}
       soundList={soundList}
+      selectedIcon={selectedIcon}
+      onhandleSelectedIcon={onhandleSelectedIcon}
       onsetSoundListProperty={onsetSoundListProperty}
       onsetMixtapeProperty={onsetMixtapeProperty}
       onhandleListAddModal={onhandleListAddModal}
