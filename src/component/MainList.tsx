@@ -24,6 +24,7 @@ interface SingleSoundProps {
   icon: string;
   title: string;
   volume: string;
+  play: boolean;
   playList?: any;
   soundList: any[];
   addList: (item: object) => void;
@@ -76,13 +77,13 @@ const MainList: React.FC<ListProps> = ({
         //console.log('++');
         //console.log(delta.wheelDelta);
         ref.current.style.transform = `rotate(${degree}deg)`;
-        degree = degree - 1;
+        degree = degree - 2;
       }
       else {
         //console.log('--');
         //console.log(delta.wheelDelta);
         ref.current.style.transform = `rotate(${degree}deg)`;
-        degree = degree + 1;
+        degree = degree + 2;
       }
     })
   }, []);
@@ -107,13 +108,11 @@ const MainList: React.FC<ListProps> = ({
         soundList.map((sound) => <SingleSoundCard
         key={sound.id}
         id={sound.id}
-        //url={sound.url}
         url={sound.soundFile}
         title={sound.title}
-        volume={sound.defaltVoulume}
-        //volume={sound.volume}
+        volume={sound.defaltVolume}
         icon={sound.iconImg}
-        //icon={sound.icon}
+        play={sound.play}
         playList={playList}
         soundList={soundList}
         addList={addList}
@@ -132,6 +131,7 @@ const SingleSoundCard: React.FC<SingleSoundProps> = ({
   icon,
   title,
   volume,
+  play,
   playList,
   soundList,
   addList,
@@ -140,88 +140,125 @@ const SingleSoundCard: React.FC<SingleSoundProps> = ({
   setSoundListProperty,
 }) => {
 
-  
-
   const audioRef: any = useRef();
   const imgRef: any = useRef();
-
-  // 볼륨조절 함수
   const value1: any = useRef();
   const value2: any = useRef();
   const value3: any = useRef();
   const value4: any = useRef();
   const value5: any = useRef();
 
-  // playlist로 볼륨조작시 아래 볼륨스타일 싱크맞춰주기
+  //! play 값에따라 오디오 실행 및 아이콘효과 및 플레이리스트에 넣기
   useEffect(() => {
-    // for(let i = 0; i < soundList.length; i ++) {
-    //   if(id === soundList[i].id) {
-    //     if(audioRef.current.volume !== Number(soundList[i].defaltVoulume)) {
-    //       console.log(audioRef.current.volume)
-    //       console.log(Number(soundList[i].defaltVoulume))
-    //       audioRef.current.volume = Number(soundList[i].defaltVoulume);
-    //       editVolumeStyle();
-    //     }
-    //   }
-    // }
-    audioRef.current.volume = Number(volume);
-    editVolumeStyle();
+    for(let i = 0; i < soundList.length; i ++) {
+      if(id === soundList[i].id) {
+        if(soundList[i].play) {
+          audioRef.current.play();
+          imgRef.current.style.width = '65%';
+          imgRef.current.style.top = '-40px';
+          // 플레이 리스트에 넣기
+          let alreadyInList = false;
+          for(let j = 0; j < playList.length; j ++) {
+            if(playList[j].id === id) {
+              alreadyInList = true;
+            }
+          }
+          if(!alreadyInList) {
+            addList(soundList[i]);
+          }
+        }
+        else {
+          audioRef.current.pause();
+          imgRef.current.style.width = '50%';
+          imgRef.current.style.top = '0px';
+          // 플레이 리스트에서 제거
+          let modifiedPlayList = playList.slice();
+          for(let j = 0; j < playList.length; j ++) {
+            if(id === playList[j].id) {
+              modifiedPlayList.splice(j, 1);
+              setList(modifiedPlayList);
+            } 
+          }
+        }
+      }
+    }
+  }, [soundList])
+
+  //! 아이콘 클릭으로 play 값 변경
+  const handleSound = () => {
+    let modifiedSoundList = soundList.slice();
+    for(let i = 0; i < soundList.length; i ++) {
+      if(id === soundList[i].id) {
+        if(play) {
+          modifiedSoundList[i].play = false;
+          setSoundListProperty(modifiedSoundList);
+        }
+        else {
+          modifiedSoundList[i].play = true;
+          setSoundListProperty(modifiedSoundList);
+        }
+      }
+    }
+  }
+
+  //! volume 값에 따라 사운드바 및 오디오태그 사운드 조절
+  useEffect(() => {
+    for(let i = 0; i < soundList.length; i ++) {
+      if(id === soundList[i].id) {
+        editVolumeStyle(soundList[i].defaltVolume)
+        audioRef.current.volume = soundList[i].defaltVolume
+      }
+    }
   })
 
-  // 아이콘 아래 볼륨스타일 선택 시 볼륨조절 함수
+  //! 볼륨 아이콘 클릭으로 volume 값 조절
   const handleVolume = () => {
-    let modifiedSoundList = soundList.slice()
-    let audio = audioRef.current;
-    if(audio.volume < 1) {
-      audio.volume = (audio.volume + 0.2).toFixed(1);
-      console.log(audio.volume);
-    }
-    else {
-      audio.volume = 0.2;
-      console.log(audio.volume);
-    }
-    // 스테이트 목록에도 변경한 볼륨 동기화
-    for(let i = 0; i < modifiedSoundList.length; i ++) {
-      if(id === modifiedSoundList[i].id) {
-        modifiedSoundList[i].defaltVoulume = audio.volume;
+    let modifiedSoundList = soundList.slice();
+    for(let i = 0; i < soundList.length; i ++) {
+      if(id === soundList[i].id) {
+        if(soundList[i].defaltVolume < 1) {
+          modifiedSoundList[i].defaltVolume = Number((modifiedSoundList[i].defaltVolume + 0.2).toFixed(1));
+        }
+        else {
+          modifiedSoundList[i].defaltVolume = 0.2;
+        }
+        console.log(modifiedSoundList[i].defaltVolume)
         setSoundListProperty(modifiedSoundList);
       }
     }
-    editVolumeStyle();
   }
 
-  // 오디오 볼륨에 따라 원판 볼륨게이지 스타일 조작하는 클로저 함수
-  const editVolumeStyle = () => {
-    let audio = audioRef.current;
-    if(audio.volume === 1) {
+  //! 오디오 볼륨에 따라 원판 볼륨게이지 스타일 조작하는 클로저 함수
+  const editVolumeStyle = (volume: number) => {
+    if(volume === 1) {
       value1.current.style.opacity = '1';
       value2.current.style.opacity = '1';
       value3.current.style.opacity = '1';
       value4.current.style.opacity = '1';
       value5.current.style.opacity = '1';
     }
-    else if(audio.volume === 0.8) {
+    else if(volume === 0.8) {
       value1.current.style.opacity = '1';
       value2.current.style.opacity = '1';
       value3.current.style.opacity = '1';
       value4.current.style.opacity = '1';
       value5.current.style.opacity = '0.2';
     }
-    else if(audio.volume === 0.6 || audio.volume === 0.5) {
+    else if(volume === 0.6) {
       value1.current.style.opacity = '1';
       value2.current.style.opacity = '1';
       value3.current.style.opacity = '1';
       value4.current.style.opacity = '0.2';
       value5.current.style.opacity = '0.2';
     }
-    else if(audio.volume === 0.4) {
+    else if(volume === 0.4) {
       value1.current.style.opacity = '1';
       value2.current.style.opacity = '1';
       value3.current.style.opacity = '0.2';
       value4.current.style.opacity = '0.2';
       value5.current.style.opacity = '0.2';
     }
-    else if(audio.volume === 0.2) {
+    else if(volume === 0.2) {
       value1.current.style.opacity = '1';
       value2.current.style.opacity = '0.2';
       value3.current.style.opacity = '0.2';
@@ -229,54 +266,6 @@ const SingleSoundCard: React.FC<SingleSoundProps> = ({
       value5.current.style.opacity = '0.2';
     }
   }
-
-  // 플레이리스트 항목도 같이 삭제하는 함수
-  const deletePlayList = (id: number) => {
-    for(let i = 0; i < playList.length; i ++) {
-      if(playList[i].id === id) {
-        let copiedPlayList = playList.slice();
-        copiedPlayList.splice(i, 1);
-        setList(copiedPlayList);
-      }
-    }
-  }
-
-  // 아이콘 클릭으로 시작, 정지 컨트롤 및 플레이리스트에 추가
-  const handleSound = () => {
-    let audio = audioRef.current;
-    let img = imgRef.current;
-    if(audio.paused) {
-      audio.play()
-      img.style.width = '65%';
-      img.style.top = '-40px';
-      addList({id: id, url: url, img: icon, title: title, volume: volume});
-    }
-    else {
-      audio.pause();
-      img.style.width = '50%';
-      img.style.top = '0px';
-      deletePlayList(id);
-      console.log(id)
-    }
-  }
-
-  // 플레이리스트 삭제 시 원판 이미지&재생 도 동기화
-  useEffect(() => {
-    let isOn = false;
-    let audio = audioRef.current;
-    let img = imgRef.current;
-    for(let i = 0; i < playList.length; i ++) {
-      if(id === playList[i].id) {
-        isOn = true;
-      }
-    }
-    if(!isOn) {
-      audio.pause();
-      img.style.width = '50%';
-      img.style.top = '0px';
-    }
-  })
-
 
   return(
     <div className='sound-card one'>
