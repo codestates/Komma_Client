@@ -1,0 +1,154 @@
+.header {
+  position: relative;
+  width: 100vw;
+  height: 60px;
+  box-shadow: 1px 1px 5px 0.5px rgba(82, 82, 82, 0.185);
+}
+
+.logo {
+  width: auto;
+  height: 22px;
+  margin-left: 3vw;
+  margin-top: 20px;
+}
+
+.menu-container {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  margin-top: 25px;
+  margin-right: 1vw;
+}
+
+.menu {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  margin-top: 25px;
+  margin-right: 3vw;
+  color: white;
+  cursor: pointer;
+  transition: color 1s;
+}
+
+.menu::before {
+  content: '';
+  position: absolute;
+  left: -50%;
+  top: 50%;
+  width: 200%;
+  height: 1px;
+  background: #ffffff;
+  display: block;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform 0.4s cubic-bezier(1, 0, 0, 1)
+}
+
+.menu:hover {
+  color: darken(white, 20%);
+}
+
+.menu:hover::before {
+  transform: scale(1, 1);
+  transform-origin: right top;
+}
+
+.timer-container {
+  position: absolute;
+  width: 140px;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  //background-color: rgba(252, 252, 252, 0.411);
+  border-radius: 20px;
+  top: 0;
+  left: 50%;
+  margin-left: -70px;
+  margin-top: 10px;
+  //box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.075);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.time {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  text-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.644);
+  color: rgb(247, 247, 247);
+}
+
+.timer-buttons {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+@mixin buttons {
+  position: absolute;
+  top: 6px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(252, 252, 252, 0.411);
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.075);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.timer-plus {
+  @include buttons;
+  left: -80px;
+  &:active {
+    box-shadow: inset 1px 1px 10px 1px rgba(0, 0, 0, 0.075);
+    background-color: darken($color: rgba(252, 252, 252, 0.411), $amount: 5%);
+  }
+  & img {
+    width: 50%;
+  }
+}
+
+.timer-minus {
+  @include buttons;
+  left: -40px;
+  &:active {
+    box-shadow: inset 1px 1px 10px 1px rgba(0, 0, 0, 0.075);
+    background-color: darken($color: rgba(252, 252, 252, 0.411), $amount: 5%);
+  }
+  & img {
+    width: 40%;
+  }
+}
+
+.timer-start {
+  @include buttons;
+  left: 150px;
+  &:active {
+    box-shadow: inset 1px 1px 10px 1px rgba(0, 0, 0, 0.075);
+    background-color: darken($color: rgba(252, 252, 252, 0.411), $amount: 5%);
+  }
+  & img {
+    width: 40%;
+    margin-left: 3px;
+  }
+}
+
+.timer-stop {
+  @include buttons;
+  left: 150px;
+  &:active {
+    box-shadow: inset 1px 1px 10px 1px rgba(0, 0, 0, 0.075);
+  }
+  & img {
+    width: 40%;
+  }
+}

@@ -1,0 +1,65 @@
+.intro_Fn1{
+  height: 90h;
+ 
+}
+.intro_body1{
+  background-color: #dabc0e;
+  display: flex;
+  position: relative;
+
+  height: 90vh;
+  margin-top: 1.5vh;
+  margin-left: 0.8vw;
+  margin-right: 0.8vw;
+}
+.imac{
+  position: absolute;
+  height: 70vh;
+  width: 48vw;
+  left: 8vw;
+  top: 15vh;
+  z-index: 1;
+}
+
+.windowcard1{
+  position: relative;
+  width: 88vw;
+  height: 50vh;
+  z-index: 0;
+  top:15vh;
+  left:5vw;
+}
+.img_window{
+  position: absolute;
+  width: 45vw;
+  height: 48vh;
+  left:4.5vw;
+  
+}
+.intro_Fn1_description{
+  position: absolute;
+  font-size: 4vw;
+  left:57vw;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 800;
+  top: 10vh;
+  color:#1D1E20;
+
+}
+.intro_Fn1_description2{
+  position: absolute;
+  font-size: 1.2vw;
+  top:40vh;
+  left: 57vw;
+  font-family: 'Noto Sans KR', sans-serif;
+  color:#1D1E20;
+}
+.controlcolor{
+  position: absolute;
+  background-color: #f0f0f2;
+  width: 48.8vw;
+  height: 5.5vh;
+  left:49.8vw;
+  top:91.55vh;
+
+}

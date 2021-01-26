@@ -1,0 +1,115 @@
+.selectedBar {
+  position: absolute;
+  width: 225px;
+  height: 300px;
+  right: 10px;
+  top: 80px;
+  transition: all 0.7s cubic-bezier(0.68, -0.15, 0.265, 1.55);
+  &.hide {
+    right: -200px;
+  }
+}
+
+.selectedList {
+  position: absolute;
+  background-color: rgba(151, 151, 151, 0.233);
+  width: 200px;
+  height: 300px;
+  border-radius: 20px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  & p {
+    color: white;
+  }
+}
+
+.selectedButton {
+  position: absolute;
+  width: 25px;
+  height: 80px;
+  top: 30px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: rgba(134, 134, 134, 0.267);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  & img {
+    width: 70%;
+    height: auto;
+    transform: rotate(-45deg);
+    transition: transform .4s;
+  }
+  &.hide {
+    & img {
+      transform: rotate(0deg);
+    }
+  }
+}
+
+.list-container {
+  width: 85%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  overflow: auto;
+}
+
+.list-single {
+  width: 100%;
+  height: 30px;
+  background-color: rgba(161, 161, 161, 0.301);
+  border-radius: 10px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & .soundimg {
+    height: 20px;
+    width: 20px;
+    margin-left: 10px;
+  }
+  & p {
+    margin: 0 auto;
+  }
+  & #x {
+    height: 10px;
+    transform: rotate(45deg);
+    margin-right: 10px;
+    cursor: pointer;
+  }
+}
+
+.sound-bar-list {
+  //position: absolute;
+  width: 120px;
+  .slider-rail-list {
+    width: 70px;
+    height: 8px;
+    margin-left: 22px;
+    //background-color: rgba(255, 255, 255, 0.466);
+    border-radius: 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    cursor: pointer;
+  }
+  .slider-value-list {
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    border-radius: 50%;
+  }
+  // .slider-value-list-default {
+  //   width: 8px;
+  //   height: 8px;
+  //   background-color: white;
+  //   border-radius: 50%;
+  //   opacity: 0.2;
+  // }
+}
