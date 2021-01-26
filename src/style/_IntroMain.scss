@@ -43,9 +43,6 @@
   left : 17vw;
   top: 6vh;
 }
-.kommaImg{
-  width:6px;
-}
 
 .intro_body{
   display: flex;
@@ -74,9 +71,9 @@
   color: black;
   background-color:white ;
   border: none;
-  top: 90px;
+  top: 10vh;
   font-family: 'Noto Sans KR', sans-serif;
-  z-index: 999;
+  z-index: 5;
   box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.514);
   cursor: pointer;
   transition: all 1s;
@@ -88,25 +85,6 @@
   }
 }
 
-.macbook{
-  position:absolute;
-  width: 899px;
-  height: 475px;
-  left: 537px;
-  top:14px;
-  z-index: 4;
-
-}
-.windowcard{
-  position: absolute;
-  width: 667.5px;
-  bottom:340px;
-  left:655px;
-  z-index: 3;
-}
-.window{
-  position: absolute;
-}
 
 .intro_next{
   position: absolute;

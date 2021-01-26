@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Slider from 'react-slick';
 import img_medi from '../img/meditation.png';
 import img_sleep from '../img/sleep.png';
@@ -22,24 +22,33 @@ import moon from '../img/moon.png'
 
 interface MainFavProps {
   color: string;
-  isListAddModalOn: any;
-  isDeleteMode: any;
+  isListAddModalOn?: boolean;
+  isDeleteMode?: boolean;
+  playList: any;
+  mixtapes?: any[];
+  soundList: any[];
   onhandleListAddModal: () => void;
   onHandleDeleteMode: () => void;
+  onaddItem: (playlists: object) => void;
+  ondeleteItem: (playlistsId: number) => void;
+  onsetSoundListProperty: (modifiedSoundList: any[]) => void;
+  onsetMixtapeProperty: (modifiedMixtape: any[]) => void;
 }
 interface MainFavProps1 {
   onhandleListAddModal: () => void;
 }
-interface MainFavProps2 {
-  onHandleDeleteMode: () => void;
-}
+
 
 const MainFav: React.FC<MainFavProps> = ({
   color,
+  mixtapes,
   onhandleListAddModal,
   onHandleDeleteMode,
+  onsetSoundListProperty,
+  onsetMixtapeProperty,
   isListAddModalOn,
-  isDeleteMode
+  isDeleteMode,
+  soundList
 }) => {
   const settings = {
     dots: false,
@@ -65,14 +74,18 @@ const MainFav: React.FC<MainFavProps> = ({
           </span>
         </div>
         <Slider className='fav-cards' {...settings}>
-          {isDeleteMode ? <SingleFav1 /> : <SingleFav />}
-          {isDeleteMode ? <SingleFav1 /> : <SingleFav />}
-          {isDeleteMode ? <SingleFav1 /> : <SingleFav />}
-          {isDeleteMode ? <SingleFav1 /> : <SingleFav />}
-          {isDeleteMode ? <SingleFav1 /> : <SingleFav />}
-          {isDeleteMode ? <SingleFav1 /> : <SingleFav />}
-          {isDeleteMode ? <SingleFav1 /> : <SingleFav />}
-
+          {mixtapes?.map(tape => <SingleFav
+            key={tape.playlists.id}
+            id={tape.playlists.id}
+            onsetSoundListProperty={onsetSoundListProperty}
+            soundList={soundList}
+            title={tape.title}
+            savesongs={tape.playlists.savesongs}
+            icon={tape.playlists.icon}
+            play={tape.playlists.play}
+            onsetMixtapeProperty={onsetMixtapeProperty}
+            mixtapes={mixtapes}
+          />)}
         </Slider>
         <div className={`side-blur ${color}`}></div>
         <div className={`side-blur right ${color}`}></div>
@@ -81,15 +94,88 @@ const MainFav: React.FC<MainFavProps> = ({
   );
 }
 
-export const SingleFav: React.FC = () => {
+
+interface SingleFavProps {
+  title: string;
+  icon: string;
+  savesongs: any[];
+  soundList: any[];
+  play: boolean;
+  id: number;
+  mixtapes: any[];
+  onsetSoundListProperty: (modifiedSoundList: any[]) => void;
+  onsetMixtapeProperty: (modifiedMixtape: any[]) => void;
+}
+export const SingleFav: React.FC<SingleFavProps> = ({
+  title,
+  icon,
+  savesongs, //실행시킬친구들
+  soundList,  // 모든 소리들 
+  play,
+  id,
+  mixtapes,
+  onsetSoundListProperty, // 모든소리들을 변형시켜준다
+  onsetMixtapeProperty
+
+}) => {
+
+  const favRef: any = useRef()
+
+  useEffect(() => {
+    if(play){
+      favRef.current.className = 'fav-single-active'
+    }else{
+      favRef.current.className = 'fav-single'
+    }
+  })
+
+
+  const handlePlayMixtapes = () => {
+    let modifiedSoundlist = soundList.slice()
+    let modifiedMixtapes = mixtapes.slice()
+
+    if (play) {
+      favRef.current.className = 'fav-single'
+      for (let i = 0; i < mixtapes.length; i++) {
+        if (mixtapes[i].playlists.id === id) {
+          modifiedMixtapes[i].playlists.play = false;
+          for (let j = 0; j < soundList.length; j++) {
+            modifiedSoundlist[j].play = false;
+          }
+        }
+      }
+    } else {
+      favRef.current.className = 'fav-single-active'
+      for (let i = 0; i < mixtapes.length; i++) {
+        if (mixtapes[i].playlists.id === id) {
+          modifiedMixtapes[i].playlists.play = true;
+          for (let j = 0; j < mixtapes[i].playlists.savesongs.length; j++) {
+            for (let z = 0; z < soundList.length; z++) {
+              if (mixtapes[i].playlists.savesongs[j].id === soundList[z].id) {
+                let song = mixtapes[i].playlists.savesongs[j]
+                modifiedSoundlist[z].defaltVoulume = song.defaltVoulume
+                modifiedSoundlist[z].play = true
+              }
+            }
+          }
+        } else {
+          modifiedMixtapes[i].playlists.play = false;
+        }
+      }
+    }
+    onsetSoundListProperty(modifiedSoundlist)
+    onsetMixtapeProperty(modifiedMixtapes)
+    console.log(soundList)
+    console.log(mixtapes)
+  }
 
   return (
-    <div className='fav-single'>
+    <div className='fav-single' ref={favRef} onClick={handlePlayMixtapes}>
       <div className='fav-img'>
-        <img src={img_medi} alt='' />
+        <img src={icon} alt='' />
       </div>
       <p className='fav-desc'>
-        Meditation
+        {title}
       </p>
     </div>
   );
