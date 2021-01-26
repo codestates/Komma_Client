@@ -1,6 +1,7 @@
 // 액션
 const CHANGE_COLOR = 'color/CHANGE_COLOR'as const;
 const CHANGE_INTRO_COLOR = 'color/CHANGE_INTRO_COLOR' as const
+const HANDLE_RANDOM_ON = 'color/HANDLE_RANDOM_ON'as const;
 
 // 액션 생성 함수
 export const changeColor = (inputColor: string) => ({
@@ -17,20 +18,24 @@ export const changeIntroColor = (inputIntroColor : string) =>({
   }
 })
 
+export const handleRandomOn = () => ({ type: HANDLE_RANDOM_ON })
+
 // 액션 타입
 type ColorAction =
-  | ReturnType<typeof changeColor>
-  | ReturnType<typeof changeIntroColor>
+  | ReturnType<typeof changeColor> | ReturnType<typeof changeIntroColor>
+  | ReturnType<typeof handleRandomOn>
 
 // 스테이트 초기값
 interface ColorState {
   backgroundColor: string;
   introColor : string;
+  isRandomOn: boolean;
 }
 
 const initialState: ColorState = {
   backgroundColor: 'blue',
-  introColor :''
+  introColor :'',
+  isRandomOn: false
 }
 
 // 리듀서
@@ -40,6 +45,8 @@ const color = (state = initialState, action: ColorAction) => {
       return Object.assign({}, state, { backgroundColor: action.payload.inputColor });
     case CHANGE_INTRO_COLOR:
       return Object.assign({}, state, { introColor: action.payload.inputIntroColor });
+    case CHANGE_INTRO_COLOR:
+      return Object.assign({}, state, { isRandomOn: !state.isRandomOn });
     default:
       return state;
   }

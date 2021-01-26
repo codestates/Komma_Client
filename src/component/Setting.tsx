@@ -40,6 +40,7 @@ const Setting: React.FC<SettingProps> = ({
   handleLogin
 }) => {
 
+  // 자동으로 유저인포 가져오기
   useEffect(() => {
     let token = localStorage.getItem('token');
     axios.get(
@@ -183,7 +184,7 @@ const Setting: React.FC<SettingProps> = ({
         <div className='setting-center'></div>
         <article className='setting-general'>
           <header className='setting-general-title'>General</header>
-          <div className='setting-general-color'>
+          <div className='setting-general-colors'>
             <h1>Background Color</h1>
             <div className='colors'>
               <div className={color === 'blue' ? 'blue selected' : 'blue'} onClick={() => changeTheColor('blue')}/>
@@ -196,12 +197,6 @@ const Setting: React.FC<SettingProps> = ({
               <div className={color === 'lime' ? 'lime selected' : 'lime'} onClick={() => changeTheColor('lime')}/>
               <div className={color === 'random' ? 'random selected' : 'random'} onClick={() => changeTheColor('random')}/>
               <div className='no'/>
-            </div>
-          </div>
-          <div className='setting-general-darkmode'>
-            <h1>DarkMode</h1>
-            <div className='darkmode' onClick={handleDarkMode}>
-              <div className={isDarkMode ? 'pointer-on' : 'pointer'}></div>
             </div>
           </div>
         </article>

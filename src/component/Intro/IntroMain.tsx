@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import macbook from '../../img/macbook.png';
 import Zoom from 'react-reveal/Zoom'
 import Fade from 'react-reveal/Fade';
@@ -40,8 +40,15 @@ interface IntroMainProps {
   onHandleIntro: () => void;
 }
 
-const IntroMain = ({ onHandleIntro
+const IntroMain = ({ isIntro, onHandleIntro
 }: IntroMainProps) => {
+
+  useEffect(() => {
+    if(localStorage.getItem('token') && isIntro === true) {
+      onHandleIntro();
+    }
+  }, [])
+
   return (
     <div className='intro_Main_back'>
       <Fade up delay={300}><div className='intro_Main_back_sentence'>KOMMA</div></Fade>

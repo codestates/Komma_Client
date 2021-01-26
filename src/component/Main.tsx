@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import MainHeaderContainer from '../containers/MainHeaderContainer';
 import { ListTutorial } from './MainList';
 import MainListContainer from '../containers/MainListContainer';
@@ -15,10 +15,12 @@ interface MainProps {
   isEndingModalOn: boolean;
   isSettingModalOn: boolean;
   isDarkMode: boolean;
+  isRandomOn: boolean;
   handleEndingModal: () => void;
   loginStabilizer: () => void;
   changeColor: (color: string) => void;
   handleDarkMode: () => void;
+  handleRandomOn: () => void;
 }
 
 const Main: React.FC<MainProps> = ({
@@ -27,10 +29,12 @@ const Main: React.FC<MainProps> = ({
   isEndingModalOn,
   isSettingModalOn,
   isDarkMode,
+  isRandomOn,
   handleEndingModal,
   loginStabilizer,
   changeColor,
-  handleDarkMode
+  handleDarkMode,
+  handleRandomOn
 }) => {
 
   useEffect(() => {
@@ -45,10 +49,8 @@ const Main: React.FC<MainProps> = ({
       )
       .then(res => res.data)
       .then(data => {
-        // 컬러, 다크모드, 플레이리스트, 현재선택 음악 리스트...?
-        changeColor(data.userInfo.sitecolor);
-        if(isDarkMode !== data.userInfo.darkmode) {
-          handleDarkMode();
+        if(data.userInfo.sitecolor !== color) {
+          changeColor(data.userInfo.sitecolor);
         }
       })
       .catch(err => {
@@ -58,8 +60,36 @@ const Main: React.FC<MainProps> = ({
     console.log('로그인유지 작동');
   })
 
+  // 컬러 랜덤 핸들링
+  //let Myinterval: any;
+  let mainRef: any = useRef();
+  useEffect(() => {
+    let isRandomColorOn = false;
+    console.log('컬러변경 함수 실행')
+    if(color === 'random') {
+      console.log('인터벌 시작')
+      isRandomColorOn = true; // to true;
+      let Myinterval = setInterval(() => {
+        if(isRandomColorOn) {
+          console.log('인터벌 실행중')
+          mainRef.current.className = `Main-random-${Math.floor(Math.random() * (9 - 1) +1 )}`
+        }
+        else {
+          clearInterval(Myinterval);
+          console.log('인터벌 끝')
+        }
+      }, 10000)
+    }
+    else {
+      isRandomColorOn = false; // to false;
+    }
+  }, [color])
+
   return(
-    <main className={`Main-${color}`}>
+    <main
+      className={`Main-${color}`}
+      ref={mainRef}
+    >
       <MainHeaderContainer />
       <MainFavContainer />
       <MainSelectContainer />
