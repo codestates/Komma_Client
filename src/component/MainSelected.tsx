@@ -57,7 +57,7 @@ const MainSelected: React.FC<SelectedProps> = ({
             title={sound.title}
             url={sound.url}
             icon={sound.iconImg}
-            volume={sound.defaltVolume}
+            volume={sound.defaultVolume}
             deleteList={deleteList}
             setSoundListProperty={setSoundListProperty}
             setList={setList}
@@ -104,7 +104,7 @@ export const SingleList: React.FC<SingleListProps> = ({
   useEffect(() => {
     for(let i = 0; i < soundList.length; i ++) {
       if(id === soundList[i].id) {
-        editVolumeStyle(soundList[i].defaltVolume);
+        editVolumeStyle(soundList[i].defaultVolume);
       }
     }
   })
@@ -114,13 +114,13 @@ export const SingleList: React.FC<SingleListProps> = ({
     let modifiedSoundList = soundList.slice();
     for(let i = 0; i < soundList.length; i ++) {
       if(id === soundList[i].id) {
-        if(soundList[i].defaltVolume < 1) {
-          modifiedSoundList[i].defaltVolume = Number((modifiedSoundList[i].defaltVolume + 0.2).toFixed(1));
+        if(soundList[i].defaultVolume < 1) {
+          modifiedSoundList[i].defaultVolume = Number((modifiedSoundList[i].defaultVolume + 0.2).toFixed(1));
         }
         else {
-          modifiedSoundList[i].defaltVolume = 0.2;
+          modifiedSoundList[i].defaultVolume = 0.2;
         }
-        console.log(modifiedSoundList[i].defaltVolume)
+        console.log(modifiedSoundList[i].defaultVolume)
         setSoundListProperty(modifiedSoundList);
       }
     }

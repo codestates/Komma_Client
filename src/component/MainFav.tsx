@@ -153,9 +153,9 @@ export const SingleFav: React.FC<SingleFavProps> = ({
             for (let z = 0; z < soundList.length; z++) {
               if (mixtapes[i].playlists.savesongs[j].id === soundList[z].id) {
                 let song = mixtapes[i].playlists.savesongs[j]
-                modifiedSoundlist[z].defaltVolume = song.defaltVolume
+                modifiedSoundlist[z].defaultVolume = song.defaultVolume
                 modifiedSoundlist[z].play = true
-              }
+              } 
             }
           }
         } else {
