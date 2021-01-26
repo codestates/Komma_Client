@@ -4,6 +4,7 @@ const HANDLE_LIST_ADD_MODAL = 'mixtape/HANDLE_LIST_ADD_MODAL' as const;
 const ADD_ITEM = 'mixtape/ADD_ITEM' as const;
 const DELETE_ITEM = 'mixtape/DELETE_ITEM' as const;
 const SET_MIXTAPE_PORPERTY = 'mixtape/SET_MIXTAPE_PORPERTY' as const;
+const HANDLE_SELECTEDICON = 'mixtape/HANDLE_SELECTEDICON' as const;
 
 //액션 생성 함수
 export const handleDeleteMode = () => ({ type: HANDLE_DELETE_MODE });
@@ -26,30 +27,38 @@ export const setMixtapeProperty = (modifiedMixtape: any[]) => ({
     modifiedMixtape
   }
 })
+export const handleSelectedIcon = (icon:string) => ({
+  type:HANDLE_SELECTEDICON,
+  payload:{
+    icon
+  }
+})
 
 // 액션 타입
 type MixtapeAction =
   | ReturnType<typeof handleDeleteMode> | ReturnType<typeof handleListAddModal>
   | ReturnType<typeof addItem> | ReturnType<typeof deleteItem>
-  | ReturnType<typeof setMixtapeProperty>
+  | ReturnType<typeof setMixtapeProperty>| ReturnType<typeof handleSelectedIcon>
 
 // 스테이트 초기값
 interface MixtapeState {
   isDeleteMode: boolean;
   isListAddModalOn: boolean;
   mixtapes: any[];
+  selectedIcon : string;
 }
 
 const initialState: MixtapeState = {
   isDeleteMode: false,
   isListAddModalOn: false,
+  selectedIcon:'',
   mixtapes: [
     {
       "title": "Random",
       "playlists":
       {
         "play": false,
-        "id": 1,
+        "id": 999,
         "icon": " https://i.imgur.com/TsyGxBq.png",
         "savesongs": [
           {
@@ -85,7 +94,7 @@ const initialState: MixtapeState = {
       "playlists":
       {
         "play": false,
-        "id": 2,
+        "id": 998,
         "icon": " https://i.imgur.com/gi1x3TN.png",
         "savesongs": [
           {
@@ -122,7 +131,7 @@ const initialState: MixtapeState = {
       "playlists":
       {
         "play": false,
-        "id": 3,
+        "id": 997,
         "icon": "https://i.imgur.com/mc87bg6.png",
         "savesongs": [
           {
@@ -158,7 +167,7 @@ const initialState: MixtapeState = {
       "playlists":
       {
         "play": false,
-        "id": 4,
+        "id": 996,
         "icon": "https://i.imgur.com/vR7MiCh.png",
         "savesongs": [
           {
@@ -197,6 +206,8 @@ const mixtape = (state = initialState, action: MixtapeAction) => {
       return deleteItemFromState(state, action);
     case SET_MIXTAPE_PORPERTY:
       return Object.assign({}, state, { mixtapes : action.payload.modifiedMixtape})
+    case HANDLE_SELECTEDICON:
+      return Object.assign({}, state, { selectedIcon : action.payload.icon})
     default:
       return state;
   }
