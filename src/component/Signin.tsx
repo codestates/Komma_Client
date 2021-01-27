@@ -57,6 +57,7 @@ const Signin: React.FC<SigninProps> = ({
           localStorage.setItem('token', JSON.stringify(data.accessToken));
           handleLogin();
           handleLoginModal();
+          window.location.reload();
         }
       })
     }

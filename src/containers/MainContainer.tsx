@@ -19,6 +19,7 @@ const MainContainer: React.FC = () => {
   const mixtape = useSelector((state: RootState) => state.mixtape?.mixtapes);
   const soundList = useSelector((state: RootState) => state.list.soundList);
   const isLoadingOn = useSelector((state: RootState) => state.list.isLoadingOn);
+  const playList = useSelector((state: RootState) => state.selected.playList);
   const dispatch = useDispatch();
 
   const handlingEndingModal = () => {
@@ -56,6 +57,7 @@ const MainContainer: React.FC = () => {
       isRandomOn={isRandomOn}
       isLoadingOn={isLoadingOn}
       mixtape={mixtape}
+      playList={playList}
       soundList={soundList}
       handleEndingModal={handlingEndingModal}
       loginStabilizer={loginStabilizing}

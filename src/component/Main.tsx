@@ -7,6 +7,7 @@ import MainSelectContainer from '../containers/MainSelectedContainer';
 import SigninContainer from '../containers/SigninContainer';
 import Ending from './Ending';
 import SettingContainer from '../containers/SettingContainer';
+import comma from '../img/comma.png';
 import axios from 'axios';
 import { getSoundList } from '../modules/list';
 import mixtape from '../modules/mixtape';
@@ -20,6 +21,7 @@ interface MainProps {
   isRandomOn: boolean;
   mixtape?: any[];
   soundList: any[];
+  playList: any[];
   isLoadingOn: boolean;
   handleEndingModal: () => void;
   loginStabilizer: () => void;
@@ -40,6 +42,7 @@ const Main: React.FC<MainProps> = ({
   isRandomOn,
   isLoadingOn,
   mixtape,
+  playList,
   soundList,
   handleEndingModal,
   loginStabilizer,
@@ -51,6 +54,7 @@ const Main: React.FC<MainProps> = ({
   handleLoadingOn
 }) => {
 
+  // 타이머 종료시 음악, 믹스테잎 종료 함수
   useEffect(() => {
     let modifiedSoundList = soundList.slice();
 
@@ -69,6 +73,7 @@ const Main: React.FC<MainProps> = ({
     }
   })
 
+  // 로그인 유지 함수
   useEffect(() => {
     let token: any = localStorage.getItem('token')
     handleLoadingOn();
@@ -112,7 +117,7 @@ const Main: React.FC<MainProps> = ({
   }, [])
 
   // 컬러 랜덤 핸들링
-  //let Myinterval: any;
+  let Myinterval: any;
   let mainRef: any = useRef();
   useEffect(() => {
     let isRandomColorOn = false;
@@ -120,7 +125,7 @@ const Main: React.FC<MainProps> = ({
     if(color === 'random') {
       console.log('인터벌 시작')
       isRandomColorOn = true; // to true;
-      let Myinterval = setInterval(() => {
+      Myinterval = setInterval(() => {
         if(isRandomColorOn) {
           console.log('인터벌 실행중')
           mainRef.current.className = `Main-random-${Math.floor(Math.random() * (9 - 1) +1 )}`
@@ -146,26 +151,21 @@ const Main: React.FC<MainProps> = ({
       <MainSelectContainer />
       <MainListContainer />
       <ListTutorial />
-      <div className='waveBox'>
+      {
+        playList.length > 0 ?
+        <div className='waveBox'>
+          <div className='wave-one'></div>
+          <div className='wave-two'></div>
+        </div> :
+        <div className='waveBox-off'>
         <div className='wave-one'></div>
         <div className='wave-two'></div>
-      </div> 
+      </div>
+      } 
       { isLoginModalOn ? <SigninContainer /> : null }
       { isEndingModalOn ? <Ending handleEndingModal={handleEndingModal}/> : null }
       { isSettingModalOn ? <SettingContainer /> : null }
-      { isLoadingOn ? <Loading /> : null }
     </main>
-  );
-}
-
-const Loading: React.FC = () => {
-
-  return(
-    <div className='loading-back'>
-      <div>
-        <img />
-      </div>
-    </div>
   );
 }
 

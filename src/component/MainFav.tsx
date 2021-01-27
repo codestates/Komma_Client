@@ -18,6 +18,7 @@ import woman from '../img/woman.png'
 import yoga from '../img/yoga.png'
 import moon from '../img/moon.png'
 import axios from 'axios';
+import mixtape, { setMixtapeProperty } from '../modules/mixtape';
 
 
 
@@ -91,6 +92,7 @@ const MainFav: React.FC<MainFavProps> = ({
             play={tape.play}
             onsetMixtapeProperty={onsetMixtapeProperty}
             mixtapes={mixtapes}
+            isDeleteMode={isDeleteMode}
           />)}
         </Slider>
         <div className={`side-blur ${color}`}></div>
@@ -109,6 +111,7 @@ interface SingleFavProps {
   play: boolean;
   id: number;
   mixtapes: any[];
+  isDeleteMode?: boolean;
   onsetSoundListProperty: (modifiedSoundList: any[]) => void;
   onsetMixtapeProperty: (modifiedMixtape: any[]) => void;
 }
@@ -120,25 +123,76 @@ export const SingleFav: React.FC<SingleFavProps> = ({
   play,
   id,
   mixtapes,
+  isDeleteMode,
   onsetSoundListProperty, // 모든소리들을 변형시켜준다
   onsetMixtapeProperty
-
 }) => {
 
-  const favRef: any = useRef()
+  const favRef: any = useRef();
+  const iconRef: any = useRef();
+  const titleRef: any = useRef();
 
   useEffect(() => {
-    if (play) {
+    if(play) {
       favRef.current.className = 'fav-single-active'
     } else {
       favRef.current.className = 'fav-single'
     }
   })
 
+  // 삭제모드시 스타일 변경
+  useEffect(() => {
+    if(isDeleteMode) {
+      iconRef.current.style.opacity = '0.2';
+      titleRef.current.style.opacity = '0.2';
+    }
+    else {
+      iconRef.current.style.opacity = '1';
+      titleRef.current.style.opacity = '1';
+    }
+  })
+
+  // 믹스테잎 삭제 함수
+  const deleteMixtape = () => {
+    let token = localStorage.getItem('token');
+    axios.post(
+      'http://www.kommaa.shop/users/deleteplaylist',
+      { id: id },
+      { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
+    )
+    .then(res => res.data)
+    .then(data => {
+      console.log(data);
+      return axios.get(
+        'http://www.kommaa.shop/users/userinfo',
+        { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
+      )
+    })
+    .then(res => res.data)
+    .then(data => {
+      console.log(data);
+      if(mixtapes) {
+        let modifiedMixtape = mixtapes.slice(0, 3);
+        if(data.playlist) {
+          for(let i = 0; i < data.playlists.length; i ++) {
+            modifiedMixtape.push(data.playlists[i]);
+          }
+          setMixtapeProperty(modifiedMixtape);
+        }
+        else {
+          setMixtapeProperty(modifiedMixtape);
+        }
+      }
+      window.location.reload();
+    })
+  }
 
   const handlePlayMixtapes = () => {
     let modifiedSoundlist = soundList.slice()
     let modifiedMixtapes = mixtapes.slice()
+    if(isDeleteMode) {
+      return;
+    }
 
     if (play) {
       favRef.current.className = 'fav-single'
@@ -179,26 +233,13 @@ export const SingleFav: React.FC<SingleFavProps> = ({
   }
 
   return (
-    <div className='fav-single' ref={favRef} onClick={handlePlayMixtapes}>
+    <div className='fav-single' ref={favRef} onClick={isDeleteMode && id < 900 ? deleteMixtape : handlePlayMixtapes}>
+      { isDeleteMode && id < 900 ? <img className='fav_delet_x' src={img_delete} alt="x" /> : null }
       <div className='fav-img'>
-        <img src={icon} alt='' />
+        <img src={icon} alt='' ref={iconRef}/>
       </div>
-      <p className='fav-desc'>
+      <p className='fav-desc' ref={titleRef}>
         {title}
-      </p>
-    </div>
-  );
-}
-export const SingleFav1: React.FC = () => {
-
-  return (
-    <div className='fav-single'>
-      <img className='fav_delet_x' src={x} alt="x" />
-      <div className='fav-img'>
-        <img src={img_medi} alt='' />
-      </div>
-      <p className='fav-desc'>
-        Meditation
       </p>
     </div>
   );
@@ -207,11 +248,11 @@ export const SingleFav1: React.FC = () => {
 
 
 interface FavAddProps {
-  selectedIcon,
-  onhandleSelectedIcon,
-  onhandleListAddModal,
-  playList,
-  onaddItem
+  selectedIcon?: string;
+  onhandleSelectedIcon: (icon: string) => void;
+  onhandleListAddModal: () => void;
+  playList: any[];
+  onaddItem: (item: any) => void;
 }
 export const FavAddModal: React.FC<FavAddProps> = ({
   onhandleListAddModal,
@@ -235,25 +276,7 @@ export const FavAddModal: React.FC<FavAddProps> = ({
   const iconRef10: any = useRef();
   const iconRef11: any = useRef();
   const iconRef12: any = useRef();
-  /*
-  useEffect(() => {
-    let icons = [
-      iconRef1, iconRef2, iconRef3,
-      iconRef4, iconRef5, iconRef6,
-      iconRef7, iconRef8, iconRef9,
-      iconRef10, iconRef11, iconRef12
-    ]
-    for(let i of icons) {
-      console.log(i.current.currentSrc)
-      if(selectedIcon === i.current.currentSrc) {
-        i.current.style.opacity = '1';
-      }
-      else {
-        i.current.style.opacity = '0.3';
-      }
-    }
-  });
-  */
+
   const chooseIcon = (url: string, e: any) => {
     if(e.target.className === 'fav_icon') {
       let icons = [
@@ -316,7 +339,6 @@ export const FavAddModal: React.FC<FavAddProps> = ({
         onaddItem(data.playlists[data.playlists.length - 1]);
         onhandleSelectedIcon('');
         onhandleListAddModal();
-        errorRef.current.textContent = ''
       })
   }
 

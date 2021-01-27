@@ -87,6 +87,19 @@ button {
   overflow: hidden;
   transform: translate3d(0 ,0, 0);
   z-index: -1;
+  transition: all 2s;
+  opacity: 1;
+}
+
+.waveBox-off {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  transform: translate3d(0 ,0, 0);
+  z-index: -1;
+  transition: all 2s;
+  opacity: 0;
 }
 
 @mixin wave {
@@ -100,6 +113,7 @@ button {
   transform-origin: 50% 48%;
   border-radius: 43%;
   animation: drift 14000ms infinite linear;
+  transition: all 2s;
 }
 
 .wave-one {
@@ -121,11 +135,4 @@ button {
   from { transform: rotate(360deg); }
 }
 
-.loading-back {
-  position: absolute;
-  z-index: 10;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.692);
-}
 

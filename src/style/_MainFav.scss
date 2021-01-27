@@ -58,6 +58,29 @@
     background-color: rgba(255, 255, 255, 0.315);
     box-shadow: 2px 4px 7px 2px rgba(95, 95, 95, 0.11);
   }
+  & .fav_delet_x{
+    position:absolute;
+    width: 60px;
+    margin-top: 10px;
+    animation: shake 0.4s cubic-bezier(0.875, 0.885, 0.32, 1.275) forwards;
+  }
+  @keyframes shake {
+    20% {
+      transform: rotate(10deg);
+    }
+    40% {
+      transform: rotate(-10deg);
+    }
+    60% {
+      transform: rotate(10deg);
+    }
+    80% {
+      transform: rotate(-10deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
 }
 
 .slick-arrow {
@@ -318,11 +341,4 @@
   left: 10%;
   top: 85%;
   font-size: 12px;
-}
-
-.fav_delet_x{
-  position:absolute;
-  height: 13px;
-  margin-left: 110px;
-  margin-top: 8px;
 }
