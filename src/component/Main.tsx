@@ -152,15 +152,15 @@ const Main: React.FC<MainProps> = ({
       <MainListContainer />
       <ListTutorial />
       {
-        playList.length > 0 ?
+        playList.length > 0 ? 
         <div className='waveBox'>
           <div className='wave-one'></div>
           <div className='wave-two'></div>
         </div> :
         <div className='waveBox-off'>
-        <div className='wave-one'></div>
-        <div className='wave-two'></div>
-      </div>
+          <div className='wave-one'></div>
+          <div className='wave-two'></div>
+        </div>
       } 
       { isLoginModalOn ? <SigninContainer /> : null }
       { isEndingModalOn ? <Ending handleEndingModal={handleEndingModal}/> : null }
