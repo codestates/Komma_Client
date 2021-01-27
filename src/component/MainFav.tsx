@@ -4,7 +4,7 @@ import img_medi from '../img/meditation.png';
 import img_sleep from '../img/sleep.png';
 import img_add from '../img/plus.png';
 import img_delete from '../img/trash.png';
-import x from '../img/x.png';
+import x from '../img/plus_black.svg';
 import computer from '../img/computer.png'
 import cycling from '../img/cycling.png'
 import heart from '../img/heart.png'
@@ -55,6 +55,7 @@ const MainFav: React.FC<MainFavProps> = ({
   isDeleteMode,
   soundList
 }) => {
+
   const settings = {
     dots: false,
     infinite: false,
@@ -80,14 +81,14 @@ const MainFav: React.FC<MainFavProps> = ({
         </div>
         <Slider className='fav-cards' {...settings}>
           {mixtapes?.map(tape => <SingleFav
-            key={tape.playlists.id}
-            id={tape.playlists.id}
+            key={tape.id}
+            id={tape.id}
             onsetSoundListProperty={onsetSoundListProperty}
             soundList={soundList}
             title={tape.title}
-            savesongs={tape.playlists.savesongs}
-            icon={tape.playlists.icon}
-            play={tape.playlists.play}
+            savesongs={tape.savesongs}
+            icon={tape.icon}
+            play={tape.play}
             onsetMixtapeProperty={onsetMixtapeProperty}
             mixtapes={mixtapes}
           />)}
@@ -142,8 +143,8 @@ export const SingleFav: React.FC<SingleFavProps> = ({
     if (play) {
       favRef.current.className = 'fav-single'
       for (let i = 0; i < mixtapes.length; i++) {
-        if (mixtapes[i].playlists.id === id) {
-          modifiedMixtapes[i].playlists.play = false;
+        if (mixtapes[i].id === id) {
+          modifiedMixtapes[i].play = false;
           for (let j = 0; j < soundList.length; j++) {
             modifiedSoundlist[j].play = false;
           }
@@ -155,19 +156,19 @@ export const SingleFav: React.FC<SingleFavProps> = ({
         modifiedSoundlist[j].play = false;
       }
       for (let i = 0; i < mixtapes.length; i++) {
-        if (mixtapes[i].playlists.id === id) {
-          modifiedMixtapes[i].playlists.play = true;
-          for (let j = 0; j < mixtapes[i].playlists.savesongs.length; j++) {
+        if (mixtapes[i].id === id) {
+          modifiedMixtapes[i].play = true;
+          for (let j = 0; j < mixtapes[i].savesongs.length; j++) {
             for (let z = 0; z < soundList.length; z++) {
-              if (mixtapes[i].playlists.savesongs[j].id === soundList[z].id) {
-                let song = mixtapes[i].playlists.savesongs[j]
+              if (mixtapes[i].savesongs[j].id === soundList[z].id) {
+                let song = mixtapes[i].savesongs[j]
                 modifiedSoundlist[z].defaultVolume = song.defaultVolume
                 modifiedSoundlist[z].play = true
               }
             }
           }
         } else {
-          modifiedMixtapes[i].playlists.play = false;
+          modifiedMixtapes[i].play = false;
         }
       }
     }
@@ -219,7 +220,62 @@ export const FavAddModal: React.FC<FavAddProps> = ({
   playList,
   onaddItem
 }) => {
-  const inputRef: any = useRef()
+
+  const errorRef: any = useRef();
+  const inputRef: any = useRef();
+  const iconRef1: any = useRef();
+  const iconRef2: any = useRef();
+  const iconRef3: any = useRef();
+  const iconRef4: any = useRef();
+  const iconRef5: any = useRef();
+  const iconRef6: any = useRef();
+  const iconRef7: any = useRef();
+  const iconRef8: any = useRef();
+  const iconRef9: any = useRef();
+  const iconRef10: any = useRef();
+  const iconRef11: any = useRef();
+  const iconRef12: any = useRef();
+  /*
+  useEffect(() => {
+    let icons = [
+      iconRef1, iconRef2, iconRef3,
+      iconRef4, iconRef5, iconRef6,
+      iconRef7, iconRef8, iconRef9,
+      iconRef10, iconRef11, iconRef12
+    ]
+    for(let i of icons) {
+      console.log(i.current.currentSrc)
+      if(selectedIcon === i.current.currentSrc) {
+        i.current.style.opacity = '1';
+      }
+      else {
+        i.current.style.opacity = '0.3';
+      }
+    }
+  });
+  */
+  const chooseIcon = (url: string, e: any) => {
+    if(e.target.className === 'fav_icon') {
+      let icons = [
+        iconRef1, iconRef2, iconRef3,
+        iconRef4, iconRef5, iconRef6,
+        iconRef7, iconRef8, iconRef9,
+        iconRef10, iconRef11, iconRef12
+      ];
+      for(let i of icons) {
+        if(i.current.className === 'fav_icon_active') {
+          i.current.className = 'fav_icon';
+        }
+      }
+      onhandleSelectedIcon(url);
+      e.target.className = 'fav_icon_active';
+    }
+    else if(e.target.className === 'fav_icon_active') {
+      e.target.className = 'fav_icon';
+    }
+  }
+
+
   const saveMixtapes = () => {
     let mixtape = {
       title: inputRef.current.value,
@@ -229,6 +285,18 @@ export const FavAddModal: React.FC<FavAddProps> = ({
       icon: selectedIcon
     }
     let token: any = localStorage.getItem('token')
+    if(!selectedIcon) {
+      errorRef.current.textContent = '아이콘을 선택해주세요!'
+      return;
+    }
+    if(!inputRef.current.value) {
+      errorRef.current.textContent = '믹스테잎 이름을 입력해주세요!'
+      return;
+    }
+    if(playList.length < 2) {
+      errorRef.current.textContent = '소리를 2개 이상 선택해주세요!'
+      return;
+    }
     axios.post(
       'http://www.kommaa.shop/users/saveplaylist',
       { ...mixtape },
@@ -244,29 +312,39 @@ export const FavAddModal: React.FC<FavAddProps> = ({
       })
       .then(res => res.data)
       .then(data => {
-        console.log(data)
-        onaddItem(data.playlists)//1  12  123 으로 될 수 있으니 액션변경요함
+        console.log(data);
+        onaddItem(data.playlists[data.playlists.length - 1]);
+        onhandleSelectedIcon('');
+        onhandleListAddModal();
+        errorRef.current.textContent = ''
       })
   }
 
   return (
-    <div className='favModalBody'>
-      <div className='favModalBox'>
-        <img className='fav_x' src={x} alt="x" onClick={onhandleListAddModal} />
-        <img className='fav_icon' onClick={() => onhandleSelectedIcon('https://i.imgur.com/vR7MiCh.png')} src={computer} alt="airpot" />
-        <img className='fav_icon' onClick={() => onhandleSelectedIcon('https://i.imgur.com/E2u4I6X.png')} src={cycling} alt="airpot" />
-        <img className='fav_icon' onClick={() => onhandleSelectedIcon('https://i.imgur.com/aiy6OCI.png')} src={heart} alt="airpot" />
-        <img className='fav_icon' onClick={() => onhandleSelectedIcon('https://i.imgur.com/OJm8WyS.png')} src={question} alt="airpot" />
-        <img className='fav_icon' onClick={() => onhandleSelectedIcon('https://i.imgur.com/TsyGxBq.png')} src={man} alt="airpot" />
-        <img className='fav_icon' onClick={() => onhandleSelectedIcon('https://i.imgur.com/mc87bg6.png')} src={moon} alt="airpot" />
-        <img className='fav_icon1' onClick={() => onhandleSelectedIcon('https://i.imgur.com/nHbNWeR.png')} src={rating} alt="airpot" />
-        <img className='fav_icon1' onClick={() => onhandleSelectedIcon('https://i.imgur.com/POL0Oip.png')} src={shuffle} alt="airpot" />
-        <img className='fav_icon1' onClick={() => onhandleSelectedIcon('https://i.imgur.com/gi1x3TN.png')} src={smile1} alt="airpot" />
-        <img className='fav_icon1' onClick={() => onhandleSelectedIcon('https://i.imgur.com/rwGlahO.png')} src={smile} alt="airpot" />
-        <img className='fav_icon1' onClick={() => onhandleSelectedIcon('https://i.imgur.com/ZuC0S8E.png')} src={woman} alt="airpot" />
-        <img className='fav_icon1' onClick={() => onhandleSelectedIcon('https://i.imgur.com/Qo2Pa0H.png')} src={yoga} alt="airpot" />
+    <div className='fav_back'>
+      <div className='fav_back_one' onClick={onhandleListAddModal} />
+      <div className='fav_back_two' onClick={onhandleListAddModal} />
+      <div className='fav_back_three' onClick={onhandleListAddModal} />
+      <div className='fav_back_four' onClick={onhandleListAddModal} />
+      <div className='fav_modal'>
+        <div className='fav_iconbox'>
+          <img className='fav_x' src={x} alt="x" onClick={onhandleListAddModal} />
+          <img className='fav_icon' onClick={(e) => chooseIcon('https://i.imgur.com/vR7MiCh.png', e)} src={computer} alt="airpot" ref={iconRef1}/>
+          <img className='fav_icon' onClick={(e) => chooseIcon('https://i.imgur.com/E2u4I6X.png', e)} src={cycling} alt="airpot" ref={iconRef2}/>
+          <img className='fav_icon' onClick={(e) => chooseIcon('https://i.imgur.com/aiy6OCI.png', e)} src={heart} alt="airpot" ref={iconRef3}/>
+          <img className='fav_icon' onClick={(e) => chooseIcon('https://i.imgur.com/OJm8WyS.png', e)} src={question} alt="airpot" ref={iconRef4}/>
+          <img className='fav_icon' onClick={(e) => chooseIcon('https://i.imgur.com/TsyGxBq.png', e)} src={man} alt="airpot" ref={iconRef5}/>
+          <img className='fav_icon' onClick={(e) => chooseIcon('https://i.imgur.com/mc87bg6.png', e)} src={moon} alt="airpot" ref={iconRef6}/>
+          <img className='fav_icon' onClick={(e) => chooseIcon('https://i.imgur.com/nHbNWeR.png', e)} src={rating} alt="airpot" ref={iconRef7}/>
+          <img className='fav_icon' onClick={(e) => chooseIcon('https://i.imgur.com/POL0Oip.png', e)} src={shuffle} alt="airpot" ref={iconRef8}/>
+          <img className='fav_icon' onClick={(e) => chooseIcon('https://i.imgur.com/gi1x3TN.png', e)} src={smile1} alt="airpot" ref={iconRef9}/>
+          <img className='fav_icon' onClick={(e) => chooseIcon('https://i.imgur.com/rwGlahO.png', e)} src={smile} alt="airpot" ref={iconRef10}/>
+          <img className='fav_icon' onClick={(e) => chooseIcon('https://i.imgur.com/ZuC0S8E.png', e)} src={woman} alt="airpot" ref={iconRef11}/>
+          <img className='fav_icon' onClick={(e) => chooseIcon('https://i.imgur.com/Qo2Pa0H.png', e)} src={yoga} alt="airpot" ref={iconRef12}/>
+        </div>
         <input className='fav_input' ref={inputRef} placeholder='이름을 입력해주세요' />
         <button className='fav_button' onClick={saveMixtapes}>SAVE</button>
+        <p className='fav_error' ref={errorRef}></p>
       </div>
     </div>
   )

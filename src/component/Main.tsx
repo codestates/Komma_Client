@@ -20,6 +20,7 @@ interface MainProps {
   isRandomOn: boolean;
   mixtape?: any[];
   soundList: any[];
+  isLoadingOn: boolean;
   handleEndingModal: () => void;
   loginStabilizer: () => void;
   changeColor: (color: string) => void;
@@ -27,6 +28,7 @@ interface MainProps {
   handleRandomOn: () => void;
   setMixtapeProperty: (modifiedMixtape: any[]) => void;
   setSoundListProperty: (modifiedSoundList: any[]) => void;
+  handleLoadingOn: () => void;
 }
 
 const Main: React.FC<MainProps> = ({
@@ -36,6 +38,7 @@ const Main: React.FC<MainProps> = ({
   isSettingModalOn,
   isDarkMode,
   isRandomOn,
+  isLoadingOn,
   mixtape,
   soundList,
   handleEndingModal,
@@ -44,7 +47,8 @@ const Main: React.FC<MainProps> = ({
   handleDarkMode,
   handleRandomOn,
   setMixtapeProperty,
-  setSoundListProperty
+  setSoundListProperty,
+  handleLoadingOn
 }) => {
 
   useEffect(() => {
@@ -58,7 +62,7 @@ const Main: React.FC<MainProps> = ({
       if(mixtape) {
         let modifiedMixtape = mixtape.slice();
         for(let i = 0; i < mixtape.length; i ++) {
-          modifiedMixtape[i].playlists.play = false;
+          modifiedMixtape[i].play = false;
         }
         setMixtapeProperty(modifiedMixtape);
       }
@@ -67,6 +71,10 @@ const Main: React.FC<MainProps> = ({
 
   useEffect(() => {
     let token: any = localStorage.getItem('token')
+    handleLoadingOn();
+    setTimeout(() => {
+      handleLoadingOn();
+    }, 3000)
     if(JSON.parse(token)) {
       loginStabilizer(); // 토큰 존재시 로그인상태 유지
       // 메인페이지 열릴 때 마다 유저정보에 담긴 각각 화면 구성하는 상태 가져와서 갱신
@@ -77,8 +85,23 @@ const Main: React.FC<MainProps> = ({
       )
       .then(res => res.data)
       .then(data => {
+        console.log(data);
         if(data.userInfo.sitecolor !== color) {
           changeColor(data.userInfo.sitecolor);
+        }
+        // 믹스테잎 업데이트
+        if(mixtape) {
+          let modifiedMixtape = mixtape.slice();
+          console.log(modifiedMixtape)
+          console.log(data.playlists)
+          if(modifiedMixtape.length === 4) {
+            for(let i = 0; i < data.playlists.length; i ++) {
+              modifiedMixtape.push(data.playlists[i]);
+              setMixtapeProperty(modifiedMixtape);
+            }
+            console.log(modifiedMixtape)
+            console.log('믹스테잎 업데이트');
+          }
         }
       })
       .catch(err => {
@@ -86,7 +109,7 @@ const Main: React.FC<MainProps> = ({
       })
     }
     console.log('로그인유지 작동');
-  })
+  }, [])
 
   // 컬러 랜덤 핸들링
   //let Myinterval: any;
@@ -130,7 +153,19 @@ const Main: React.FC<MainProps> = ({
       { isLoginModalOn ? <SigninContainer /> : null }
       { isEndingModalOn ? <Ending handleEndingModal={handleEndingModal}/> : null }
       { isSettingModalOn ? <SettingContainer /> : null }
+      { isLoadingOn ? <Loading /> : null }
     </main>
+  );
+}
+
+const Loading: React.FC = () => {
+
+  return(
+    <div className='loading-back'>
+      <div>
+        <img />
+      </div>
+    </div>
   );
 }
 
