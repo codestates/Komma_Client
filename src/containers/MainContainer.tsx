@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../modules';
 import { handleEndingModal } from '../modules/timer';
-import { loginStabilizer } from '../modules/signin';
+import { loginStabilizer, handleLogin } from '../modules/signin';
 import { changeColor, handleRandomOn } from '../modules/color';
 import { handleDarkMode, handleWindowSize } from '../modules/setting';
 import { setMixtapeProperty } from '../modules/mixtape';
@@ -36,8 +36,8 @@ const MainContainer: React.FC = () => {
   const handlingDarkMode = () => {
     dispatch(handleDarkMode());
   }
-  const handlingRandomOn = () => {
-    dispatch(handleRandomOn());
+  const handlingLogin = () => {
+    dispatch(handleLogin());
   }
   const settingMixtapeProperty = (modifiedMixtape: any[]) => {
     dispatch(setMixtapeProperty(modifiedMixtape));
@@ -69,6 +69,7 @@ const MainContainer: React.FC = () => {
       mixtape={mixtape}
       playList={playList}
       soundList={soundList}
+      handleLogin={handlingLogin}
       handleEndingModal={handlingEndingModal}
       loginStabilizer={loginStabilizing}
       changeColor={changingColor}

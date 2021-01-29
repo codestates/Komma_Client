@@ -75,14 +75,21 @@
     cursor: pointer;
   }
   .signin-title {
-    font-size: 40px;
+    font-size: 35px;
     text-align: center;
     margin-top: 50px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.836);
   }
   .signup-title {
-    font-size: 40px;
+    font-size: 35px;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 50px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.836);
+    margin-bottom: -15px;
   }
   .email {
     margin-top: 30px;
@@ -187,6 +194,47 @@
     font-weight: 900;
     &:hover {
       text-decoration: underline;
+    }
+  }
+}
+
+@media all and (max-width: 800px) {
+  .total-container {
+    width: 300px;
+    height: 400px; 
+  }
+  .sign-container {
+    left: 80px;
+  }
+  .signin-x {
+    left: 195px;
+  }
+  .comma {
+    left: -200px;
+    top: -220px;
+  }
+  .sign-komma {
+    width: 80px;
+    left: 130px;
+    top: 30px;
+  }
+  .sign-desc {
+    top: 370px;
+    left: 20px;
+  }
+  .email {
+    & input {
+      background: none;
+    }
+  }
+  .password {
+    & input {
+      background: none;
+    }
+  }
+  .username {
+    & input {
+      background: none;
     }
   }
 }

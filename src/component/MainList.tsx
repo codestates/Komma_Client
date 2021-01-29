@@ -303,7 +303,7 @@ export const ListTutorial = ({ width, handleWindowSize }) => {
     }, 5500);
   }, []);
 
-  if(width > 800) {
+  if(width > 1000) {
     return(
       <div className='tutorial' ref={tutorialTarget}>
         <h1>Mouse Wheel</h1>
@@ -335,7 +335,7 @@ interface GuideProps {
   handleDegree: (deg: number) => void;
 }
 
-export const TouchGuide = ({ degree, handleDegree }) => {
+export const TouchGuide: React.FC<GuideProps> = ({ degree, handleDegree }) => {
 
   let soundList: any;
 
