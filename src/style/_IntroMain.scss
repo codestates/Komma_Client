@@ -2,13 +2,10 @@
   height: 100vh;
   overflow-y: scroll;
   overflow-x: hidden;
-  background-color: black;
 
 }
 
-.background{
-  z-index: 1;
-}
+
 .intro_Main{
   position: relative;
   width: 100vw;
@@ -17,9 +14,10 @@
 }
 .background{
   position: absolute;
-  z-index: 0;
   width: 100vw;
-  height: 110vh;
+  height: 140vh;
+  z-index: 0;
+  bottom:0vh;
 }
 .transparency{
   position: absolute;
@@ -114,9 +112,139 @@
 }
 .intro_Main_back_sentence{
   position: absolute;
-  font-size: 150px;
+  font-size: 8vw;
   color: white;
   font-family: 'Noto Sans KR', sans-serif;
-  top:38vh;
+  top:39vh;
   left:35vw;
+}
+
+
+
+
+
+
+@media all and (max-width:767px) {
+
+  .intro_Set{
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  
+  }
+  
+  .background{
+    z-index: 1;
+  }
+  .intro_Main{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .background{
+    position: absolute;
+    z-index: 0;
+  
+
+  }
+  .transparency{
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+  }
+  
+  .intro_Header{
+    display: flex;
+    height: 15vh;
+  
+  
+  }
+  .intro_logo{
+    position: relative;
+    color:white;
+    font-size: 6vw;
+    font-family: 'Noto Sans KR', sans-serif;
+    left : 17vw;
+    top: 24vh;
+  }
+  
+  .intro_body{
+    display: flex;
+    position: relative;
+    width: 100vw;
+    height: 80vh;
+  }
+  
+  .description_Main{
+    position: absolute;
+    font-size: 6vw;
+    width: 80vw;
+    color: white;
+    top: 23.5vh;
+    left : 17vw;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 900;
+  }
+  
+  .intro_Mainbutton{
+    position: relative; 
+    width: 21vw;
+    height: 4vh;
+    font-size: 2.8vw;
+    border-radius: 30px;
+    color: black;
+    background-color:white ;
+    border: none;
+    top: 10vh;
+    font-family: 'Noto Sans KR', sans-serif;
+    z-index: 5;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.514);
+    cursor: pointer;
+    transition: all 1s;
+    &:hover {
+      box-shadow: inset 2px 0.5px 7px 1px rgba(0, 0, 0, 0.329);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  
+  
+  .intro_next{
+    position: absolute;
+    width: 7vw;
+    height: 2vh;
+    bottom: 15vh;
+    left: 46vw;
+    top:53vh;
+  }
+  
+  .description_1{
+    position: relative;
+    color: white;
+    top:5vh;
+    font-size: 1.4vw;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  .blank{
+    margin-top: 17px;
+  }
+  
+  .intro_Main_back{
+    position: relative;
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+  }
+  .intro_Main_back_sentence{
+    position: absolute;
+    font-size: 8vw;
+    color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+    top:39vh;
+    left:35vw;
+  }
 }
