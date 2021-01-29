@@ -57,120 +57,111 @@ const initialState: MixtapeState = {
       "title": "Random",
       "play": false,
       "id": 999,
-      "icon": " https://i.imgur.com/TsyGxBq.png",
+      "icon": " https://i.imgur.com/POL0Oip.png",
       "savesongs": [
         {
-          defaultVolume: 0.2,
-          iconImg: "https://i.imgur.com/95VnNXx.png",
-          id: 13,
-          play: false,
-          soundFile: "http://www.kommaa.shop/sounds/tent_rain.mp3",
-          title: "우산속비",
-        },
-        {
-          defaultVolume: 0.2,
-          iconImg: "https://i.imgur.com/3pU0OMh.png",
-          id: 7,
-          play: false,
-          soundFile: "http://www.kommaa.shop/sounds/washer.mp3",
-          title: "세탁기"
-        },
-        {
-          defaultVolume: 0.4,
-          iconImg: "https://i.imgur.com/IDhr3MR.png",
-          id: 16,
-          play: false,
-          soundFile: "http://www.kommaa.shop/sounds/book.mp3",
-          title: "책"
-        }
-      ]
-    },
-    {
-      "title": "Relex",
-      "play": false,
-      "id": 998,
-      "icon": " https://i.imgur.com/gi1x3TN.png",
-      "savesongs": [
-        {
-          defaultVolume: 0.4,
+          defaultVolume: 0.8,
           iconImg: "https://i.imgur.com/hiMe7BV.png",
-          id: 15,
-          play: false,
+          id: 14,
+          play: true,
           soundFile: "http://www.kommaa.shop/sounds/firewood.mp3",
           title: "장작",
         },
         {
-          defaultVolume: 0.2,
-          iconImg: "https://i.imgur.com/3pU0OMh.png",
-          id: 7,
+          defaultVolume: 0.4,
+          iconImg: "https://i.imgur.com/HnZDCjb.png",
+          id: 3,
           play: false,
-          soundFile: "http://www.kommaa.shop/sounds/washer.mp3",
-          title: "세탁기"
+          soundFile: "http://www.kommaa.shop/sounds/leaves.mp3",
+          title: "낙엽",
         },
         {
           defaultVolume: 0.2,
-          iconImg: "https://i.imgur.com/nG59YQq.png",
-          id: 9,
-          play: false,
-          soundFile: "http://www.kommaa.shop/sounds/deepsea.mp3",
-          title: "심해"
+          iconImg: "https://i.imgur.com/vkUgljs.png",
+          id: 25,
+          play: true,
+          soundFile: "http://www.kommaa.shop/sounds/bell.mp3",
+          title: "종",
         }
       ]
     },
     {
-
-      "title": "Meditation",
+      "title": "Summer Night",
       "play": false,
-      "id": 997,
+      "id": 998,
       "icon": "https://i.imgur.com/mc87bg6.png",
       "savesongs": [
         {
-          defaultVolume: 0.2,
-          iconImg: "https://i.imgur.com/nG59YQq.png",
-          id: 9,
-          play: false,
-          soundFile: "http://www.kommaa.shop/sounds/deepsea.mp3",
-          title: "심해",
+          defaultVolume: 0.8,
+          iconImg: "https://i.imgur.com/xLdYxZL.png",
+          id: 20,
+          play: true,
+          soundFile: "http://www.kommaa.shop/sounds/mami.mp3",
+          title: "매미"
         },
         {
-          defaultVolume: 0.4,
+          defaultVolume: 0.6,
+          iconImg: "https://i.imgur.com/80XYaTr.png",
+          id: 28,
+          play: true,
+          soundFile: "http://www.kommaa.shop/sounds/rain.mp3",
+          title: "비"
+        },
+        {
+          defaultVolume: 0.6,
           iconImg: "https://i.imgur.com/lWziGz2.png",
           id: 8,
-          play: false,
+          play: true,
           soundFile: "http://www.kommaa.shop/sounds/country.mp3",
-          title: "시골밤"
-        },
-        {
-          defaultVolume: 0.2,
-          iconImg: "https://i.imgur.com/74yfFhN.png",
-          id: 1,
-          play: false,
-          soundFile: "http://www.kommaa.shop/sounds/cricket.mp3",
-          title: "귀뚜라미"
+          title: "시골밤",
         }
       ]
     },
     {
-      "title": "Sleep",
+      "title": "Cycling",
+      "play": false,
+      "id": 997,
+      "icon": "https://i.imgur.com/E2u4I6X.png",
+      "savesongs": [
+        {
+          defaultVolume: 0.4,
+          iconImg: "https://i.imgur.com/iHRwLhb.png",
+          id: 17,
+          play: false,
+          soundFile: "http://www.kommaa.shop/sounds/sunrise_sea.mp3",
+          title: "파도"
+        },
+        {
+          defaultVolume: 0.6,
+          iconImg: "https://i.imgur.com/fEMbGe7.png",
+          id: 18,
+          play: false,
+          soundFile: "http://www.kommaa.shop/sounds/galmagi.mp3",
+          title: "갈매기",
+        }
+      ]
+    },
+    {
+      "title": "Reading Book",
       "play": false,
       "id": 996,
-      "icon": "https://i.imgur.com/vR7MiCh.png",
+      "icon": "https://i.imgur.com/TsyGxBq.png",
       "savesongs": [
         {
           defaultVolume: 0.2,
-          iconImg: "https://i.imgur.com/74yfFhN.png",
-          id: 1,
+          iconImg: "https://i.imgur.com/ixbmiS3.png",
+          id: 23,
           play: false,
-          soundFile: "http://www.kommaa.shop/sounds/cricket.mp3",
-          title: "귀뚜라미"
+          soundFile: "http://www.kommaa.shop/sounds/church.mp3",
+          title: "교회",
         },
         {
           defaultVolume: 0.4,
-          iconImg: "https://i.imgur.com/hiMe7BV.png",
-          id: 15,
+          iconImg: "https://i.imgur.com/HnZDCjb.png",
+          id: 3,
           play: false,
-          soundFile: "http://www.kommaa.shop/sounds/firewood.mp3",
-          title: "장작"
+          soundFile: "http://www.kommaa.shop/sounds/leaves.mp3",
+          title: "낙엽",
         }
       ]
     }

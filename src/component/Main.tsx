@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import MainHeaderContainer from '../containers/MainHeaderContainer';
-import { ListTutorial } from './MainList';
+import { ListTutorial, TouchGuide } from './MainList';
 import MainListContainer from '../containers/MainListContainer';
 import MainFavContainer from '../containers/MainFavContainer';
 import MainSelectContainer from '../containers/MainSelectedContainer';
@@ -9,11 +9,11 @@ import Ending from './Ending';
 import SettingContainer from '../containers/SettingContainer';
 import comma from '../img/comma.png';
 import axios from 'axios';
-import { getSoundList } from '../modules/list';
 import mixtape from '../modules/mixtape';
 
 interface MainProps {
   color: string;
+  width: number;
   isLoginModalOn: boolean;
   isEndingModalOn: boolean;
   isSettingModalOn: boolean;
@@ -23,6 +23,7 @@ interface MainProps {
   soundList: any[];
   playList: any[];
   isLoadingOn: boolean;
+  degree: number;
   handleEndingModal: () => void;
   loginStabilizer: () => void;
   changeColor: (color: string) => void;
@@ -31,10 +32,14 @@ interface MainProps {
   setMixtapeProperty: (modifiedMixtape: any[]) => void;
   setSoundListProperty: (modifiedSoundList: any[]) => void;
   handleLoadingOn: () => void;
+  handleWindowSize: (size: number) => void;
+  handleDegree: (deg: number) => void;
 }
 
 const Main: React.FC<MainProps> = ({
   color,
+  degree,
+  width,
   isLoginModalOn,
   isEndingModalOn,
   isSettingModalOn,
@@ -51,8 +56,19 @@ const Main: React.FC<MainProps> = ({
   handleRandomOn,
   setMixtapeProperty,
   setSoundListProperty,
-  handleLoadingOn
+  handleLoadingOn,
+  handleWindowSize,
+  handleDegree
 }) => {
+
+  // 화면 가로크기 입력 함수
+  useEffect(() => {
+    handleWindowSize(window.innerWidth);
+    window.addEventListener('resize', () => handleWindowSize(window.innerWidth));
+    return () => {
+      window.addEventListener('resize', () => handleWindowSize(window.innerWidth));
+    }
+  }, []);
 
   // 타이머 종료시 음악, 믹스테잎 종료 함수
   useEffect(() => {
@@ -115,42 +131,44 @@ const Main: React.FC<MainProps> = ({
     }
     console.log('로그인유지 작동');
   }, [])
-
+/*
   // 컬러 랜덤 핸들링
   let Myinterval: any;
   let mainRef: any = useRef();
+  let delay: number | null;
   useEffect(() => {
-    let isRandomColorOn = false;
-    console.log('컬러변경 함수 실행')
     if(color === 'random') {
       console.log('인터벌 시작')
-      isRandomColorOn = true; // to true;
-      Myinterval = setInterval(() => {
-        if(isRandomColorOn) {
-          console.log('인터벌 실행중')
-          mainRef.current.className = `Main-random-${Math.floor(Math.random() * (9 - 1) +1 )}`
-        }
-        else {
-          clearInterval(Myinterval);
-          console.log('인터벌 끝')
-        }
-      }, 10000)
+      delay = 10000;
+      isRandomOn = true; // to true;
+      Myinterval = setInterval(generateRandomColor, delay);
     }
     else {
-      isRandomColorOn = false; // to false;
+      isRandomOn = false;
+      delay = NaN;
+      clearInterval(Myinterval);
+      console.log('인터벌 종료') // to false;
     }
   }, [color])
 
+  // 인터벌 함수
+  const generateRandomColor = () => {
+    if(isRandomOn) {
+      console.log('인터벌 실행중')
+      mainRef.current.className = `Main-random-${Math.floor(Math.random() * (9 - 1) +1 )}`
+    }
+  }
+*/
   return(
     <main
       className={`Main-${color}`}
-      ref={mainRef}
     >
       <MainHeaderContainer />
       <MainFavContainer />
       <MainSelectContainer />
       <MainListContainer />
-      <ListTutorial />
+      <ListTutorial width={width} handleWindowSize={handleWindowSize}/>
+      { width < 800 ? <TouchGuide degree={degree} handleDegree={handleDegree}/> : null }
       {
         playList.length > 0 ? 
         <div className='waveBox'>

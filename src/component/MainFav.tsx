@@ -24,6 +24,7 @@ import mixtape, { setMixtapeProperty } from '../modules/mixtape';
 
 interface MainFavProps {
   color: string;
+  width: number;
   isListAddModalOn?: boolean;
   isDeleteMode?: boolean;
   playList: any;
@@ -43,6 +44,7 @@ interface MainFavProps {
 
 const MainFav: React.FC<MainFavProps> = ({
   color,
+  width,
   mixtapes,
   selectedIcon,
   playList,
@@ -61,15 +63,15 @@ const MainFav: React.FC<MainFavProps> = ({
     dots: false,
     infinite: false,
     speed: 1000,
-    slidesToShow: 3.9,
-    slidesToScroll: 2.5
+    slidesToShow: width > 800 ? 3.9 : 2,
+    slidesToScroll: width > 800 ? 2.5 : 1
   }
 
   return (
     <div>
       {isListAddModalOn ? <FavAddModal onaddItem={onaddItem} playList={playList} onhandleSelectedIcon={onhandleSelectedIcon} selectedIcon={selectedIcon} onhandleListAddModal={onhandleListAddModal} /> : null}
-      <nav className='fav-container'>
-        <div className='fav-icons'>
+    <nav className={width > 800 ? 'fav-container' : 'fav-container-m'}>
+        <div className={width > 800 ? 'fav-icons' : 'fav-icons-m'}>
           <span className='fav-icons-desc'>
             Mixtape ,
         </span>
@@ -80,9 +82,10 @@ const MainFav: React.FC<MainFavProps> = ({
             <img src={img_delete} alt='' />
           </span>
         </div>
-        <Slider className='fav-cards' {...settings}>
+        <Slider className={width > 800 ? 'fav-cards' : 'fav-cards-m'} {...settings}>
           {mixtapes?.map(tape => <SingleFav
             key={tape.id}
+            width={width}
             id={tape.id}
             onsetSoundListProperty={onsetSoundListProperty}
             soundList={soundList}
@@ -104,6 +107,7 @@ const MainFav: React.FC<MainFavProps> = ({
 
 
 interface SingleFavProps {
+  width: number;
   title: string;
   icon: string;
   savesongs: any[];
@@ -116,6 +120,7 @@ interface SingleFavProps {
   onsetMixtapeProperty: (modifiedMixtape: any[]) => void;
 }
 export const SingleFav: React.FC<SingleFavProps> = ({
+  width,
   title,
   icon,
   savesongs, //실행시킬친구들
@@ -195,7 +200,7 @@ export const SingleFav: React.FC<SingleFavProps> = ({
     }
 
     if (play) {
-      favRef.current.className = 'fav-single'
+      width > 800 ? favRef.current.className = 'fav-single' : favRef.current.className = 'fav-single-m';
       for (let i = 0; i < mixtapes.length; i++) {
         if (mixtapes[i].id === id) {
           modifiedMixtapes[i].play = false;
@@ -233,7 +238,7 @@ export const SingleFav: React.FC<SingleFavProps> = ({
   }
 
   return (
-    <div className='fav-single' ref={favRef} onClick={isDeleteMode && id < 900 ? deleteMixtape : handlePlayMixtapes}>
+    <div className={width > 800 ? 'fav-single' : 'fav-single-m'} ref={favRef} onClick={isDeleteMode && id < 900 ? deleteMixtape : handlePlayMixtapes}>
       { isDeleteMode && id < 900 ? <img className='fav_delet_x' src={img_delete} alt="x" /> : null }
       <div className='fav-img'>
         <img src={icon} alt='' ref={iconRef}/>

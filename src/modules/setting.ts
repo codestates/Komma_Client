@@ -5,6 +5,7 @@ const HANDLE_USERINFO_CHANGE_MODE = 'setting/HANDLE_USERINFO_CHANGE_MODE'as cons
 const HANDLE_CHANGE_USERINFO = 'setting/HANDLE_CHANGE_USERINFO'as const;
 const GET_USERNAME_FROM_SERVER = 'setting/GET_USERNAME_FROM_SERVER'as const;
 const GET_EMAIL_FROM_SERVER = 'setting/GET_EMAIL_FROM_SERVER'as const;
+const HANDLE_WINDOW_SIZE = 'setting/HANDLE_WINDOW_SIZ'as const;
 
 
 //액션 생성 함수
@@ -29,12 +30,19 @@ export const getEmailFromServer = (email: string) => ({
     email
   }
 });
+export const handleWindowSize = (size: number) => ({
+  type: HANDLE_WINDOW_SIZE,
+  payload: {
+    size
+  }
+})
 
 // 액션 타입
 type SettingAction =
   | ReturnType<typeof handleSettingModal> | ReturnType<typeof handleDarkMode>
   | ReturnType<typeof handleUserInfoChangeMode> | ReturnType<typeof handleChangeUserInfo>
   | ReturnType<typeof getUserNameFromServer> | ReturnType<typeof getEmailFromServer>
+  | ReturnType<typeof handleWindowSize>
 
 // 스테이트 초기값
 interface SettingState {
@@ -46,6 +54,7 @@ interface SettingState {
   newPassword: string;
   repeatPassword: string;
   userInfoChangeMode: boolean;
+  windowWidth: number;
 }
 
 const initialState: SettingState = {
@@ -57,6 +66,7 @@ const initialState: SettingState = {
   newPassword: '',
   repeatPassword: '',
   userInfoChangeMode: false,
+  windowWidth: 0
 }
 
 // 리듀서
@@ -74,6 +84,8 @@ const setting = (state = initialState, action: SettingAction) => {
       return Object.assign({}, state, {username: action.payload.name})
     case GET_EMAIL_FROM_SERVER:
       return Object.assign({}, state, {email: action.payload.email})
+    case HANDLE_WINDOW_SIZE:
+      return Object.assign({}, state, {windowWidth: action.payload.size})
     default:
       return state;
   }

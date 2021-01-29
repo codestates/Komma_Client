@@ -4,13 +4,14 @@ import { RootState } from '../modules';
 import { handleEndingModal } from '../modules/timer';
 import { loginStabilizer } from '../modules/signin';
 import { changeColor, handleRandomOn } from '../modules/color';
-import { handleDarkMode } from '../modules/setting';
+import { handleDarkMode, handleWindowSize } from '../modules/setting';
 import { setMixtapeProperty } from '../modules/mixtape';
-import { setSoundListProperty, handleLoadingOn } from '../modules/list';
+import { setSoundListProperty, handleLoadingOn, handleDegree } from '../modules/list';
 import Main from '../component/Main';
 
 const MainContainer: React.FC = () => {
   const backgroundColor = useSelector((state: RootState) => state.color.backgroundColor);
+  const degree = useSelector((state: RootState) => state.list.degree);
   const isLoginModalOn = useSelector((state: RootState) => state.signin.isLoginModalOn);
   const isEndingModalOn = useSelector((state: RootState) => state.timer.isEndingModalOn);
   const isSettingModalOn = useSelector((state: RootState) => state.setting.isSettingModalOn);
@@ -20,6 +21,7 @@ const MainContainer: React.FC = () => {
   const soundList = useSelector((state: RootState) => state.list.soundList);
   const isLoadingOn = useSelector((state: RootState) => state.list.isLoadingOn);
   const playList = useSelector((state: RootState) => state.selected.playList);
+  const width = useSelector((state: RootState) => state.setting.windowWidth);
   const dispatch = useDispatch();
 
   const handlingEndingModal = () => {
@@ -46,10 +48,18 @@ const MainContainer: React.FC = () => {
   const handlingLoadingOn = () => {
     dispatch(handleLoadingOn());
   }
+  const handlingWindowSize = (size: number) => {
+    dispatch(handleWindowSize(size));
+  };
+  const handlingDegree = (deg: number) => {
+    dispatch(handleDegree(deg));
+  };
 
   return (
     <Main
       color={backgroundColor}
+      degree={degree}
+      width={width}
       isLoginModalOn={isLoginModalOn}
       isEndingModalOn={isEndingModalOn}
       isSettingModalOn={isSettingModalOn}
@@ -67,6 +77,8 @@ const MainContainer: React.FC = () => {
       setSoundListProperty={settingSoundListProperty}
       setMixtapeProperty={settingMixtapeProperty}
       handleLoadingOn={handlingLoadingOn}
+      handleWindowSize={handlingWindowSize}
+      handleDegree={handlingDegree}
     />
   );
 }

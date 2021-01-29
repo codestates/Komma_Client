@@ -5,21 +5,38 @@
   width: 650px;
   height: 150px;
   left: 50vw;
-  top: 10vh;
+  top: 20vh;
   margin-left: -325px;
   display: flex;
   flex-direction: column;
-  
+  &-m {
+    position: absolute;
+    width: 320px;
+    height: 150px;
+    left: 50vw;
+    top: 33vh;
+    margin-left: -160px;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .fav-icons {
   width: 650px;
   height: 35px;
+  &-m {
+    width: 320px;
+    height: 35px;
+  }
 }
 
 .fav-cards {
   width: 650px;
   height: 115px;
+  &-m {
+    width: 320px;
+    height: 115px;
+  }
 }
 
 .fav-single {
@@ -43,6 +60,59 @@
     background-color: rgba(255, 255, 255, 0.438);
     box-shadow: 2px 4px 7px 2px rgba(95, 95, 95, 0.11);
   }
+  &-active{
+    border-radius: 20px;
+    margin-right: 10px;
+    transition: all 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    width: 160px;
+    height: 105px;
+    margin-top: 3px;
+    margin-left: -0.5px;
+    background-color: rgba(255, 255, 255, 0.315);
+    box-shadow: 2px 4px 7px 2px rgba(95, 95, 95, 0.11);
+  }
+  & .fav_delet_x{
+    position:absolute;
+    width: 60px;
+    margin-top: 10px;
+    animation: shake 0.4s cubic-bezier(0.875, 0.885, 0.32, 1.275) forwards;
+  }
+  @keyframes shake {
+    20% {
+      transform: rotate(10deg);
+    }
+    40% {
+      transform: rotate(-10deg);
+    }
+    60% {
+      transform: rotate(10deg);
+    }
+    80% {
+      transform: rotate(-10deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+}
+
+.fav-single-m {
+  width: 150px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.192);
+  border-radius: 20px;
+  margin-right: 10px;
+  margin-left: 5px;
+  margin-top: 5px;
+  transition: all 0.5s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
   &-active{
     border-radius: 20px;
     margin-right: 10px;
@@ -207,6 +277,9 @@
   &.teal {
     box-shadow: inset 10px 0px 10px 0px $teal;
   }
+  &.random {
+    display: none;
+  }
 }
 
 .fav_back {
@@ -247,8 +320,6 @@
   width: 25%;
   height: 26%;
 }
-
-
 
 .fav_modal{
  position: absolute;
@@ -341,4 +412,24 @@
   left: 10%;
   top: 85%;
   font-size: 12px;
+}
+
+@media all and (max-width: 800px) {
+  .fav-icons-add {
+    left: 75%;
+  }
+  .fav-icons-delete {
+    left: 85%;
+  }
+  .fav_back {
+    z-index: 11;
+  }
+  .fav_modal {
+    left: 50%;
+    top: 35vh;
+    margin-left: -150px;
+  }
+  .side-blur {
+    display: none;
+  }
 }
