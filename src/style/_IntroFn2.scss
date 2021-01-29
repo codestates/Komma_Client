@@ -6,6 +6,7 @@
 }
 .intro_body2-1{
   display: flex;
+  justify-content: center;
   position: relative;
   background-color: #d21111;
   margin-top: 1.5vh;
@@ -17,8 +18,10 @@
 }
 .intro_body2-2{
   display: flex;
+  justify-content: center;
   position: relative;
   background-color: #1363be;
+  overflow: scroll;
   margin-top: 8.7vh;
   height: 70vh;
   width: 48.7vw;
@@ -45,10 +48,10 @@
   position: absolute;
   background-color: rgba(114, 114, 114, 0.192);
   display: flex;
-  width: 7vw;
+  width: 5vw;
   height: 3vh;
   top:1vh;
-  border-radius: 50%;
+  border-radius: 40%;
   justify-content: center;
   align-items: center;
 
@@ -57,7 +60,7 @@
 .fav-icons-desc2{
   @include iconNav2;
   color: white;
-  font-size: 1vw;
+  font-size: 0.8vw;
 }
 .fav-icons-add2{
   @include iconNav;
@@ -91,10 +94,9 @@
 }
 .fav-cards2{
   position: absolute;
-  left: 7vw;
   top:45vh;
   width: 35vw;
-  height: 11vh;
+  height: 10vh;
 }
 
 .fav-single2{
@@ -110,7 +112,7 @@
   align-items: center;
   cursor: pointer;
   &:hover {
-    width: 8.2vw;
+    width: 9.5vw;
     height: 10.2vh;
     background-color: rgba(255, 255, 255, 0.438);
     box-shadow: 2px 4px 7px 2px rgba(95, 95, 95, 0.11);
@@ -136,7 +138,6 @@
   color:white;
   font-size: 3vw;
   font-family: 'Noto Sans KR', sans-serif;
-  left: 20.7vw;
   top:10vh;
 }
 .intro_describe1-2{
@@ -144,7 +145,6 @@
   color:white;
   font-size: 1vw;
   top:20vh;
-  left: 14.3vw;
   font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -153,7 +153,6 @@
   color:black;
   font-size: 3vw;
   font-family: 'Noto Sans KR', sans-serif;
-  left: 19vw;
   top:10vh;
 }
 .intro_describe2-2{
@@ -161,11 +160,11 @@
   color:black;
   font-size: 1vw;
   top:20vh;
-  left: 15vw;
   font-family: 'Noto Sans KR', sans-serif;
 }
 
 @mixin on-circle1($item-count, $circle-size, $item-size) {
+  
   width:  $circle-size;
   height: $circle-size;
   border-radius: 50%; 
@@ -245,6 +244,7 @@
   }
   .intro_body2-1{
     display: flex;
+    justify-content: center;
     position: absolute;
     background-color: #d21111;
     margin-top: 7.9vh;
@@ -256,6 +256,7 @@
   }
   .intro_body2-2{
     display: flex;
+    justify-content: center;
     position: relative;
     background-color: #1363be;
     top: 45.4vh;
@@ -267,7 +268,6 @@
   }
   
   .fav-icons2{
-    position: absolute;
     left:10vw;
     top:23vh;
   }
@@ -332,18 +332,17 @@
       background-color: rgba(114, 114, 114, 0.418);
     }
   }
-  .fav-cards2{
+  .fav-cards2Mobile{
     position: absolute;
-    left: 8.5vw;
     top:28vh;
-    width: 80vw;
-    height: 11vh;
+    width: 300px;
+    height: 95px;
   }
   
   .fav-single2{
     
-    width:18vw;
-    height: 9.5vh;
+    width:140px;
+    height: 90px;
     background-color: rgba(255, 255, 255, 0.192);
     border-radius: 20px;
     margin-left:0.5vw;
@@ -353,8 +352,8 @@
     align-items: center;
     cursor: pointer;
     &:hover {
-      width: 18.5vw;
-      height: 10vh;
+      width: 145px;
+      height: 90px;
       background-color: rgba(255, 255, 255, 0.438);
       box-shadow: 2px 4px 7px 2px rgba(95, 95, 95, 0.11);
     }
@@ -379,7 +378,6 @@
     color:white;
     font-size: 7vw;
     font-family: 'Noto Sans KR', sans-serif;
-    left: 39vw;
     top:8vh;
   }
   .intro_describe1-2{
@@ -387,7 +385,6 @@
     color:white;
     font-size: 0.9vw;
     top:15vh;
-    left: 21vw;
     font-family: 'Noto Sans KR', sans-serif;
   }
   
@@ -396,7 +393,6 @@
     color:black;
     font-size: 7vw;
     font-family: 'Noto Sans KR', sans-serif;
-    left: 36vw;
     top:8vh;
   }
   .intro_describe2-2{
@@ -404,7 +400,6 @@
     color:black;
     font-size: 0.9vw;
     top:15vh;
-    left: 24vw;
     font-family: 'Noto Sans KR', sans-serif;
   }
   
@@ -438,13 +433,24 @@
   
   .sound-list1 {
     position: absolute;
-    @include on-circle1($item-count: 20, $circle-size: 70vw, $item-size: 15vw);
+    @include on-circle1($item-count: 20, $circle-size: 150vw, $item-size: 30vw);
     background-color: rgba(255, 99, 71, 0.001);
     border-radius: 50%;
-    left:13vw;
+    right:-27vw;
     top: 32vh;
     transition: transform 0.1s;
     z-index: 2;
+    transition: all 1.5s cubic-bezier(.77,0,.175,1);
+    animation: autoSpin 30s infinite linear;
+  }
+
+  @keyframes autoSpin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
   }
   
   .sound-card1{
@@ -468,6 +474,7 @@
     margin-left:0.3vw;
     color: #d21111;
     font-family: 'Noto Sans KR', sans-serif;
+    
   }
   
 }

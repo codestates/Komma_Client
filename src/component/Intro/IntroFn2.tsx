@@ -7,7 +7,17 @@ import React, { useEffect, useRef } from 'react';
 import medi from '../../img/airpot.png';
 
 
-const IntroFn2 = () => {
+interface IntroFn2Props{
+  width : number;
+  handlingWindowSize: (size: number) => void;
+}
+
+const IntroFn2: React.FC<IntroFn2Props> = (
+  {
+    handlingWindowSize,
+    width
+  }
+) => {
 
   let whellEvent = (delta: any) => {
     if (delta.wheelDelta >= 0) {
@@ -34,11 +44,19 @@ const IntroFn2 = () => {
   }, []);
 
 
+  useEffect(() => {
+    handlingWindowSize(window.innerWidth);
+    window.addEventListener('resize', () => handlingWindowSize(window.innerWidth));
+    return () => {
+      window.addEventListener('resize', () => handlingWindowSize(window.innerWidth));
+    }
+  }, []);
+
   const settings = {
     dots: false,
     infinite: false,
     speed: 1000,
-    slidesToShow: 4,
+    slidesToShow: width > 800 ? 4 : 2,
     slidesToScroll: 1
   }
   return (
@@ -84,7 +102,7 @@ const IntroFn2 = () => {
             <img src={img_delete} alt='' />
           </span>
         </div>
-        <Slider className='fav-cards2' {...settings}>
+        <Slider className={width > 800 ? 'fav-cards2' : 'fav-cards2Mobile'} {...settings}>
           <SingleFav />
           <SingleFav />
           <SingleFav />

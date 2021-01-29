@@ -73,9 +73,9 @@ const IntroFn3: React.FC<TimerProps> = ({
       </div>
       </Fade>
       <Fade delay={1200}><div className='intro_body3-2'>
+        <Fade delay={1500}><div className='intro_describe4'>SELECT</div></Fade>
+        <Fade delay={1800}><div className='intro_describe4-2'>배경화면을 원하는 색으로 설정해보세요!</div></Fade>
         <div className={`intro-${introColor}`}>
-          <Fade delay={1500}><div className='intro_describe4'>SELECT</div></Fade>
-          <Fade delay={1800}><div className='intro_describe4-2'>배경화면을 원하는 색으로 설정해보세요!</div></Fade>
           <div className='setting-general1-color1'>
             <div className='introColor'>
               <div className={introColor === 'blue1' ? 'blue1 selected1' : 'blue1'} onClick={() => onIntroColorChnage('blue1')} />

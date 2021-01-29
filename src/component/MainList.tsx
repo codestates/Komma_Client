@@ -4,11 +4,12 @@ import wheelUp from '../img/wheelup.png';
 import wheelDown from '../img/wheeldown.png';
 import pointerLeft from '../img/pointer-left.png';
 import pointerRight from '../img/pointer-right.png';
-import sounds from '../sounds/index';
-import { getSoundList } from '../modules/list';
+import touch from '../img/touch.png';
+import touchGuide from '../img/start-grey.png';
 import axios from 'axios';
 
 interface ListProps {
+  width: number;
   playList?: any[];
   soundList: any[];
   addList: (item: object) => void;
@@ -35,6 +36,7 @@ interface SingleSoundProps {
 
 const MainList: React.FC<ListProps> = ({
   playList,
+  width,
   soundList,
   addList,
   deleteList,
@@ -102,8 +104,7 @@ const MainList: React.FC<ListProps> = ({
   }, []);
 
   return(
-    <div className='sound-list' ref={ref} >
-
+    <div className={width > 800 ? 'sound-list' : 'sound-list-m'} ref={ref} >
       {
         soundList.map((sound) => <SingleSoundCard
         key={sound.id}
@@ -172,13 +173,7 @@ const SingleSoundCard: React.FC<SingleSoundProps> = ({
           imgRef.current.style.width = '50%';
           imgRef.current.style.top = '0px';
           // 플레이 리스트에서 제거
-          let modifiedPlayList = playList.slice();
-          for(let j = 0; j < playList.length; j ++) {
-            if(id === playList[j].id) {
-              modifiedPlayList.splice(j, 1);
-              setList(modifiedPlayList);
-            } 
-          }
+          deleteList(id);
         }
       }
     }
@@ -286,7 +281,13 @@ const SingleSoundCard: React.FC<SingleSoundProps> = ({
   );
 }
 
-export const ListTutorial = () => {
+interface TutorialProps {
+  width: number;
+  handleWindowSize: (size: number) => void;
+}
+
+
+export const ListTutorial = ({ width, handleWindowSize }) => {
 
   // 원판 이용안내창 등장 후 제거
   let tutorialTarget: any = useRef();
@@ -302,15 +303,62 @@ export const ListTutorial = () => {
     }, 5500);
   }, []);
 
-  return(
-    <div className='tutorial' ref={tutorialTarget}>
-      <h1>Mouse Wheel</h1>
-      <img src={pointerLeft} alt='' className='pointer left' />
-      <img src={pointerRight} alt='' className='pointer right' />
-      <div>
-        <img src={wheelUp} alt='' />
-        <img src={wheelDown} alt='' />
+  if(width > 800) {
+    return(
+      <div className='tutorial' ref={tutorialTarget}>
+        <h1>Mouse Wheel</h1>
+        <img src={pointerLeft} alt='' className='pointer left' />
+        <img src={pointerRight} alt='' className='pointer right' />
+        <div>
+          <img src={wheelUp} alt='' />
+          <img src={wheelDown} alt='' />
+        </div>
       </div>
+    );
+  }
+  else {
+    return(
+      <div className='tutorial m' ref={tutorialTarget}>
+        <h1>Touch</h1>
+        <img src={pointerLeft} alt='' className='pointer left' />
+        <img src={pointerRight} alt='' className='pointer right' />
+        <div>
+          <img src={touch} alt='' />
+        </div>
+      </div>
+    );
+  }
+}
+
+interface GuideProps {
+  degree: number;
+  handleDegree: (deg: number) => void;
+}
+
+export const TouchGuide = ({ degree, handleDegree }) => {
+
+  let soundList: any;
+
+  useEffect(() => {
+    soundList = document.querySelector('.sound-list-m');
+    console.log(soundList)
+    soundList.style.transform = `rotate(${degree}deg)`;
+  }, [degree]);
+
+  // 모바일 우회전 클릭 이벤트
+  const touchRight = () => {
+    handleDegree(degree - 15)
+  }
+
+  // 모바일 우회전 클릭 이벤트
+  const touchLeft = () => {
+    handleDegree(degree + 15)
+  }
+
+  return(
+    <div className='touch-guide'>
+      <img src={touchGuide} alt='' className='pointer left touch' onClick={touchLeft}/>
+      <img src={touchGuide} alt='' className='pointer right touch' onClick={touchRight}/>
     </div>
   );
 }

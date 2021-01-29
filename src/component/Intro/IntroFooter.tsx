@@ -18,7 +18,7 @@ const IntroFooter = ({ onHandleIntro
   return (
     <div className='introFooterBody'>
       <div className='introFooter'>
-        <Fade><div className='controlcolor2' /></Fade>
+      <Fade><div className='controlcolor2' /></Fade>
         <Fade up delay={900}>
           <div className='introFooter_description'>
             Komma

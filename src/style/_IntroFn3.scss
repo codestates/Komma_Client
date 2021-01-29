@@ -1,11 +1,10 @@
 .intro_Fn3{
   display: flex;
   height: 71.5vh;
-
-
 }
 .intro_body3-1{
   display: flex;
+  justify-content: center;
   position: relative;
   background-color: rgb(17, 16, 16);
   margin-top: 1.55vh;
@@ -17,6 +16,7 @@
 
 .intro_body3-2{
   display: flex;
+  justify-content: center;
   position: relative;
   background-color: #F1F1F3;
   margin-top: 8.7vh;
@@ -31,7 +31,6 @@
   color:white;
   font-size: 3vw;
   font-family: 'Noto Sans KR', sans-serif;
-  left: 17.5vw;
   top:10vh;
 }
 .intro_describe3-2{
@@ -39,7 +38,6 @@
   color:white;
   font-size: 1vw;
   top:20vh;
-  left: 16.5vw;
   font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -48,28 +46,30 @@
   color:black;
   font-size: 3vw;
   font-family: 'Noto Sans KR', sans-serif;
-  left: 19vw;
   top:10vh;
+  z-index: 999;
 }
 .intro_describe4-2{
   position: absolute;
   color:black;
   font-size: 1vw;
   top:20vh;
-  left: 16.1vw;
   font-family: 'Noto Sans KR', sans-serif;
+  z-index: 999;
 }
 
 .setting-general1 {
   &-color1 {
   position: absolute;
+  left:5vw;
+  right: 5vw;
   top:45vh;
-  left:11.5vw;
     & .introColor {
       display: flex;
+      justify-content: center;
       @mixin introColor {
-        width: 1.5vw;
-        height: 2.8vh;
+        width: 25px;
+        height: 25px;
         border-radius: 50%;
         border: 5px solid rgba(32, 32, 32, 0.63);
         margin-right: 1vw;
@@ -195,22 +195,23 @@
 
 .timer-container1 {
   position: absolute;
+  justify-content: center;
   width: 11vw;
-  height: 6vh;
+  height: 56px;
   display: flex;
   flex-direction: column;
   background-color: rgba(252, 252, 252, 0.411);
   border-radius: 40px;
   top: 43vh;
-  left: 18vw;
+  left: 19vw;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .time1 {
-  width: 5vw;
-  height: 5vh;
+  width: 100%;
+  height: 70%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -219,8 +220,8 @@
 }
 
 .timer-buttons1 {
-  width: 10vw;
-  height: 10vw;
+  width: 100%;
+  height: 30%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -229,8 +230,8 @@
 @mixin buttons1 {
   position: absolute;
   top: 0.3vw;
-  width: 2.7vw;
-  height: 5vh;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background-color: rgba(252, 252, 252, 0.411);
   box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.075);
@@ -242,7 +243,7 @@
 
 .timer-plus1 {
   @include buttons1;
-  right:15vw;
+  right:15.5vw;
   &:active {
     box-shadow: inset 1px 1px 10px 1px rgba(0, 0, 0, 0.075);
     background-color: darken($color: rgba(252, 252, 252, 0.411), $amount: 5%);
@@ -332,7 +333,6 @@
     color:white;
     font-size: 7vw;
     font-family: 'Noto Sans KR', sans-serif;
-    left: 33vw;
     top:8vh;
   }
   .intro_describe3-2{
@@ -340,7 +340,6 @@
     color:white;
     font-size: 0.9vw;
     top:15vh;
-    left: 28.5vw;
     font-family: 'Noto Sans KR', sans-serif;
   }
   
@@ -349,24 +348,26 @@
     color:black;
     font-size: 7vw;
     font-family: 'Noto Sans KR', sans-serif;
-    left: 35vw;
     top:8vh;
+    z-index: 999;
   }
   .intro_describe4-2{
     position: absolute;
     color:black;
     font-size: 0.9vw;
     top:15vh;
-    left: 25vw;
     font-family: 'Noto Sans KR', sans-serif;
+    z-index: 999;
   }
   
   .setting-general1 {
     &-color1 {
     position: absolute;
     top:32vh;
-    left:13vw;
+    left:3vw;
+    right:3vw;
       & .introColor {
+        justify-content: center;
         display: flex;
         @mixin introColor {
           width: 4vw;
@@ -531,8 +532,8 @@
   @mixin buttons1 {
     position: absolute;
     top: 0.3vw;
-    width: 7vw;
-    height: 4vh;
+    width: 7.3vw;
+    height: 3.6vh;
     border-radius: 50%;
     background-color: rgba(252, 252, 252, 0.411);
     box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.075);
@@ -544,7 +545,7 @@
   
   .timer-plus1 {
     @include buttons1;
-    right:33vw;
+    right:34vw;
     &:active {
       box-shadow: inset 1px 1px 10px 1px rgba(0, 0, 0, 0.075);
       background-color: darken($color: rgba(252, 252, 252, 0.411), $amount: 5%);

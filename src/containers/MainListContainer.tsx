@@ -9,6 +9,7 @@ const MainSelectedContainer: React.FC = () => {
 
   const playList = useSelector((state: RootState) => state.selected?.playList);
   const soundList = useSelector((state: RootState) => state.list.soundList);
+  const width = useSelector((state: RootState) => state.setting.windowWidth);
   const dispatch = useDispatch();
 
   const addTheList = (item: object) => {
@@ -30,6 +31,7 @@ const MainSelectedContainer: React.FC = () => {
   return (
     <MainList
       playList={playList}
+      width={width}
       soundList={soundList}
       addList={addTheList}
       deleteList={deleteTheList}

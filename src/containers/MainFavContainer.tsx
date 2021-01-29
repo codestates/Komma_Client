@@ -14,10 +14,11 @@ const MainFavContainer: React.FC = () => {
   const backgroundColor = useSelector((state: RootState) => state.color.backgroundColor);
   const isListAddModalOn = useSelector((state: RootState) => state.mixtape?.isListAddModalOn);
   const isDeleteMode = useSelector((state: RootState) => state.mixtape?.isDeleteMode);
-  const soundList = useSelector((state: RootState) => state.list.soundList)
-  const mixtapes = useSelector((state: RootState) => state.mixtape?.mixtapes)
-  const selectedIcon = useSelector((state:RootState) => state.mixtape?.selectedIcon)
-  const playList = useSelector((state: RootState) => state.selected.playList)
+  const soundList = useSelector((state: RootState) => state.list.soundList);
+  const mixtapes = useSelector((state: RootState) => state.mixtape?.mixtapes);
+  const selectedIcon = useSelector((state:RootState) => state.mixtape?.selectedIcon);
+  const playList = useSelector((state: RootState) => state.selected.playList);
+  const width = useSelector((state: RootState) => state.setting.windowWidth);
   const dispatch = useDispatch();
 
   const onhandleListAddModal = () => {
@@ -44,6 +45,7 @@ const MainFavContainer: React.FC = () => {
   return (
     <MainFav
       color={backgroundColor}
+      width={width}
       playList={playList}
       isListAddModalOn={isListAddModalOn}
       isDeleteMode={isDeleteMode}

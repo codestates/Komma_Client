@@ -6,6 +6,8 @@
 
 .introFooter{
   position: absolute;
+  display: flex;
+  justify-content: center;
   background-color:#1363be;
   height: 40vh;
   width: 98.5vw;
@@ -17,7 +19,6 @@
   position: absolute;
   font-size: 6.5vw;
   color:white;
-  left: 37vw;
   top: 8vh;
   font-family: 'Noto Sans KR', sans-serif;
   z-index: 1;
@@ -30,8 +31,9 @@
   border-radius: 30px;
   background-color: white;
   color:#1565c0 ;
+  left:45vw;
   border: none;
-  left: 44.1vw;
+
   top:28vh;
   font-family: 'Noto Sans KR', sans-serif;
 }
@@ -42,6 +44,7 @@
   width: 49vw;
   height: 5.3vh;
   bottom: 41.6vh;
+  left:0vw;
 }
 
 .footerInformation{
@@ -99,7 +102,9 @@
 
 .teamMembers{
   position: absolute;
+  position: relative;
   font-size: 1vw;
+  height: 25vh;
   left:64vw;
   top:1vh;
 }
@@ -125,40 +130,40 @@
 }
 
 .front_end{
-  position: absolute;
-  top: 3vh;
-  left:1.4vw;
+  position: relative;
+  top: 2vh;
+  left:1.8vw;
   font-family: 'Nanum Gothic', sans-serif;
 }
 .back_end{
-  position: absolute;
-  top: 14vh;
-  left:1.7vw;
+  position: relative;
+  top: 2vh;
+  left:1.9vw;
   font-family: 'Nanum Gothic', sans-serif;
 }
 .member4{
-  position: absolute;
+  position: relative;
   width: 4vw;
   left: 0vw;
-  top:  3.1vw;
+  top:  1.5vh;
 }
 .member3{
-  position: absolute;
-  width: 4vw;
-  left: 4vw;
-  top:  9vw;
-}
-.member2{
-  position: absolute;
+  position: relative;
   width: 4vw;
   left: 0vw;
-  top:  9vw;
+  top:  1.5vh;
+}
+.member2{
+  position: relative;
+  width: 4vw;
+  left: 0vw;
+  top:  1.5vh;
 }
 .member1{
-  position: absolute;
+  position: relative;
   width: 4.2vw;
-  left: 4vw;
-  top:  2.9vw;
+  left: 0vw;
+  top:  1.5vh;
 }
 .app{
   position: relative;
@@ -181,7 +186,8 @@
 @media all and (max-width:767px) {
   .introFooterBody{
     position: relative;
-    height: 62vh;
+    height: 64vh;
+    overflow: hidden;
   }
   
   
@@ -230,7 +236,7 @@
     position: relative;
     width: 95.4vw;
     top: 21.3vh;
-    height: 30vh;
+    height: 32vh;
     background-color: #f1f1f3;
   }
   .information{
@@ -272,15 +278,19 @@
   .resources{
     position: absolute;
     font-size: 0vw;
-    left:50vw;
+    left:0vw;
     top:1vh;
   }
   .resourcesContent{
     font-family: 'Nanum Gothic', sans-serif;
+  
   }
   
   .teamMembers{
     position: absolute;
+    position: relative;
+    width:35vw;
+    height: 30vh;
     font-size: 1vw;
     left:8vw;
     top:3vh;
@@ -293,9 +303,9 @@
     width: 30vw;
   }
   .footerSince{
-    position: absolute;
+    position: relative;
     font-size: 1vw;
-    left:46vw;
+    left:10vw;
     top:19vh;
     width: 50vw;
   }
@@ -307,41 +317,41 @@
   }
   
   .front_end{
-    position: absolute;
-    top: 3vh;
+    position: relative;
+    top: 1vh;
     left:0vw;
-    width: 40vw;
+    width: 20vw;
     font-family: 'Nanum Gothic', sans-serif;
   }
   .back_end{
-    position: absolute;
-    top: 11vh;
+    position: relative;
+    top: 1.5vh;
     left:0vw;
     font-family: 'Nanum Gothic', sans-serif;
   }
   .member4{
-    position: absolute;
+    position: relative;
     width:15vw;
     left: 0vw;
-    top:  10vw;
+    top:  1.5vw;
   }
   .member3{
-    position: absolute;
-    width: 15vw;
-    left: 16vw;
-    top:  26vw;
-  }
-  .member2{
-    position: absolute;
+    position: relative;
     width: 15vw;
     left: 0vw;
-    top:  26vw;
+    top:  2.5vw;
+  }
+  .member2{
+    position: relative;
+    width: 15vw;
+    left: 0vw;
+    top:  2.5vw;
   }
   .member1{
-    position: absolute;
+    position: relative;
     width: 16vw;
-    left: 16vw;
-    top:  9vw;
+    left: 0vw;
+    top:  1.5vw;
   }
   .app{
     position: absolute;

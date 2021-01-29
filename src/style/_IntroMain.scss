@@ -5,10 +5,7 @@
 
 }
 
-.background{
-  z-index: 1;
 
-}
 .intro_Main{
   position: relative;
   width: 100vw;
@@ -17,6 +14,8 @@
 }
 .background{
   position: absolute;
+  width: 100vw;
+  height: 140vh;
   z-index: 0;
   bottom:0vh;
 }
@@ -192,7 +191,7 @@
   
   .intro_Mainbutton{
     position: relative; 
-    width: 19vw;
+    width: 21vw;
     height: 4vh;
     font-size: 2.8vw;
     border-radius: 30px;
