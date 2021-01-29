@@ -41,6 +41,15 @@ const MainSelected: React.FC<SelectedProps> = ({
   setList
 }) => {
 
+  //! 음악 재생 시 자동 팝업
+  useEffect(() => {
+    if(playList && playList.length > 0) {
+      if(!isListBarOpen) {
+        handleList();
+      }
+    }
+  }, [playList])
+
   return(
     <aside className={isListBarOpen ? 'selectedBar' : 'selectedBar hide'}>
       <div className={isListBarOpen ? 'selectedButton' : 'selectedButton hide'} onClick={handleList}>

@@ -122,6 +122,7 @@ const Setting: React.FC<SettingProps> = ({
       localStorage.clear();
       handleLogin();
       handleSettingModal();
+      window.location.reload();
       return alert('성공적으로 로그아웃 되었습니다!');
     })
   }

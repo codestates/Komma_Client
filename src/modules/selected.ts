@@ -61,7 +61,7 @@ const selected = (state: SelectedState= initialState, action: SelectedAction) =>
 const deleteItemFromState = (state: SelectedState, action: any) => {
 
   for(let i = 0; i < state.playList.length; i ++) {
-    if(state.playList[i].id === action.payload.id) {
+    if(state.playList[i].id === action.payload.itemId) {
       let copiedPlayList = state.playList.slice();
       copiedPlayList.splice(i, 1);
       return Object.assign({}, state, {playList: copiedPlayList})
