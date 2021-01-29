@@ -58,32 +58,7 @@ const initialState: MixtapeState = {
       "play": false,
       "id": 999,
       "icon": " https://i.imgur.com/POL0Oip.png",
-      "savesongs": [
-        {
-          defaultVolume: 0.8,
-          iconImg: "https://i.imgur.com/hiMe7BV.png",
-          id: 14,
-          play: true,
-          soundFile: "http://www.kommaa.shop/sounds/firewood.mp3",
-          title: "장작",
-        },
-        {
-          defaultVolume: 0.4,
-          iconImg: "https://i.imgur.com/HnZDCjb.png",
-          id: 3,
-          play: false,
-          soundFile: "http://www.kommaa.shop/sounds/leaves.mp3",
-          title: "낙엽",
-        },
-        {
-          defaultVolume: 0.2,
-          iconImg: "https://i.imgur.com/vkUgljs.png",
-          id: 25,
-          play: true,
-          soundFile: "http://www.kommaa.shop/sounds/bell.mp3",
-          title: "종",
-        }
-      ]
+      "savesongs": [ /* 랜덤으로 생겨요~! */ ]
     },
     {
       "title": "Summer Night",

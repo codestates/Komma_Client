@@ -7,7 +7,8 @@ import {
   handleDarkMode,
   handleUserInfoChangeMode,
   getEmailFromServer,
-  getUserNameFromServer
+  getUserNameFromServer,
+  handleOptionPage
 } from '../modules/setting';
 import { changeColor } from '../modules/color';
 import { handleLogin } from '../modules/signin';
@@ -23,6 +24,8 @@ const SettingContainer: React.FC = () => {
   const currentPassword = useSelector((state: RootState) => state.setting.currentPassword);
   const newPassword = useSelector((state: RootState) => state.setting.newPassword);
   const repeatPassword = useSelector((state: RootState) => state.setting.repeatPassword);
+  const width = useSelector((state: RootState) => state.setting.windowWidth);
+  const isGeneralOption = useSelector((state: RootState) => state.setting.isGeneralOption);
   const dispatch = useDispatch();
 
   const handlingSettingModal = () => {
@@ -46,11 +49,16 @@ const SettingContainer: React.FC = () => {
   const handlingLogin = () => {
     dispatch(handleLogin());
   }
+  const handlingOptionPage = () => {
+    dispatch(handleOptionPage());
+  }
 
   return (
     <Setting
       isSettingModalOn={isSettingModalOn}
+      isGeneralOption={isGeneralOption}
       isDarkMode={isDarkMode}
+      width={width}
       color={color}
       email={email}
       username={username}
@@ -65,6 +73,7 @@ const SettingContainer: React.FC = () => {
       getUserNameFromServer={gettingUserNameFromServer}
       getEmailFromServer={gettingEmailFromServer}
       handleLogin={handlingLogin}
+      handleOptionPage={handlingOptionPage}
     />
   );
 }

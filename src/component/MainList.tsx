@@ -73,21 +73,23 @@ const MainList: React.FC<ListProps> = ({
   let ref: any = useRef();
   let degree: number = 220;
   useEffect(() => {
-    ref.current.style.transform = `rotate(${degree}deg)`;
-    ref.current.addEventListener('mousewheel', (delta: any) => {
-      if(delta.wheelDelta >= 0) {
-        //console.log('++');
-        //console.log(delta.wheelDelta);
-        ref.current.style.transform = `rotate(${degree}deg)`;
-        degree = degree - 2;
-      }
-      else {
-        //console.log('--');
-        //console.log(delta.wheelDelta);
-        ref.current.style.transform = `rotate(${degree}deg)`;
-        degree = degree + 2;
-      }
-    })
+    if(width > 1099) {
+      ref.current.style.transform = `rotate(${degree}deg)`;
+      ref.current.addEventListener('mousewheel', (delta: any) => {
+        if(delta.wheelDelta >= 0) {
+          //console.log('++');
+          //console.log(delta.wheelDelta);
+          ref.current.style.transform = `rotate(${degree}deg)`;
+          degree = degree - 2;
+        }
+        else {
+          //console.log('--');
+          //console.log(delta.wheelDelta);
+          ref.current.style.transform = `rotate(${degree}deg)`;
+          degree = degree + 2;
+        }
+      })
+    }
   }, []);
 
   // 서버에서 노래정보 가져오기
@@ -104,7 +106,7 @@ const MainList: React.FC<ListProps> = ({
   }, []);
 
   return(
-    <div className={width > 800 ? 'sound-list' : 'sound-list-m'} ref={ref} >
+    <div className={width > 1101 ? 'sound-list' : 'sound-list-m'} ref={ref} >
       {
         soundList.map((sound) => <SingleSoundCard
         key={sound.id}
@@ -303,7 +305,7 @@ export const ListTutorial = ({ width, handleWindowSize }) => {
     }, 5500);
   }, []);
 
-  if(width > 800) {
+  if(width > 1100) {
     return(
       <div className='tutorial' ref={tutorialTarget}>
         <h1>Mouse Wheel</h1>
@@ -335,7 +337,7 @@ interface GuideProps {
   handleDegree: (deg: number) => void;
 }
 
-export const TouchGuide = ({ degree, handleDegree }) => {
+export const TouchGuide: React.FC<GuideProps> = ({ degree, handleDegree }) => {
 
   let soundList: any;
 

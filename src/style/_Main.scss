@@ -39,52 +39,56 @@
   @include randomColor;
   background-color: $violet;
 }
+.Main-pink {
+  @include randomColor;
+  background-color: $pink;
+}
 .Main-random {
   box-shadow: none;
   @include randomColor;
   animation: interval 100s infinite alternate-reverse;
 }
 
-$colors: $blue, $red, $orange, $teal, $cyan, $violet, $lime, $yellow;
+$colors: $blue, $red, $orange, $teal, $cyan, $violet, $lime, $yellow, $pink;
 @keyframes interval {
   10% {
-    $nth: nth($colors, random(8));
+    $nth: nth($colors, random(8) +1);
       background-color: $nth;
   }
   20% {
-    $nth: nth($colors, random(8));
+    $nth: nth($colors, random(8) +1);
       background-color: $nth;
   }
   30% {
-    $nth: nth($colors, random(8));
+    $nth: nth($colors, random(8) +1);
       background-color: $nth;
   }
   40% {
-    $nth: nth($colors, random(8));
+    $nth: nth($colors, random(8) +1);
       background-color: $nth;
   }
   50% {
-    $nth: nth($colors, random(8));
+    $nth: nth($colors, random(8) +1);
       background-color: $nth;
   }
   60% {
-    $nth: nth($colors, random(8));
+    $nth: nth($colors, random(8) +1);
       background-color: $nth;
   }
   70% {
-    $nth: nth($colors, random(8));
+    $nth: nth($colors, random(8) +1);
       background-color: $nth;
   }
   80% {
-    $nth: nth($colors, random(8));
+    $nth: nth($colors, random(8) +1);
       background-color: $nth;
   }
   90% {
-    $nth: nth($colors, random(8));
+    $nth: nth($colors, random(8) +1);
       background-color: $nth;
   }
   100% {
-    $nth: nth($colors, random(8));
+    $nth: nth($colors, random(8) +1);
       background-color: $nth;
   }
 }

@@ -42,9 +42,9 @@ const timer = (state = initialState, action: TimerAction) => {
     case STOP_TIMER:
       return Object.assign({}, state, {isCounting: false, minute: 0, seconds: 0})
     case ADD_TEN_MIN:
-      return state.minute < 120 ? Object.assign({}, state, {minute: state.minute + 10}) : state
+      return state.minute < 120 ? Object.assign({}, state, {minute: state.minute + 5}) : state
     case REMOVE_TEN_MIN:
-      return state.minute > 0 ? Object.assign({}, state, {minute: state.minute - 10}) : state
+      return state.minute > 0 ? Object.assign({}, state, {minute: state.minute - 5}) : state
     case REMOVE_ONE_SEC:
       return oneTic(state)
     case HANDLE_ENDING_MODAL:

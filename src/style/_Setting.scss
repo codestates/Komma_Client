@@ -35,8 +35,8 @@
     margin-bottom: 20px;
     & .title {
       font-weight: bold;
-      margin-top: 20px;
-      margin-bottom: 0px;
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
     & .content {
       width: 100%;
@@ -50,7 +50,6 @@
   & .name-container {
     width: 60%;
     margin-bottom: 20px;
-    margin-top: 10px;
     & .title {
       font-weight: bold;
       margin-bottom: 10px;
@@ -190,13 +189,14 @@
         @include color;
         background-color: $lime;
       }
+      & .pink {
+        @include color;
+        background-color: $pink;
+      }
       & .random {
         @include color;
-        background-color: rgb(255, 255, 255);
-      }
-      & .no {
-        @include color;
-        background-color: grey;
+        background-image: url('../img/random.png');
+        background-position: center;
       }
     }
   }
@@ -220,5 +220,49 @@
   }
   &.back, &.logout {
     margin-top: 10px;
+  }
+}
+
+@media all and (max-width: 800px) {
+  .setting-container {
+    width: 300px;
+  }
+
+  .setting-userinfo {
+    margin-left: 25px;
+  }
+
+  .setting-general {
+    left: -35px;
+    margin-left: 25px;
+    &-title {
+      margin-left: -30px;
+    }
+  }
+
+  .togeneral {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    &:focus {
+      outline: none;
+    }
+    &:active {
+      & img {
+        opacity: 0.8;
+      }
+    }
+    & img {
+      width: 20px;
+      height: 33px;
+      opacity: 0.5;
+    }
+    & p {
+      font-size: 11px;
+      margin-top: 20px;
+      margin-right: 5px;
+    }
   }
 }
