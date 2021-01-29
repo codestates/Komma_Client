@@ -6,18 +6,16 @@
 
 .introFooter{
   position: absolute;
-  background-color:#1565c0;
+  background-color:#1363be;
   height: 40vh;
-  width: 98.3vw;
-  margin-left: 15px;
-  margin-right: 15px;
-  margin-bottom: 15px;
-  margin-top: 77px;
+  width: 98.5vw;
+  top: 8.8vh;
+  margin-left:0.8vw;
 }
 
 .introFooter_description{
   position: absolute;
-  font-size: 120px;
+  font-size: 6.5vw;
   color:white;
   left: 37vw;
   top: 8vh;
@@ -26,72 +24,329 @@
 }
 .introFooter_button{
   position: absolute;; 
-  width: 180px;
-  height: 60px;
-  font-size: 20px;
+  width: 10vw;
+  height: 6vh;
+  font-size: 1vw;
   border-radius: 30px;
   background-color: white;
   color:#1565c0 ;
   border: none;
   left: 44.1vw;
-  top:30vh;
+  top:28vh;
   font-family: 'Noto Sans KR', sans-serif;
 }
 
 .controlcolor2{
   position: absolute;
-  background-color: #dabc0e;
-  width: 48.8vw;
-  height: 62px;
-  bottom: 41.5vh;
+  background-color: #ffd900;
+  width: 49vw;
+  height: 5.3vh;
+  bottom: 41.6vh;
 }
 
 .footerInformation{
   position: relative;
-  height: 20vh;
-  width: 98.3vw;
-  top: 41.5vh;;
-  margin-right: 15px;
-  margin-bottom: 15px;
+  width: 98.5vw;
+  top: 41.8vh;
+  height: 40vh;
   background-color: #f1f1f3;
 }
 .information{
+  display: flex;
   position: absolute;
-  font-size: 20px;
-  top:5vh;
-  left: 12vw;
+  font-size: 1vw;
+  top:4vh;
   font-family: 'Noto Sans KR', sans-serif;
 }
+.footerTitle{
+  position: absolute;
+  font-size: 1.5vw;
+  left: 9vw;
+  
 
+}
+.company{
+  position: absolute;
+  font-size: 1vw;
+  left:22vw;
+  top:1vh;
+  width: 10vw;
+  
+}
+.companyContent{
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+.product{
+  position: absolute;
+  font-size: 1vw;
+  left:37vw;
+  top:1vh;
+}
+.productContent{
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+.resources{
+  position: absolute;
+  font-size: 1vw;
+  left:50vw;
+  top:1vh;
+}
+.resourcesContent{
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+.teamMembers{
+  position: absolute;
+  font-size: 1vw;
+  left:64vw;
+  top:1vh;
+}
+.getTheAPPS{
+  position: absolute;
+  font-size: 1vw;
+  left:79vw;
+  top:1vh;
+  width: 10vw;
+}
+.footerSince{
+  position: absolute;
+  font-size: 1vw;
+  left:40vw;
+  top:30vh;
+  width: 50vw;
+}
+.blank1{
+  margin-top: 1.4vh;
+}
+.blank2{
+  margin-top: 2vh;
+}
+
+.front_end{
+  position: absolute;
+  top: 3vh;
+  left:1.4vw;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+.back_end{
+  position: absolute;
+  top: 14vh;
+  left:1.7vw;
+  font-family: 'Nanum Gothic', sans-serif;
+}
 .member4{
   position: absolute;
-  height: 100px;
-  left: 1100px;
-  top:  50px;
+  width: 4vw;
+  left: 0vw;
+  top:  3.1vw;
 }
 .member3{
   position: absolute;
-  height: 100px;
-  left: 1480px;
-  top:  50px;
+  width: 4vw;
+  left: 4vw;
+  top:  9vw;
 }
 .member2{
   position: absolute;
-  height: 100px;
-  left: 1360px;
-  top:   50px;
+  width: 4vw;
+  left: 0vw;
+  top:  9vw;
 }
 .member1{
   position: absolute;
-  height: 100px;
-  left: 1230px;
-  top:   50px;
+  width: 4.2vw;
+  left: 4vw;
+  top:  2.9vw;
+}
+.app{
+  position: relative;
+  width: 10vw;
+  top: 3vh;
+  left: -0.5vw;
 }
 
-.github{
-  position: absolute;
-  font-size: 30px;
-  left: 72vw;
-  top:2vh;
-  font-family: 'Noto Sans KR', sans-serif;
-}
+
+
+
+
+
+
+
+
+
+
+
+@media all and (max-width:767px) {
+  .introFooterBody{
+    position: relative;
+    height: 62vh;
+  }
+  
+  
+  .introFooter{
+    position: absolute;
+    background-color:#1363be;
+    height: 20vh;
+    width: 95.4vw;
+    top: 9.5vh;
+    left:0.6vh;
+    margin-left:0.8vw;
+  }
+  
+  .introFooter_description{
+    position: absolute;
+    font-size: 6.5vw;
+    color:white;
+    left: 36vw;
+    top: 4vh;
+    font-family: 'Noto Sans KR', sans-serif;
+    z-index: 1;
+  }
+  .introFooter_button{
+    position: absolute;; 
+    width: 18vw;
+    height: 3.5vh;
+    font-size: 1vw;
+    border-radius: 30px;
+    background-color: white;
+    color:#1565c0 ;
+    border: none;
+    left: 39vw;
+    top:12vh;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  
+  .controlcolor2{
+    position: absolute;
+    background-color: #ffd900;
+    width: 95.4vw;
+    height: 5.3vh;
+    bottom: 21.2vh;
+  }
+  
+  .footerInformation{
+    position: relative;
+    width: 95.4vw;
+    top: 21.3vh;
+    height: 30vh;
+    background-color: #f1f1f3;
+  }
+  .information{
+    display: flex;
+    position: absolute;
+    font-size: 1vw;
+    top:4vh;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  .footerTitle{
+    position: absolute;
+    font-size: 5vw;
+    left: 39vw;
+    
+  
+  }
+  .company{
+    position: absolute;
+    font-size: 0vw;
+    top: 0vh;
+    left:22vw;
+    width: 10vw;
+    
+  }
+  .companyContent{
+    font-family: 'Nanum Gothic', sans-serif;
+  }
+  
+  .product{
+    position: absolute;
+    font-size: 0vw;
+    left:37vw;
+    top:1vh;
+  }
+  .productContent{
+    font-family: 'Nanum Gothic', sans-serif;
+  }
+  
+  .resources{
+    position: absolute;
+    font-size: 0vw;
+    left:50vw;
+    top:1vh;
+  }
+  .resourcesContent{
+    font-family: 'Nanum Gothic', sans-serif;
+  }
+  
+  .teamMembers{
+    position: absolute;
+    font-size: 1vw;
+    left:8vw;
+    top:3vh;
+  }
+  .getTheAPPS{
+    position: absolute;
+    font-size: 1vw;
+    left:58vw;
+    top:5vh;
+    width: 30vw;
+  }
+  .footerSince{
+    position: absolute;
+    font-size: 1vw;
+    left:46vw;
+    top:19vh;
+    width: 50vw;
+  }
+  .blank1{
+    margin-top: 1.4vh;
+  }
+  .blank2{
+    margin-top: 2vh;
+  }
+  
+  .front_end{
+    position: absolute;
+    top: 3vh;
+    left:0vw;
+    width: 40vw;
+    font-family: 'Nanum Gothic', sans-serif;
+  }
+  .back_end{
+    position: absolute;
+    top: 11vh;
+    left:0vw;
+    font-family: 'Nanum Gothic', sans-serif;
+  }
+  .member4{
+    position: absolute;
+    width:15vw;
+    left: 0vw;
+    top:  10vw;
+  }
+  .member3{
+    position: absolute;
+    width: 15vw;
+    left: 16vw;
+    top:  26vw;
+  }
+  .member2{
+    position: absolute;
+    width: 15vw;
+    left: 0vw;
+    top:  26vw;
+  }
+  .member1{
+    position: absolute;
+    width: 16vw;
+    left: 16vw;
+    top:  9vw;
+  }
+  .app{
+    position: absolute;
+    width: 20vw;
+    top: 3vh;
+    left: -0.5vw;
+  }
+}  

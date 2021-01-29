@@ -45,7 +45,7 @@ const IntroFn2 = () => {
     <div className='intro_Fn2'>
       <Fade delay={400}><div className='intro_body2-1'>
         <Fade delay={700}><div className='intro_describe2'>LISTEN</div> </Fade>
-        <Fade delay={1000}><div className='intro_describe2-2'>편하게 들으세요.</div></Fade>
+        <Fade delay={1000}><div className='intro_describe2-2'>음악을 선택하고 소리음량을 조절해보세요!</div></Fade>
         <div className='sound-list1' ref={ref} >
           <SingleSoundCard />
           <SingleSoundCard />
@@ -72,7 +72,7 @@ const IntroFn2 = () => {
       </Fade>
       <Fade delay={1200}><div className='intro_body2-2'>
         <Fade delay={1500}><div className='intro_describe1'>SAVE</div></Fade>
-        <Fade delay={1800}><div className='intro_describe1-2'>저장하세요.</div> </Fade>
+        <Fade delay={1800}><div className='intro_describe1-2'>마음에드는 조합을 나만의 스타일로 저장해보세요!</div> </Fade>
         <div className='fav-icons2'>
           <span className='fav-icons-desc2'>
             Mixtape ,

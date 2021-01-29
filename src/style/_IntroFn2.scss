@@ -7,7 +7,7 @@
 .intro_body2-1{
   display: flex;
   position: relative;
-  background-color: #c62828;
+  background-color: #d21111;
   margin-top: 1.5vh;
   height: 70vh;
   width: 49vw;
@@ -18,10 +18,10 @@
 .intro_body2-2{
   display: flex;
   position: relative;
-  background-color: #1565c0;
+  background-color: #1363be;
   margin-top: 8.7vh;
   height: 70vh;
-  width: 48.87vw;
+  width: 48.7vw;
 
 }
 
@@ -46,24 +46,24 @@
   background-color: rgba(114, 114, 114, 0.192);
   display: flex;
   width: 7vw;
-  height: 30px;
+  height: 3vh;
+  top:1vh;
   border-radius: 50%;
   justify-content: center;
   align-items: center;
-  margin-left: 10px;
 
 }
 
 .fav-icons-desc2{
   @include iconNav2;
   color: white;
-  font-size: 18px;
+  font-size: 1vw;
 }
 .fav-icons-add2{
   @include iconNav;
-  width: 25px;
-  height: 25px;
-  left: 530px;
+  width: 1.4vw;
+  height: 2.5vh;
+  left: 29vw;
   cursor: pointer;
   transition: all 0.5s;
   & img {
@@ -76,9 +76,9 @@
 }
 .fav-icons-delete2{
   @include iconNav;
-  width: 25px;
-  height: 25px;
-  left: 580px;
+  width: 1.4vw;
+  height: 2.5vh;
+  left: 31.5vw;
   cursor: pointer;
   transition: all 0.5s;
   & img {
@@ -93,87 +93,75 @@
   position: absolute;
   left: 7vw;
   top:45vh;
-  width: 650px;
-  height: 115px;
+  width: 35vw;
+  height: 11vh;
 }
 
 .fav-single2{
   
-  width: 150px;
-  height: 100px;
+  width:8vw;
+  height: 10vh;
   background-color: rgba(255, 255, 255, 0.192);
   border-radius: 20px;
-  margin-right: 10px;
-  margin-left: 5px;
-  margin-top: 5px;
+  margin-left:0.5vw;
   transition: all 0.5s;
   display: flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
   &:hover {
-    width: 160px;
-    height: 105px;
-    margin-top: 3px;
-    margin-left: -0.5px;
+    width: 8.2vw;
+    height: 10.2vh;
     background-color: rgba(255, 255, 255, 0.438);
-    box-shadow: 2px 4px 7px 2px rgba(95, 95, 95, 0.11);
-  }
-  & .checked {
-    width: 160px;
-    height: 105px;
-    margin-top: 3px;
-    margin-left: -0.5px;
-    background-color: rgba(255, 255, 255, 0.315);
     box-shadow: 2px 4px 7px 2px rgba(95, 95, 95, 0.11);
   }
 }
 
 .fav-img2{
-  width: 100%;
-  height: 75%;
+  height: 7vh;
   display: flex;
   justify-content: center;
   align-items: center;
   & img {
     width: auto;
-    height: 65%;
+    height: 5vh;
   }
 }
 .fav-desc2{
   color: white;
+  font-size: 0.8vw;
 }
 .intro_describe1{
   position: absolute;
   color:white;
-  font-size: 50px;
+  font-size: 3vw;
   font-family: 'Noto Sans KR', sans-serif;
-  left: 378px;
-  top:100px;
+  left: 20.7vw;
+  top:10vh;
 }
 .intro_describe1-2{
   position: absolute;
   color:white;
-  font-size: 17px;
-  top:180px;
-  left: 400px;
+  font-size: 1vw;
+  top:20vh;
+  left: 14.3vw;
   font-family: 'Noto Sans KR', sans-serif;
 }
 
 .intro_describe2{
   position: absolute;
   color:black;
-  font-size: 50px;
+  font-size: 3vw;
   font-family: 'Noto Sans KR', sans-serif;
-  left: 340px;
-  top:100px;
+  left: 19vw;
+  top:10vh;
 }
 .intro_describe2-2{
   position: absolute;
   color:black;
-  font-size: 17px;
-  top:180px;
-  left: 369px;
+  font-size: 1vw;
+  top:20vh;
+  left: 15vw;
   font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -207,11 +195,10 @@
 
 .sound-list1 {
   position: absolute;
-  @include on-circle1($item-count: 20, $circle-size: 900px, $item-size: 140px);
+  @include on-circle1($item-count: 20, $circle-size: 50vw, $item-size: 8vw);
   background-color: rgba(255, 99, 71, 0.001);
   border-radius: 50%;
-  margin-left: -600px;
-  left: 32.3vw;
+  right: 0.2vw;
   top: 45vh;
   transition: transform 0.1s;
   z-index: 2;
@@ -219,7 +206,7 @@
 
 .sound-card1{
   background-color: rgba(255, 255, 255, 0);
-  height: 150px;
+  height: 150vh;
   border-radius: 0%;
   display: flex;
   flex-direction: column;
@@ -227,14 +214,260 @@
   align-items: center;
   transition: all 1s;
   & img {
-    width: 50%;
+    width: 50vw;
   }
   & p {
-    margin-top: 20px;
+    margin-top: 20vh;
   }
 }
 
 .sound-card-title{
-  margin-left: 5px;
+  margin-left:0.3vw;
+  font-size: 1vw;
   font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+@media all and (max-width:767px) {
+  .intro_Fn2{
+    display: flex;
+    height: 100vh;
+    position: relative;
+  
+  }
+  .intro_body2-1{
+    display: flex;
+    position: absolute;
+    background-color: #d21111;
+    margin-top: 7.9vh;
+    height: 45vh;
+    width: 95.7vw;
+    margin-right: 2vw;
+    margin-left: 2vw;
+    overflow: hidden;
+  }
+  .intro_body2-2{
+    display: flex;
+    position: relative;
+    background-color: #1363be;
+    top: 45.4vh;
+    height: 45vh;
+    width: 95.7vw;
+    margin-right: 2vw;
+    margin-left: 2vw;
+  
+  }
+  
+  .fav-icons2{
+    position: absolute;
+    left:10vw;
+    top:23vh;
+  }
+  @mixin iconNav {
+    position: absolute;
+    display: block;
+    background-color: rgba(114, 114, 114, 0.192);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 33vw;
+    margin-top: 1vh;
+  }
+  @mixin iconNav2 {
+    position: absolute;
+    background-color: rgba(114, 114, 114, 0.192);
+    display: flex;
+    width: 13vw;
+    height: 2.5vh;
+    top:1.2vh;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
+  .fav-icons-desc2{
+    @include iconNav2;
+    color: white;
+    font-size: 1vw;
+  }
+  .fav-icons-add2{
+    @include iconNav;
+    width: 5vw;
+    height: 2.3vh;
+    left: 30vw;
+    top:0.6vh;
+    cursor: pointer;
+    transition: all 0.5s;
+    & img {
+      width: auto;
+      height: 60%;
+    }
+    &:hover {
+      background-color: rgba(114, 114, 114, 0.418);
+    }
+  }
+  .fav-icons-delete2{
+    @include iconNav;
+    width: 5vw;
+    height: 2.3vh;
+    left: 36vw;
+    top:0.6vh;
+    cursor: pointer;
+    transition: all 0.5s;
+    & img {
+      width: auto;
+      height: 70%;
+    }
+    &:hover {
+      background-color: rgba(114, 114, 114, 0.418);
+    }
+  }
+  .fav-cards2{
+    position: absolute;
+    left: 8.5vw;
+    top:28vh;
+    width: 80vw;
+    height: 11vh;
+  }
+  
+  .fav-single2{
+    
+    width:18vw;
+    height: 9.5vh;
+    background-color: rgba(255, 255, 255, 0.192);
+    border-radius: 20px;
+    margin-left:0.5vw;
+    transition: all 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+      width: 18.5vw;
+      height: 10vh;
+      background-color: rgba(255, 255, 255, 0.438);
+      box-shadow: 2px 4px 7px 2px rgba(95, 95, 95, 0.11);
+    }
+  }
+  
+  .fav-img2{
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & img {
+      width: auto;
+      height: 4vh;
+    }
+  }
+  .fav-desc2{
+    color: white;
+    font-size: 0.1vw;
+  }
+  .intro_describe1{
+    position: absolute;
+    color:white;
+    font-size: 7vw;
+    font-family: 'Noto Sans KR', sans-serif;
+    left: 39vw;
+    top:8vh;
+  }
+  .intro_describe1-2{
+    position: absolute;
+    color:white;
+    font-size: 0.9vw;
+    top:15vh;
+    left: 21vw;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  
+  .intro_describe2{
+    position: absolute;
+    color:black;
+    font-size: 7vw;
+    font-family: 'Noto Sans KR', sans-serif;
+    left: 36vw;
+    top:8vh;
+  }
+  .intro_describe2-2{
+    position: absolute;
+    color:black;
+    font-size: 0.9vw;
+    top:15vh;
+    left: 24vw;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  
+  @mixin on-circle1($item-count, $circle-size, $item-size) {
+    width:  $circle-size;
+    height: $circle-size;
+    border-radius: 50%; 
+    > * {
+      display: block;
+      position: absolute;
+      top:  50%; 
+      left: 50%;
+      width:  $item-size;
+      height: $item-size;
+      margin: -($item-size / 2);
+    
+      $angle: (360 / $item-count);
+      $rot: 0;
+  
+      @for $i from 1 through $item-count {
+        &:nth-of-type(#{$i}) {
+          transform: 
+            rotate($rot * 1deg) 
+            translate($circle-size / 2)
+            rotate(86deg) 
+        }
+        $rot: $rot + $angle;
+      }
+    }
+  }
+  
+  .sound-list1 {
+    position: absolute;
+    @include on-circle1($item-count: 20, $circle-size: 70vw, $item-size: 15vw);
+    background-color: rgba(255, 99, 71, 0.001);
+    border-radius: 50%;
+    left:13vw;
+    top: 32vh;
+    transition: transform 0.1s;
+    z-index: 2;
+  }
+  
+  .sound-card1{
+    background-color: rgba(255, 255, 255, 0);
+    height: 150vh;
+    border-radius: 0%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s;
+    & img {
+      width: 50vw;
+    }
+    & p {
+      margin-top: 20vh;
+    }
+  }
+  
+  .sound-card-title{
+    margin-left:0.3vw;
+    color: #d21111;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  
 }

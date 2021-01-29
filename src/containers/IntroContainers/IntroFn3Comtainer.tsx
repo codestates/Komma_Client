@@ -13,7 +13,7 @@ import {
 import { changeIntroColor } from '../../modules/color';
 
 const IntroFn3Container: React.FC = () => {
-  const color = useSelector((state: RootState) => state.color.introColor);
+  const introColor = useSelector((state: RootState) => state.color.introColor);
   const isCounting = useSelector((state: RootState) => state.timer.isCounting);
   const minute = useSelector((state: RootState) => state.timer.minute);
   const seconds = useSelector((state: RootState) => state.timer.seconds);
@@ -44,7 +44,7 @@ const IntroFn3Container: React.FC = () => {
 
   return (
     <IntroFn3
-      color={color}
+      introColor={introColor}
       onIntroColorChnage={onIntroColorChnage}
       isCounting={isCounting}
       minute={minute}

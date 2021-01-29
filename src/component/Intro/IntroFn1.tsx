@@ -8,7 +8,7 @@ import window2 from '../../img/window3.png'
 
 export const Slier = () => {
   const settings = {
-    
+    arrows:false,
     dots: false,
     infinite: true,
     slidesToShow: 1,
