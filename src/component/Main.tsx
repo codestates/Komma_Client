@@ -112,7 +112,7 @@ const Main: React.FC<MainProps> = ({
         if(data.userInfo.sitecolor !== color) {
           changeColor(data.userInfo.sitecolor);
         }
-        // 믹스테잎 업데이트
+        // 믹스테잎 업데이트 및 랜덤플레이 리스트 섞기
         if(mixtape) {
           let modifiedMixtape = mixtape.slice();
           console.log(modifiedMixtape)
@@ -120,10 +120,16 @@ const Main: React.FC<MainProps> = ({
           if(modifiedMixtape.length === 4) {
             for(let i = 0; i < data.playlists.length; i ++) {
               modifiedMixtape.push(data.playlists[i]);
-              setMixtapeProperty(modifiedMixtape);
+              //setMixtapeProperty(modifiedMixtape);
             }
+            // 랜덤 믹스테잎 만들기
+            for(let i = 0; i < Math.floor(Math.random() * (5 - 0 + 1)) + 0; i ++) {
+              let randomOne: object = soundList[Math.floor(Math.random() * (5 - 0 + 1)) + 0];
+              modifiedMixtape[0].savesongs.push(randomOne);
+            }
+            setMixtapeProperty(modifiedMixtape);
             console.log(modifiedMixtape)
-            console.log('믹스테잎 업데이트');
+            console.log('믹스테잎 업데이트 및 섞기');
           }
         }
       })
@@ -131,6 +137,7 @@ const Main: React.FC<MainProps> = ({
         console.log(error.response);
         if(error.response.status === 400) {
           //! 세션만료 모달, 로그인 해제
+          localStorage.clear();
           handleLogin();
           return alert('세션이 만료되었습니다. 다시 로그인 해주세요');
         }

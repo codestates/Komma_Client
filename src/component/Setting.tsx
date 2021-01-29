@@ -158,8 +158,8 @@ const Setting: React.FC<SettingProps> = ({
                 <div className={color === 'teal' ? 'teal selected' : 'teal'} onClick={() => changeTheColor('teal')}/>
                 <div className={color === 'violet' ? 'violet selected' : 'violet'} onClick={() => changeTheColor('violet')}/>
                 <div className={color === 'lime' ? 'lime selected' : 'lime'} onClick={() => changeTheColor('lime')}/>
+                <div className={color === 'pink' ? 'pink selected' : 'pink'} onClick={() => changeTheColor('pink')}/>
                 <div className={color === 'random' ? 'random selected' : 'random'} onClick={() => changeTheColor('random')}/>
-                <div className='no'/>
               </div>
             </div>
           </article> :
@@ -239,8 +239,8 @@ const Setting: React.FC<SettingProps> = ({
                 <div className={color === 'teal' ? 'teal selected' : 'teal'} onClick={() => changeTheColor('teal')}/>
                 <div className={color === 'violet' ? 'violet selected' : 'violet'} onClick={() => changeTheColor('violet')}/>
                 <div className={color === 'lime' ? 'lime selected' : 'lime'} onClick={() => changeTheColor('lime')}/>
+                <div className={color === 'pink' ? 'pink selected' : 'pink'} onClick={() => changeTheColor('pink')}/>
                 <div className={color === 'random' ? 'random selected' : 'random'} onClick={() => changeTheColor('random')}/>
-                <div className='no'/>
               </div>
             </div>
           </article> :

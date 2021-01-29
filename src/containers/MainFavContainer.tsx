@@ -6,9 +6,10 @@ import { handleDeleteMode } from '../modules/mixtape';
 import { handleListAddModal } from '../modules/mixtape';
 import { addItem } from '../modules/mixtape';
 import { deleteItem } from '../modules/mixtape';
-import { setSoundListProperty } from '../modules/list'
-import { setMixtapeProperty } from '../modules/mixtape'
-import { handleSelectedIcon } from '../modules/mixtape'
+import { setSoundListProperty } from '../modules/list';
+import { setMixtapeProperty } from '../modules/mixtape';
+import { handleSelectedIcon } from '../modules/mixtape';
+import { handleLoginModal } from '../modules/signin';
 
 const MainFavContainer: React.FC = () => {
   const backgroundColor = useSelector((state: RootState) => state.color.backgroundColor);
@@ -19,6 +20,7 @@ const MainFavContainer: React.FC = () => {
   const selectedIcon = useSelector((state:RootState) => state.mixtape?.selectedIcon);
   const playList = useSelector((state: RootState) => state.selected.playList);
   const width = useSelector((state: RootState) => state.setting.windowWidth);
+  const isLogin = useSelector((state: RootState) => state.signin.isLogin);
   const dispatch = useDispatch();
 
   const onhandleListAddModal = () => {
@@ -42,9 +44,14 @@ const MainFavContainer: React.FC = () => {
   const onhandleSelectedIcon=(icon:string) =>{
     dispatch(handleSelectedIcon(icon))
   }
+  const handlingLoginModal=() =>{
+    dispatch(handleLoginModal())
+  }
+
   return (
     <MainFav
       color={backgroundColor}
+      isLogin={isLogin}
       width={width}
       playList={playList}
       isListAddModalOn={isListAddModalOn}
@@ -59,6 +66,7 @@ const MainFavContainer: React.FC = () => {
       onHandleDeleteMode={onHandleDeleteMode}
       onaddItem={onaddItem}
       ondeleteItem={ondeleteItem}
+      handleLoginModal={handlingLoginModal}
     />
   );
 }

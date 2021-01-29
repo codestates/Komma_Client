@@ -189,13 +189,14 @@
         @include color;
         background-color: $lime;
       }
+      & .pink {
+        @include color;
+        background-color: $pink;
+      }
       & .random {
         @include color;
-        background-color: rgb(255, 255, 255);
-      }
-      & .no {
-        @include color;
-        background-color: grey;
+        background-image: url('../img/random.png');
+        background-position: center;
       }
     }
   }
@@ -255,6 +256,7 @@
     }
     & img {
       width: 20px;
+      height: 33px;
       opacity: 0.5;
     }
     & p {

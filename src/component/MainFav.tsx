@@ -19,10 +19,12 @@ import yoga from '../img/yoga.png'
 import moon from '../img/moon.png'
 import axios from 'axios';
 import mixtape, { setMixtapeProperty } from '../modules/mixtape';
+import { handleLoginModal } from '../modules/signin';
 
 
 
 interface MainFavProps {
+  isLogin: boolean;
   color: string;
   width: number;
   isListAddModalOn?: boolean;
@@ -38,12 +40,14 @@ interface MainFavProps {
   onsetSoundListProperty: (modifiedSoundList: any[]) => void;
   onsetMixtapeProperty: (modifiedMixtape: any[]) => void;
   onhandleSelectedIcon: (icon: string) => void;
+  handleLoginModal: () => void;
 }
 
 
 
 const MainFav: React.FC<MainFavProps> = ({
   color,
+  isLogin,
   width,
   mixtapes,
   selectedIcon,
@@ -56,7 +60,8 @@ const MainFav: React.FC<MainFavProps> = ({
   onaddItem,
   isListAddModalOn,
   isDeleteMode,
-  soundList
+  soundList,
+  handleLoginModal
 }) => {
 
   const settings = {
@@ -67,6 +72,15 @@ const MainFav: React.FC<MainFavProps> = ({
     slidesToScroll: width > 800 ? 2.5 : 1
   }
 
+  const handleListAddModal = () => {
+    if(!isLogin) {
+      handleLoginModal();
+    }
+    else {
+      onhandleListAddModal();
+    }
+  }
+
   return (
     <div>
       {isListAddModalOn ? <FavAddModal onaddItem={onaddItem} playList={playList} onhandleSelectedIcon={onhandleSelectedIcon} selectedIcon={selectedIcon} onhandleListAddModal={onhandleListAddModal} /> : null}
@@ -75,7 +89,7 @@ const MainFav: React.FC<MainFavProps> = ({
           <span className='fav-icons-desc'>
             Mixtape ,
         </span>
-          <span className='fav-icons-add' onClick={onhandleListAddModal}>
+          <span className='fav-icons-add' onClick={handleListAddModal}>
             <img src={img_add} alt='' />
           </span>
           <span className='fav-icons-delete' onClick={onHandleDeleteMode}>

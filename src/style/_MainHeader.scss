@@ -154,9 +154,11 @@
 }
 
 @media all and (max-width: 800px) {
+
   .time {
     font-size: 18px;
   }
+
   @mixin buttons-m {
     top: 10px;
     width: 20px;
@@ -169,6 +171,7 @@
     align-items: center;
     cursor: pointer;
   }
+
   .timer-start {
     @include buttons-m;
     left: 110px;
@@ -176,20 +179,24 @@
       margin-left: 1px;
     }
   }
+
   .timer-stop {
     @include buttons-m;
     left: 110px;
   }
+
   .timer-plus {
     @include buttons-m;
     left: -20px;
   }
+
   .timer-minus {
     @include buttons-m;
     left: 5px;
   }
+
   .timer-container {
-    left: 215px;
+    left: 53%;
   }
 
 }

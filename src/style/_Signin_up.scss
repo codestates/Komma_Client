@@ -67,6 +67,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .signin-x {
     position: absolute;
     right: 0;
@@ -74,23 +75,26 @@
     transform: rotate(45deg);
     cursor: pointer;
   }
+
   .signin-title {
     font-size: 35px;
     text-align: center;
     margin-top: 50px;
     font-family: sans-serif;
     font-weight: bold;
-    color: rgba(0, 0, 0, 0.836);
+    color: rgba(0, 0, 0, 0.733);
   }
+
   .signup-title {
     font-size: 35px;
     text-align: center;
     margin-top: 50px;
     font-family: sans-serif;
     font-weight: bold;
-    color: rgba(0, 0, 0, 0.836);
+    color: rgba(0, 0, 0, 0.733);
     margin-bottom: -15px;
   }
+
   .email {
     margin-top: 30px;
     width: 200px;
@@ -203,35 +207,51 @@
     width: 300px;
     height: 400px; 
   }
+
   .sign-container {
     left: 80px;
+
+    .signin-title {
+      color: rgb(255, 255, 255);
+    }
+  
+    .signup-title {
+      color: rgb(255, 255, 255);
+    }
   }
+
   .signin-x {
     left: 195px;
   }
+
   .comma {
-    left: -200px;
-    top: -220px;
+    left: -160px;
+    top: -240px;
   }
+
   .sign-komma {
-    width: 80px;
-    left: 130px;
-    top: 30px;
+    width: 50px;
+    left: 132px;
+    top: 35px;
   }
+
   .sign-desc {
     top: 370px;
     left: 20px;
   }
+
   .email {
     & input {
       background: none;
     }
   }
+
   .password {
     & input {
       background: none;
     }
   }
+
   .username {
     & input {
       background: none;

@@ -57,7 +57,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  overflow: auto;
+  overflow-y: scroll;
 }
 
 .list-single {
@@ -112,7 +112,7 @@
     width: 90%;
     height: 18%;
     &.hide {
-      right: -311px;
+      right: -84%;
     }
   }
   .selectedList {
