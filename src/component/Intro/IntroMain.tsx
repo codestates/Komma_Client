@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import macbook from '../../img/macbook.png';
-import Zoom from 'react-reveal/Zoom'
+import Jump from 'react-reveal/Jump';
 import Fade from 'react-reveal/Fade';
-import next from '../../img/Next.png'
+import next from '../../img/Next.png';
 import Flash from 'react-reveal/Flash';
 import background from '../../img/background.png'
 import Pulse from 'react-reveal/Pulse';
@@ -65,7 +65,7 @@ const IntroMain = ({ isIntro, onHandleIntro
               'Komma'에서 제공하는 소리로 마음의 여유를 가지세요.
           </div>
             </Fade>
-            <Fade delay={2800}><button className='intro_Mainbutton' onClick={onHandleIntro}>Use Service</button></Fade>
+            <Fade delay={2800}><Jump delay={3800}><button className='intro_Mainbutton' onClick={onHandleIntro}>Use Service</button></Jump></Fade>
             <Fade>
 
             </Fade>

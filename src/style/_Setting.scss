@@ -28,13 +28,14 @@
   &-title {
     font-size: 25px;
     font-weight: bold;
+    margin-bottom: 30px;
   }
   & .email-container {
     width: 60%;
     margin-bottom: 20px;
     & .title {
       font-weight: bold;
-      margin-top: 30px;
+      margin-top: 10px;
       margin-bottom: 10px;
     }
     & .content {
@@ -49,7 +50,6 @@
   & .name-container {
     width: 60%;
     margin-bottom: 20px;
-    margin-top: 20px;
     & .title {
       font-weight: bold;
       margin-bottom: 10px;
@@ -127,21 +127,21 @@
   &-title {
     font-size: 25px;
     font-weight: bold;
-    margin-bottom: 30px;
+    margin-bottom: 75px;
   }
+  
   &-colors {
     width: 80%;
     height: 160px;
-    //background-color: rosybrown;
     & h1 {
       margin-bottom: 20px;
     }
     & .colors {
       width: 100%;
       height: 100px;
-      //background-color: rebeccapurple;
       display: flex;
       flex-wrap: wrap;
+
       @mixin color {
         width: 28px;
         height: 28px;
@@ -157,45 +157,56 @@
           transition: all .55s cubic-bezier(.77,0,.175,1);
         }
       }
+
       & .blue {
         @include color;
         background-color: $blue;
       }
+
       & .red {
         @include color;
         background-color: $red;
       }
+
       & .orange {
         @include color;
         background-color: $orange;
       }
+
       & .yellow {
         @include color;
         background-color: $yellow;
       }
+
       & .cyan {
         @include color;
         background-color: $cyan;
       }
+
       & .teal {
         @include color;
         background-color: $teal;
       }
+
       & .violet {
         @include color;
         background-color: $violet;
       }
+
       & .lime {
         @include color;
         background-color: $lime;
       }
+
+      & .pink {
+        @include color;
+        background-color: $pink;
+      }
+
       & .random {
         @include color;
-        background-color: rgb(255, 255, 255);
-      }
-      & .no {
-        @include color;
-        background-color: grey;
+        background-image: url('../img/random.png');
+        background-position: center;
       }
     }
   }
@@ -219,5 +230,50 @@
   }
   &.back, &.logout {
     margin-top: 10px;
+  }
+}
+
+@media all and (max-width: 800px) {
+
+  .setting-container {
+    width: 300px;
+  }
+
+  .setting-userinfo {
+    margin-left: 25px;
+  }
+
+  .setting-general {
+    left: -35px;
+    margin-left: 25px;
+    &-title {
+      margin-left: -30px;
+    }
+  }
+
+  .togeneral {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    &:focus {
+      outline: none;
+    }
+    &:active {
+      & img {
+        opacity: 0.8;
+      }
+    }
+    & img {
+      width: 20px;
+      height: 33px;
+      opacity: 0.5;
+    }
+    & p {
+      font-size: 11px;
+      margin-top: 20px;
+      margin-right: 5px;
+    }
   }
 }

@@ -24,6 +24,7 @@ interface SingleListProps {
   url: string;
   icon: string;
   volume: string;
+  addList: (item: object) => void;
   deleteList: (itemId: number) => void;
   setSoundListProperty: (modifiedSoundList: any[]) => void;
   setList: (modifiedList: any[]) => void;
@@ -40,6 +41,15 @@ const MainSelected: React.FC<SelectedProps> = ({
   setList
 }) => {
 
+  //! 음악 재생 시 자동 팝업
+  useEffect(() => {
+    if(playList && playList.length > 0) {
+      if(!isListBarOpen) {
+        handleList();
+      }
+    }
+  }, [playList])
+
   return(
     <aside className={isListBarOpen ? 'selectedBar' : 'selectedBar hide'}>
       <div className={isListBarOpen ? 'selectedButton' : 'selectedButton hide'} onClick={handleList}>
@@ -54,15 +64,13 @@ const MainSelected: React.FC<SelectedProps> = ({
             playList={playList}
             id={sound.id}
             title={sound.title}
-            //url={sound.url}
-            //icon={sound.icon}
-            //volume={sound.volume}
             url={sound.url}
-            icon={sound.img}
-            volume={sound.defaltVoulume}
+            icon={sound.iconImg}
+            volume={sound.defaultVolume}
             deleteList={deleteList}
             setSoundListProperty={setSoundListProperty}
             setList={setList}
+            addList={addList}
           />)}
         </div>
       </div>
@@ -80,7 +88,8 @@ export const SingleList: React.FC<SingleListProps> = ({
   volume,
   deleteList,
   setSoundListProperty,
-  setList
+  setList,
+  addList
 }) => {
 
   const value1: any = useRef();
@@ -89,108 +98,87 @@ export const SingleList: React.FC<SingleListProps> = ({
   const value4: any = useRef();
   const value5: any = useRef();
 
-  useEffect(() => {
-    value5.current.style.opacity = '0.2';
-    value4.current.style.opacity = '0.2';
-    value3.current.style.opacity = '0.2';
-  }, []);
-
-
-  // 볼륨조절 함수 
-  const controlVolume = (id: number) => {
+  //! 플레이리스트에서 삭제 시 사운드리스트에서도 플레이 중지
+  const deleteFromList = () => {
     for(let i = 0; i < soundList.length; i ++) {
       if(id === soundList[i].id) {
-        let modifiedSoundList = soundList.slice()
-        if(Number(modifiedSoundList[i].defaltVoulume) < 1) {
-          modifiedSoundList[i].defaltVoulume = Number(modifiedSoundList[i].defaltVoulume) + 0.2;
-          if(modifiedSoundList[i].defaltVoulume === 0.6000000000000001) {
-            modifiedSoundList[i].defaltVoulume = 0.6;
-          }
-          console.log(modifiedSoundList[i].title)
-          console.log(modifiedSoundList[i].defaltVoulume)
+        let modifiedSoundList = soundList.slice();
+        modifiedSoundList[i].play = false;
+        setSoundListProperty(modifiedSoundList);
+      }
+    }
+  }
+
+  //! 플레이리스트 사운드바 사운드리스트에 맞춰서 동기화
+  useEffect(() => {
+    for(let i = 0; i < soundList.length; i ++) {
+      if(id === soundList[i].id) {
+        editVolumeStyle(soundList[i].defaultVolume);
+      }
+    }
+  })
+
+  //! 플레이리스트에서 사운드 조작 시 사운드리스트 사운드도 조정
+  const controlVolume = () => {
+    let modifiedSoundList = soundList.slice();
+    for(let i = 0; i < soundList.length; i ++) {
+      if(id === soundList[i].id) {
+        if(soundList[i].defaultVolume < 1) {
+          modifiedSoundList[i].defaultVolume = Number((modifiedSoundList[i].defaultVolume + 0.2).toFixed(1));
         }
         else {
-          modifiedSoundList[i].defaltVoulume = 0.2;
-          console.log(modifiedSoundList[i].defaltVoulume);
+          modifiedSoundList[i].defaultVolume = 0.2;
         }
+        console.log(modifiedSoundList[i].defaultVolume)
         setSoundListProperty(modifiedSoundList);
-        editVolumeStyle(id);
       }
     }
   }
 
-  // 리스트 삭제 버튼 
-  const deleteButton = (id: number) => {
-    for(let i = 0; i < playList.length; i ++) {
-      if(playList[i].id === id) {
-        let copiedPlayList = playList.slice();
-        copiedPlayList.splice(i, 1);
-        setList(copiedPlayList);
-      }
+  //! 오디오 볼륨에 따라 원판 볼륨게이지 스타일 조작하는 클로저 함수
+  const editVolumeStyle = (volume: number) => {
+    if(volume === 1) {
+      value1.current.style.opacity = '1';
+      value2.current.style.opacity = '1';
+      value3.current.style.opacity = '1';
+      value4.current.style.opacity = '1';
+      value5.current.style.opacity = '1';
     }
-    for(let i = 0; i < soundList.length; i ++) {
-      if(soundList[i].id === id) {
-        let copiedSoundList = soundList.slice();
-        copiedSoundList[i].play = false;
-        setSoundListProperty(copiedSoundList);
-      }
+    else if(volume === 0.8) {
+      value1.current.style.opacity = '1';
+      value2.current.style.opacity = '1';
+      value3.current.style.opacity = '1';
+      value4.current.style.opacity = '1';
+      value5.current.style.opacity = '0.2';
     }
-  }
-
-  useEffect(() => {
-    editVolumeStyle(id);
-  }, [soundList]);
-
-  // 오디오 볼륨에 따라 원판 볼륨게이지 스타일 조작하는 클로저 함수
-  const editVolumeStyle = (id: number) => {
-    for(let i = 0; i < soundList.length; i ++) {
-      if(id === soundList[i].id) {
-        let audio = soundList[i];
-        if(audio.defaltVoulume === 1) {
-          value1.current.style.opacity = '1';
-          value2.current.style.opacity = '1';
-          value3.current.style.opacity = '1';
-          value4.current.style.opacity = '1';
-          value5.current.style.opacity = '1';
-        }
-        else if(audio.defaltVoulume === 0.8) {
-          value1.current.style.opacity = '1';
-          value2.current.style.opacity = '1';
-          value3.current.style.opacity = '1';
-          value4.current.style.opacity = '1';
-          value5.current.style.opacity = '0.2';
-        }
-        else if(audio.defaltVoulume === 0.6) {
-          value1.current.style.opacity = '1';
-          value2.current.style.opacity = '1';
-          value3.current.style.opacity = '1';
-          value4.current.style.opacity = '0.2';
-          value5.current.style.opacity = '0.2';
-        }
-        else if(audio.defaltVoulume === 0.4) {
-          value1.current.style.opacity = '1';
-          value2.current.style.opacity = '1';
-          value3.current.style.opacity = '0.2';
-          value4.current.style.opacity = '0.2';
-          value5.current.style.opacity = '0.2';
-        }
-        else if(audio.defaltVoulume === 0.2) {
-          value1.current.style.opacity = '1';
-          value2.current.style.opacity = '0.2';
-          value3.current.style.opacity = '0.2';
-          value4.current.style.opacity = '0.2';
-          value5.current.style.opacity = '0.2';
-        }
-      }
+    else if(volume === 0.6) {
+      value1.current.style.opacity = '1';
+      value2.current.style.opacity = '1';
+      value3.current.style.opacity = '1';
+      value4.current.style.opacity = '0.2';
+      value5.current.style.opacity = '0.2';
+    }
+    else if(volume === 0.4) {
+      value1.current.style.opacity = '1';
+      value2.current.style.opacity = '1';
+      value3.current.style.opacity = '0.2';
+      value4.current.style.opacity = '0.2';
+      value5.current.style.opacity = '0.2';
+    }
+    else if(volume === 0.2) {
+      value1.current.style.opacity = '1';
+      value2.current.style.opacity = '0.2';
+      value3.current.style.opacity = '0.2';
+      value4.current.style.opacity = '0.2';
+      value5.current.style.opacity = '0.2';
     }
   }
-
 
   return(
     <div className='list-single'>
       <img className='soundimg' src={icon} alt='' />
       <div className='sound-bar-list'>
-        <span className='slider-rail-list' onClick={() => controlVolume(id)}>
+        <span className='slider-rail-list' onClick={controlVolume}>
           <span className='slider-value-list 5' ref={value1}/>
           <span className='slider-value-list 4' ref={value2}/>
           <span className='slider-value-list 3' ref={value3}/>
@@ -198,7 +186,7 @@ export const SingleList: React.FC<SingleListProps> = ({
           <span className='slider-value-list 1' ref={value5}/>
         </span>
       </div>
-      <img id='x' src={small_plus} alt='' onClick={() => deleteButton(id)}/>
+      <img id='x' src={small_plus} alt='' onClick={deleteFromList}/>
     </div>
   );
 }

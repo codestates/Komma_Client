@@ -4,11 +4,13 @@ import wheelUp from '../img/wheelup.png';
 import wheelDown from '../img/wheeldown.png';
 import pointerLeft from '../img/pointer-left.png';
 import pointerRight from '../img/pointer-right.png';
-import sounds from '../sounds/index';
-import { getSoundList } from '../modules/list';
+import touch from '../img/touch.png';
+import touchGuide from '../img/start-grey.png';
+import arrow from '../img/volume-arrow.png';
 import axios from 'axios';
 
 interface ListProps {
+  width: number;
   playList?: any[];
   soundList: any[];
   addList: (item: object) => void;
@@ -24,6 +26,7 @@ interface SingleSoundProps {
   icon: string;
   title: string;
   volume: string;
+  play: boolean;
   playList?: any;
   soundList: any[];
   addList: (item: object) => void;
@@ -34,6 +37,7 @@ interface SingleSoundProps {
 
 const MainList: React.FC<ListProps> = ({
   playList,
+  width,
   soundList,
   addList,
   deleteList,
@@ -70,26 +74,28 @@ const MainList: React.FC<ListProps> = ({
   let ref: any = useRef();
   let degree: number = 220;
   useEffect(() => {
-    ref.current.style.transform = `rotate(${degree}deg)`;
-    ref.current.addEventListener('mousewheel', (delta: any) => {
-      if(delta.wheelDelta >= 0) {
-        //console.log('++');
-        //console.log(delta.wheelDelta);
-        ref.current.style.transform = `rotate(${degree}deg)`;
-        degree = degree - 1;
-      }
-      else {
-        //console.log('--');
-        //console.log(delta.wheelDelta);
-        ref.current.style.transform = `rotate(${degree}deg)`;
-        degree = degree + 1;
-      }
-    })
+    if(width > 1099) {
+      ref.current.style.transform = `rotate(${degree}deg)`;
+      ref.current.addEventListener('mousewheel', (delta: any) => {
+        if(delta.wheelDelta >= 0) {
+          //console.log('++');
+          //console.log(delta.wheelDelta);
+          ref.current.style.transform = `rotate(${degree}deg)`;
+          degree = degree - 2;
+        }
+        else {
+          //console.log('--');
+          //console.log(delta.wheelDelta);
+          ref.current.style.transform = `rotate(${degree}deg)`;
+          degree = degree + 2;
+        }
+      })
+    }
   }, []);
 
   // 서버에서 노래정보 가져오기
   useEffect(() => {
-    axios('http://www.kommaa.shop/users/songlist', {
+    axios('http://www.kommaa.shop/playlist/songlist', {
       method: 'get',
       headers: { 'Content-Type': 'application/json' }
     })
@@ -101,19 +107,16 @@ const MainList: React.FC<ListProps> = ({
   }, []);
 
   return(
-    <div className='sound-list' ref={ref} >
-
+    <div className={width > 1101 ? 'sound-list' : 'sound-list-m'} ref={ref} >
       {
         soundList.map((sound) => <SingleSoundCard
         key={sound.id}
         id={sound.id}
-        //url={sound.url}
         url={sound.soundFile}
         title={sound.title}
-        volume={sound.defaltVoulume}
-        //volume={sound.volume}
+        volume={sound.defaultVolume}
         icon={sound.iconImg}
-        //icon={sound.icon}
+        play={sound.play}
         playList={playList}
         soundList={soundList}
         addList={addList}
@@ -132,6 +135,7 @@ const SingleSoundCard: React.FC<SingleSoundProps> = ({
   icon,
   title,
   volume,
+  play,
   playList,
   soundList,
   addList,
@@ -140,88 +144,119 @@ const SingleSoundCard: React.FC<SingleSoundProps> = ({
   setSoundListProperty,
 }) => {
 
-  
-
   const audioRef: any = useRef();
   const imgRef: any = useRef();
-
-  // 볼륨조절 함수
   const value1: any = useRef();
   const value2: any = useRef();
   const value3: any = useRef();
   const value4: any = useRef();
   const value5: any = useRef();
 
-  // playlist로 볼륨조작시 아래 볼륨스타일 싱크맞춰주기
+  //! play 값에따라 오디오 실행 및 아이콘효과 및 플레이리스트에 넣기
   useEffect(() => {
-    // for(let i = 0; i < soundList.length; i ++) {
-    //   if(id === soundList[i].id) {
-    //     if(audioRef.current.volume !== Number(soundList[i].defaltVoulume)) {
-    //       console.log(audioRef.current.volume)
-    //       console.log(Number(soundList[i].defaltVoulume))
-    //       audioRef.current.volume = Number(soundList[i].defaltVoulume);
-    //       editVolumeStyle();
-    //     }
-    //   }
-    // }
-    audioRef.current.volume = Number(volume);
-    editVolumeStyle();
+    for(let i = 0; i < soundList.length; i ++) {
+      if(id === soundList[i].id) {
+        if(soundList[i].play) {
+          audioRef.current.play();
+          imgRef.current.style.width = '65%';
+          imgRef.current.style.top = '-40px';
+          // 플레이 리스트에 넣기
+          let alreadyInList = false;
+          for(let j = 0; j < playList.length; j ++) {
+            if(playList[j].id === id) {
+              alreadyInList = true;
+            }
+          }
+          if(!alreadyInList) {
+            addList(soundList[i]);
+          }
+        }
+        else {
+          audioRef.current.pause();
+          imgRef.current.style.width = '50%';
+          imgRef.current.style.top = '0px';
+          // 플레이 리스트에서 제거
+          deleteList(id);
+        }
+      }
+    }
+  }, [soundList])
+
+  //! 아이콘 클릭으로 play 값 변경
+  const handleSound = () => {
+    let modifiedSoundList = soundList.slice();
+    for(let i = 0; i < soundList.length; i ++) {
+      if(id === soundList[i].id) {
+        if(play) {
+          modifiedSoundList[i].play = false;
+          setSoundListProperty(modifiedSoundList);
+        }
+        else {
+          modifiedSoundList[i].play = true;
+          setSoundListProperty(modifiedSoundList);
+        }
+      }
+    }
+  }
+
+  //! volume 값에 따라 사운드바 및 오디오태그 사운드 조절
+  useEffect(() => {
+    for(let i = 0; i < soundList.length; i ++) {
+      if(id === soundList[i].id) {
+        editVolumeStyle(soundList[i].defaultVolume)
+        audioRef.current.volume = soundList[i].defaultVolume
+      }
+    }
   })
 
-  // 아이콘 아래 볼륨스타일 선택 시 볼륨조절 함수
+  //! 볼륨 아이콘 클릭으로 volume 값 조절
   const handleVolume = () => {
-    let modifiedSoundList = soundList.slice()
-    let audio = audioRef.current;
-    if(audio.volume < 1) {
-      audio.volume = (audio.volume + 0.2).toFixed(1);
-      console.log(audio.volume);
-    }
-    else {
-      audio.volume = 0.2;
-      console.log(audio.volume);
-    }
-    // 스테이트 목록에도 변경한 볼륨 동기화
-    for(let i = 0; i < modifiedSoundList.length; i ++) {
-      if(id === modifiedSoundList[i].id) {
-        modifiedSoundList[i].defaltVoulume = audio.volume;
+    let modifiedSoundList = soundList.slice();
+    for(let i = 0; i < soundList.length; i ++) {
+      if(id === soundList[i].id) {
+        if(soundList[i].defaultVolume < 1) {
+          modifiedSoundList[i].defaultVolume = Number((modifiedSoundList[i].defaultVolume + 0.2).toFixed(1));
+        }
+        else {
+          modifiedSoundList[i].defaultVolume = 0.2;
+        }
+        console.log(modifiedSoundList[i].defaultVolume)
         setSoundListProperty(modifiedSoundList);
       }
     }
-    editVolumeStyle();
   }
 
-  // 오디오 볼륨에 따라 원판 볼륨게이지 스타일 조작하는 클로저 함수
-  const editVolumeStyle = () => {
-    let audio = audioRef.current;
-    if(audio.volume === 1) {
+  //! 오디오 볼륨에 따라 원판 볼륨게이지 스타일 조작하는 클로저 함수
+  const editVolumeStyle = (volume: number) => {
+    if(volume === 1) {
       value1.current.style.opacity = '1';
       value2.current.style.opacity = '1';
       value3.current.style.opacity = '1';
       value4.current.style.opacity = '1';
       value5.current.style.opacity = '1';
     }
-    else if(audio.volume === 0.8) {
+    else if(volume === 0.8) {
       value1.current.style.opacity = '1';
       value2.current.style.opacity = '1';
       value3.current.style.opacity = '1';
       value4.current.style.opacity = '1';
       value5.current.style.opacity = '0.2';
     }
-    else if(audio.volume === 0.6 || audio.volume === 0.5) {
+    else if(volume === 0.6) {
       value1.current.style.opacity = '1';
       value2.current.style.opacity = '1';
       value3.current.style.opacity = '1';
       value4.current.style.opacity = '0.2';
       value5.current.style.opacity = '0.2';
     }
-    else if(audio.volume === 0.4) {
+    else if(volume === 0.4) {
       value1.current.style.opacity = '1';
       value2.current.style.opacity = '1';
       value3.current.style.opacity = '0.2';
       value4.current.style.opacity = '0.2';
       value5.current.style.opacity = '0.2';
     }
-    else if(audio.volume === 0.2) {
+    else if(volume === 0.2) {
       value1.current.style.opacity = '1';
       value2.current.style.opacity = '0.2';
       value3.current.style.opacity = '0.2';
@@ -229,54 +264,6 @@ const SingleSoundCard: React.FC<SingleSoundProps> = ({
       value5.current.style.opacity = '0.2';
     }
   }
-
-  // 플레이리스트 항목도 같이 삭제하는 함수
-  const deletePlayList = (id: number) => {
-    for(let i = 0; i < playList.length; i ++) {
-      if(playList[i].id === id) {
-        let copiedPlayList = playList.slice();
-        copiedPlayList.splice(i, 1);
-        setList(copiedPlayList);
-      }
-    }
-  }
-
-  // 아이콘 클릭으로 시작, 정지 컨트롤 및 플레이리스트에 추가
-  const handleSound = () => {
-    let audio = audioRef.current;
-    let img = imgRef.current;
-    if(audio.paused) {
-      audio.play()
-      img.style.width = '65%';
-      img.style.top = '-40px';
-      addList({id: id, url: url, img: icon, title: title, volume: volume});
-    }
-    else {
-      audio.pause();
-      img.style.width = '50%';
-      img.style.top = '0px';
-      deletePlayList(id);
-      console.log(id)
-    }
-  }
-
-  // 플레이리스트 삭제 시 원판 이미지&재생 도 동기화
-  useEffect(() => {
-    let isOn = false;
-    let audio = audioRef.current;
-    let img = imgRef.current;
-    for(let i = 0; i < playList.length; i ++) {
-      if(id === playList[i].id) {
-        isOn = true;
-      }
-    }
-    if(!isOn) {
-      audio.pause();
-      img.style.width = '50%';
-      img.style.top = '0px';
-    }
-  })
-
 
   return(
     <div className='sound-card one'>
@@ -297,7 +284,13 @@ const SingleSoundCard: React.FC<SingleSoundProps> = ({
   );
 }
 
-export const ListTutorial = () => {
+interface TutorialProps {
+  width: number;
+  handleWindowSize: (size: number) => void;
+}
+
+
+export const ListTutorial = ({ width, handleWindowSize }) => {
 
   // 원판 이용안내창 등장 후 제거
   let tutorialTarget: any = useRef();
@@ -313,15 +306,85 @@ export const ListTutorial = () => {
     }, 5500);
   }, []);
 
-  return(
-    <div className='tutorial' ref={tutorialTarget}>
-      <h1>Mouse Wheel</h1>
-      <img src={pointerLeft} alt='' className='pointer left' />
-      <img src={pointerRight} alt='' className='pointer right' />
-      <div>
-        <img src={wheelUp} alt='' />
-        <img src={wheelDown} alt='' />
+  if(width > 1100) {
+    return(
+      <div className='tutorial' ref={tutorialTarget}>
+        <h1>Mouse Wheel</h1>
+        <img src={pointerLeft} alt='' className='pointer left' />
+        <img src={pointerRight} alt='' className='pointer right' />
+        <div>
+          <img src={wheelUp} alt='' />
+          <img src={wheelDown} alt='' />
+        </div>
       </div>
+    );
+  }
+  else {
+    return(
+      <div className='tutorial m' ref={tutorialTarget}>
+        <h1>Touch</h1>
+        <img src={pointerLeft} alt='' className='pointer left' />
+        <img src={pointerRight} alt='' className='pointer right' />
+        <div>
+          <img src={touch} alt='' />
+        </div>
+      </div>
+    );
+  }
+}
+
+interface GuideProps {
+  degree: number;
+  handleDegree: (deg: number) => void;
+}
+
+export const TouchGuide: React.FC<GuideProps> = ({ degree, handleDegree }) => {
+
+  let soundList: any;
+
+  useEffect(() => {
+    soundList = document.querySelector('.sound-list-m');
+    console.log(soundList)
+    soundList.style.transform = `rotate(${degree}deg)`;
+  }, [degree]);
+
+  // 모바일 우회전 클릭 이벤트
+  const touchRight = () => {
+    handleDegree(degree - 15)
+  }
+
+  // 모바일 우회전 클릭 이벤트
+  const touchLeft = () => {
+    handleDegree(degree + 15)
+  }
+
+  return(
+    <div className='touch-guide'>
+      <img src={touchGuide} alt='' className='pointer left touch' onClick={touchLeft}/>
+      <img src={touchGuide} alt='' className='pointer right touch' onClick={touchRight}/>
+    </div>
+  );
+}
+
+export const VolumeGuide: React.FC = () => {
+
+  // 볼륨 가이드 플리커
+  const flickerRef: any = useRef();
+  useEffect(() => {
+    let target: any = flickerRef.current.style;
+    setTimeout(() => {
+      target.transform = 'scale(1)';
+    }, 6000);
+    setTimeout(() => {
+      target.transform = 'scale(0)';
+    }, 11000);
+  }, []);
+
+  return(
+    <div className='volume-arrow' ref={flickerRef}>
+      <img src={arrow} alt=''/>
+      <p>Volume</p>
+      <p>Controller</p>
     </div>
   );
 }

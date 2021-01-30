@@ -3,62 +3,137 @@
  
 }
 .intro_body1{
-  background-color: #dabc0e;
+  background-color: #ffd900;
   display: flex;
   position: relative;
-
   height: 90vh;
-  margin-top: 15px;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-top: 1.5vh;
+  margin-left: 0.8vw;
+  margin-right: 0.8vw;
 }
 .imac{
   position: absolute;
-  height: 700px;
-  left:145px;
-  top:130px;
+  height: 66vh;
+  width: 45.3vw;
+  left: 8vw;
+  top: 15vh;
   z-index: 1;
 }
 
 .windowcard1{
   position: relative;
-  width: 1500px;
-  height: 500px;
+  width: 86vw;
+  height: 50vh;
   z-index: 0;
-  top:150px;
-  left:100px;
+  top:15vh;
+  left:5vw;
 }
 .img_window{
   position: absolute;
-  width: 810px;
-  height: 480px;
-  left:75px;
+  width: 42.3vw;
+  height: 43.8vh;
+  left:4.5vw;
+  top: 3.3vh;
   
 }
 .intro_Fn1_description{
   position: absolute;
-  font-size: 70px;
-  left:1020px;
+  font-size: 4vw;
+  left:57vw;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 800;
-  top:100px;
+  top: 10vh;
   color:#1D1E20;
 
 }
 .intro_Fn1_description2{
   position: absolute;
-  font-size: 20px;
-  top:400px;
-  left: 1020px;
+  font-size: 1.2vw;
+  top:40vh;
+  left: 57vw;
   font-family: 'Noto Sans KR', sans-serif;
   color:#1D1E20;
 }
 .controlcolor{
   position: absolute;
   background-color: #f0f0f2;
-  width: 48.9vw;
-  height: 60px;
-  left:49.56vw;
+  width: 48.6vw;
+  height: 5.5vh;
+  left:49.8vw;
   top:91.55vh;
 
+}
+
+
+
+
+
+
+@media all and (max-width:767px) {
+  .intro_Fn1{
+    height: 90h;
+   
+  }
+  .intro_body1{
+    background-color: #ffd900;
+    display: flex;
+    position: relative;
+    height: 80vh;
+    width: 95.8vw;
+    margin-top: 1.5vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
+  }
+  .imac{
+    position: absolute;
+    height: 32vh;
+    width: 80vw;
+    left: 7.8vw;
+    top: 37.2vh;
+    z-index: 1;
+  }
+  
+  .windowcard1{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    top:8vh;
+  }
+  .img_window{
+    position: absolute;
+    width: 76vw;
+    height: 20.8vh;
+    left:4.5vw;
+    top: 30.9vh;
+    
+  }
+  .intro_Fn1_description{
+    position: absolute;
+    font-size: 9vw;
+    left:5vw;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 800;
+    top: 0vh;
+    color:#1D1E20;
+  
+  }
+  .intro_Fn1_description2{
+    position: absolute;
+    font-size: 3vw;
+    top:21vh;
+    left: 5vw;
+    font-family: 'Noto Sans KR', sans-serif;
+    color:#1D1E20;
+  }
+  .controlcolor{
+    position: absolute;
+    background-color: #f0f0f2;
+    width: 95.7vw;
+    height: 5.5vh;
+    left:0.1vw;
+    top:81.2vh;
+  
+  }
+  
 }

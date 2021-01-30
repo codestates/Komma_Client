@@ -56,7 +56,7 @@ export const Timer: React.FC<TimerProps> = ({
     // 시간이 설정 안되어있으면 거절 메시지
     const currentTime = document.querySelector('.time')?.textContent;
     if(currentTime === '00 : 00') {
-      return alert('시간 맞춰주세요! 이거는 임시 알럿창');
+      return alert('시간을 맞춰주세요');
     }
     // isCount 상태를 변경하고 1초마다 카운팅 시작
     startToTimer();
