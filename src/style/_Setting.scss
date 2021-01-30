@@ -129,19 +129,19 @@
     font-weight: bold;
     margin-bottom: 75px;
   }
+  
   &-colors {
     width: 80%;
     height: 160px;
-    //background-color: rosybrown;
     & h1 {
       margin-bottom: 20px;
     }
     & .colors {
       width: 100%;
       height: 100px;
-      //background-color: rebeccapurple;
       display: flex;
       flex-wrap: wrap;
+
       @mixin color {
         width: 28px;
         height: 28px;
@@ -157,42 +157,52 @@
           transition: all .55s cubic-bezier(.77,0,.175,1);
         }
       }
+
       & .blue {
         @include color;
         background-color: $blue;
       }
+
       & .red {
         @include color;
         background-color: $red;
       }
+
       & .orange {
         @include color;
         background-color: $orange;
       }
+
       & .yellow {
         @include color;
         background-color: $yellow;
       }
+
       & .cyan {
         @include color;
         background-color: $cyan;
       }
+
       & .teal {
         @include color;
         background-color: $teal;
       }
+
       & .violet {
         @include color;
         background-color: $violet;
       }
+
       & .lime {
         @include color;
         background-color: $lime;
       }
+
       & .pink {
         @include color;
         background-color: $pink;
       }
+
       & .random {
         @include color;
         background-image: url('../img/random.png');
@@ -224,6 +234,7 @@
 }
 
 @media all and (max-width: 800px) {
+
   .setting-container {
     width: 300px;
   }

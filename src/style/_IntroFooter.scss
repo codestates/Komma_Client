@@ -33,7 +33,6 @@
   color:#1565c0 ;
   left:45vw;
   border: none;
-
   top:28vh;
   font-family: 'Noto Sans KR', sans-serif;
 }
@@ -53,6 +52,7 @@
   top: 41.8vh;
   height: 40vh;
   background-color: #f1f1f3;
+  color: rgb(77, 77, 77);
 }
 .information{
   display: flex;
@@ -65,8 +65,7 @@
   position: absolute;
   font-size: 1.5vw;
   left: 9vw;
-  
-
+  color: black;
 }
 .company{
   position: absolute;
@@ -74,7 +73,7 @@
   left:22vw;
   top:1vh;
   width: 10vw;
-  
+  color: rgb(53, 53, 53);
 }
 .companyContent{
   font-family: 'Nanum Gothic', sans-serif;
@@ -85,6 +84,7 @@
   font-size: 1vw;
   left:37vw;
   top:1vh;
+  color: rgb(53, 53, 53);
 }
 .productContent{
   font-family: 'Nanum Gothic', sans-serif;
@@ -121,6 +121,9 @@
   left:40vw;
   top:30vh;
   width: 50vw;
+  color: grey;
+  font-weight: thin;
+  font-family: sans-serif;
 }
 .blank1{
   margin-top: 1.4vh;
@@ -183,180 +186,121 @@
 
 
 
-@media all and (max-width:767px) {
+@media all and (max-width:800px) {
+
   .introFooterBody{
-    position: relative;
     height: 64vh;
     overflow: hidden;
   }
   
   
   .introFooter{
-    position: absolute;
-    background-color:#1363be;
     height: 20vh;
     width: 95.4vw;
     top: 9.5vh;
     left:0.6vh;
-    margin-left:0.8vw;
   }
   
   .introFooter_description{
-    position: absolute;
-    font-size: 6.5vw;
-    color:white;
     left: 36vw;
     top: 4vh;
-    font-family: 'Noto Sans KR', sans-serif;
-    z-index: 1;
   }
+
   .introFooter_button{
-    position: absolute;; 
     width: 18vw;
     height: 3.5vh;
-    font-size: 1vw;
-    border-radius: 30px;
-    background-color: white;
-    color:#1565c0 ;
-    border: none;
     left: 39vw;
     top:12vh;
-    font-family: 'Noto Sans KR', sans-serif;
   }
   
   .controlcolor2{
     position: absolute;
     background-color: #ffd900;
     width: 95.4vw;
-    height: 5.3vh;
     bottom: 21.2vh;
   }
   
   .footerInformation{
-    position: relative;
     width: 95.4vw;
     top: 21.3vh;
     height: 32vh;
-    background-color: #f1f1f3;
   }
-  .information{
-    display: flex;
-    position: absolute;
-    font-size: 1vw;
-    top:4vh;
-    font-family: 'Noto Sans KR', sans-serif;
-  }
+
   .footerTitle{
-    position: absolute;
     font-size: 5vw;
     left: 39vw;
-    
-  
   }
+
   .company{
     position: absolute;
     font-size: 0vw;
     top: 0vh;
-    left:22vw;
-    width: 10vw;
-    
   }
+
   .companyContent{
     font-family: 'Nanum Gothic', sans-serif;
   }
   
   .product{
-    position: absolute;
     font-size: 0vw;
-    left:37vw;
-    top:1vh;
-  }
-  .productContent{
-    font-family: 'Nanum Gothic', sans-serif;
   }
   
   .resources{
-    position: absolute;
     font-size: 0vw;
     left:0vw;
     top:1vh;
   }
-  .resourcesContent{
-    font-family: 'Nanum Gothic', sans-serif;
-  
-  }
   
   .teamMembers{
-    position: absolute;
-    position: relative;
     width:35vw;
     height: 30vh;
-    font-size: 1vw;
     left:8vw;
     top:3vh;
   }
+
   .getTheAPPS{
-    position: absolute;
-    font-size: 1vw;
     left:58vw;
     top:5vh;
     width: 30vw;
   }
+
   .footerSince{
     position: relative;
-    font-size: 1vw;
     left:10vw;
     top:19vh;
-    width: 50vw;
   }
-  .blank1{
-    margin-top: 1.4vh;
-  }
-  .blank2{
-    margin-top: 2vh;
-  }
-  
+
   .front_end{
-    position: relative;
     top: 1vh;
     left:0vw;
     width: 20vw;
-    font-family: 'Nanum Gothic', sans-serif;
   }
+  
   .back_end{
-    position: relative;
     top: 1.5vh;
     left:0vw;
-    font-family: 'Nanum Gothic', sans-serif;
   }
+
   .member4{
     position: relative;
     width:15vw;
-    left: 0vw;
-    top:  1.5vw;
   }
+
   .member3{
-    position: relative;
     width: 15vw;
-    left: 0vw;
     top:  2.5vw;
   }
+
   .member2{
-    position: relative;
     width: 15vw;
-    left: 0vw;
     top:  2.5vw;
   }
+
   .member1{
-    position: relative;
     width: 16vw;
-    left: 0vw;
-    top:  1.5vw;
   }
+
   .app{
-    position: absolute;
     width: 20vw;
-    top: 3vh;
-    left: -0.5vw;
   }
 }  

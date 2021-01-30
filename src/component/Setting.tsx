@@ -59,9 +59,19 @@ const Setting: React.FC<SettingProps> = ({
       getUserNameFromServer(data.userInfo.username);
       getEmailFromServer(data.userInfo.email);
     })
+    .catch(error => {
+      console.log(error.response);
+      if(error.response.status === 400) {
+        //! 세션만료 모달, 로그인 해제
+        localStorage.clear();
+        handleLogin();
+        window.location.reload();
+        return alert('세션이 만료되었습니다. 다시 로그인 해주세요');
+      }
+    })
   })
 
-  /* 유저 색상 및 다크모드 변경 */
+  /* 유저 색상 변경 */
   const changeTheColor = (color: string) => {
     let token: any = localStorage.getItem('token');
     axios.post(
@@ -69,21 +79,20 @@ const Setting: React.FC<SettingProps> = ({
       { sitecolor: color },
       { headers: { authorization: `Bearer ${token}` }, withCredentials: true }
     )
-    /*
-    fetch('http://www.kommaa.shop/users/userinfoup', {
-      method: 'put',
-      headers: {
-        'Authorization': `bearer ${JSON.parse(token)}`,
-      }
-    })
-    */
     .then(res => res.data)
     .then(data => {
       console.log(data);
       changeColor(color);
     })
-    .catch(err => {
-      console.log(err);
+    .catch(error => {
+      console.log(error.response);
+      if(error.response.status === 400) {
+        //! 세션만료 모달, 로그인 해제
+        localStorage.clear();
+        handleLogin();
+        window.location.reload();
+        return alert('세션이 만료되었습니다. 다시 로그인 해주세요');
+      }
     })
   }
 
@@ -111,8 +120,15 @@ const Setting: React.FC<SettingProps> = ({
       console.log(data);
       handleUserInfoChangeMode();
     })
-    .catch(err => {
-      console.log(err);
+    .catch(error => {
+      console.log(error.response);
+      if(error.response.status === 400) {
+        //! 세션만료 모달, 로그인 해제
+        localStorage.clear();
+        handleLogin();
+        window.location.reload();
+        return alert('세션이 만료되었습니다. 다시 로그인 해주세요');
+      }
     })
   }
 

@@ -201,3 +201,43 @@
     }
   }
 }
+
+.volume-arrow {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: flicker 1s infinite alternate-reverse forwards;
+  left: 45vw;
+  top: 74%;
+  transition: transform 0.3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  transform: scale(0);
+  & img {
+    width: 30px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  & p {
+    font-size: 11px;
+    color: white;
+  }
+
+  @keyframes flicker {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+@media all and (max-width: 800px) {
+
+  .volume-arrow {
+    left: 30vw;
+    top: 77%;
+  }
+
+}

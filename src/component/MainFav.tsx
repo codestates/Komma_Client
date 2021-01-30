@@ -18,8 +18,7 @@ import woman from '../img/woman.png'
 import yoga from '../img/yoga.png'
 import moon from '../img/moon.png'
 import axios from 'axios';
-import mixtape, { setMixtapeProperty } from '../modules/mixtape';
-import { handleLoginModal } from '../modules/signin';
+import { setMixtapeProperty } from '../modules/mixtape';
 
 
 
@@ -41,6 +40,7 @@ interface MainFavProps {
   onsetMixtapeProperty: (modifiedMixtape: any[]) => void;
   onhandleSelectedIcon: (icon: string) => void;
   handleLoginModal: () => void;
+  handleLogin: () => void;
 }
 
 
@@ -61,7 +61,8 @@ const MainFav: React.FC<MainFavProps> = ({
   isListAddModalOn,
   isDeleteMode,
   soundList,
-  handleLoginModal
+  handleLoginModal,
+  handleLogin
 }) => {
 
   const settings = {
@@ -83,7 +84,7 @@ const MainFav: React.FC<MainFavProps> = ({
 
   return (
     <div>
-      {isListAddModalOn ? <FavAddModal onaddItem={onaddItem} playList={playList} onhandleSelectedIcon={onhandleSelectedIcon} selectedIcon={selectedIcon} onhandleListAddModal={onhandleListAddModal} /> : null}
+      {isListAddModalOn ? <FavAddModal handleLogin={handleLogin} onaddItem={onaddItem} playList={playList} onhandleSelectedIcon={onhandleSelectedIcon} selectedIcon={selectedIcon} onhandleListAddModal={onhandleListAddModal} /> : null}
     <nav className={width > 800 ? 'fav-container' : 'fav-container-m'}>
         <div className={width > 800 ? 'fav-icons' : 'fav-icons-m'}>
           <span className='fav-icons-desc'>
@@ -110,6 +111,7 @@ const MainFav: React.FC<MainFavProps> = ({
             onsetMixtapeProperty={onsetMixtapeProperty}
             mixtapes={mixtapes}
             isDeleteMode={isDeleteMode}
+            handleLogin={handleLogin}
           />)}
         </Slider>
         <div className={`side-blur ${color}`}></div>
@@ -132,6 +134,7 @@ interface SingleFavProps {
   isDeleteMode?: boolean;
   onsetSoundListProperty: (modifiedSoundList: any[]) => void;
   onsetMixtapeProperty: (modifiedMixtape: any[]) => void;
+  handleLogin: () => void;
 }
 export const SingleFav: React.FC<SingleFavProps> = ({
   width,
@@ -144,7 +147,8 @@ export const SingleFav: React.FC<SingleFavProps> = ({
   mixtapes,
   isDeleteMode,
   onsetSoundListProperty, // 모든소리들을 변형시켜준다
-  onsetMixtapeProperty
+  onsetMixtapeProperty,
+  handleLogin
 }) => {
 
   const favRef: any = useRef();
@@ -175,7 +179,7 @@ export const SingleFav: React.FC<SingleFavProps> = ({
   const deleteMixtape = () => {
     let token = localStorage.getItem('token');
     axios.post(
-      'http://www.kommaa.shop/users/deleteplaylist',
+      'http://www.kommaa.shop/playlist/deleteplaylist',
       { id: id },
       { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
     )
@@ -203,6 +207,16 @@ export const SingleFav: React.FC<SingleFavProps> = ({
         }
       }
       window.location.reload();
+    })
+    .catch(error => {
+      console.log(error.response);
+      if(error.response.status === 400) {
+        //! 세션만료 모달, 로그인 해제
+        localStorage.clear();
+        handleLogin();
+        window.location.reload();
+        return alert('세션이 만료되었습니다. 다시 로그인 해주세요');
+      }
     })
   }
 
@@ -272,13 +286,15 @@ interface FavAddProps {
   onhandleListAddModal: () => void;
   playList: any[];
   onaddItem: (item: any) => void;
+  handleLogin: () => void;
 }
 export const FavAddModal: React.FC<FavAddProps> = ({
   onhandleListAddModal,
   selectedIcon,
   onhandleSelectedIcon,
   playList,
-  onaddItem
+  onaddItem,
+  handleLogin
 }) => {
 
   const errorRef: any = useRef();
@@ -340,7 +356,7 @@ export const FavAddModal: React.FC<FavAddProps> = ({
       return;
     }
     axios.post(
-      'http://www.kommaa.shop/users/saveplaylist',
+      'http://www.kommaa.shop/playlist/saveplaylist',
       { ...mixtape },
       { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
     )
@@ -358,6 +374,16 @@ export const FavAddModal: React.FC<FavAddProps> = ({
         onaddItem(data.playlists[data.playlists.length - 1]);
         onhandleSelectedIcon('');
         onhandleListAddModal();
+      })
+      .catch(error => {
+        console.log(error.response);
+        if(error.response.status === 400) {
+          //! 세션만료 모달, 로그인 해제
+          localStorage.clear();
+          handleLogin();
+          window.location.reload();
+          return alert('세션이 만료되었습니다. 다시 로그인 해주세요');
+        }
       })
   }
 

@@ -47,16 +47,7 @@ table {
 }
 //-------------------------------------------------------------
 
-
-// $red: #ffa9a9;
-// $violet: #b197fc;
 $blue2: #74c0fc;
-// $cyan: #66d9e8;
-// $teal: #63e6be;
-// $lime: #c0eb75;
-// $yellow: #ffe066;
-// $orange: #ffc078;
-
 
 $red: #e24f4f;
 $violet: #6a1b9a;
@@ -66,7 +57,7 @@ $teal: #2e7d32;
 $lime: #b8c63f;
 $yellow: #dabc0e;
 $orange: #ff8f00;
-$pink: #c52fb1;
+$pink: #c253b3;
 
 $red1: #d21111;
 $violet1: #6a1b9a;
@@ -86,15 +77,13 @@ $white1: #F0F0F2;
 @import './MainSelected.scss';
 @import './Signin_up.scss';
 
-
-
-@import'./IntroMain';
-@import'./IntroFn1';
-@import'./IntroFn2';
-@import'./IntroFn3';
-@import'./IntroFooter';
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+@import './IntroMain';
+@import './IntroFn1';
+@import './IntroFn2';
+@import './IntroFn3';
+@import './IntroFooter';
 @import './Ending.scss';
 @import './Setting.scss';
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');

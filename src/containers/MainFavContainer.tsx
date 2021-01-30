@@ -9,7 +9,7 @@ import { deleteItem } from '../modules/mixtape';
 import { setSoundListProperty } from '../modules/list';
 import { setMixtapeProperty } from '../modules/mixtape';
 import { handleSelectedIcon } from '../modules/mixtape';
-import { handleLoginModal } from '../modules/signin';
+import { handleLoginModal, handleLogin } from '../modules/signin';
 
 const MainFavContainer: React.FC = () => {
   const backgroundColor = useSelector((state: RootState) => state.color.backgroundColor);
@@ -47,6 +47,9 @@ const MainFavContainer: React.FC = () => {
   const handlingLoginModal=() =>{
     dispatch(handleLoginModal())
   }
+  const handlingLogin=() =>{
+    dispatch(handleLogin())
+  }
 
   return (
     <MainFav
@@ -67,6 +70,7 @@ const MainFavContainer: React.FC = () => {
       onaddItem={onaddItem}
       ondeleteItem={ondeleteItem}
       handleLoginModal={handlingLoginModal}
+      handleLogin={handlingLogin}
     />
   );
 }
