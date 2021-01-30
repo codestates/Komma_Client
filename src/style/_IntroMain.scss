@@ -119,6 +119,17 @@
   left:35vw;
 }
 
+.fadein {
+  position: absolute;
+  width: 100vw;
+  height: 200vh;
+  top: -100vh;
+  left: 100vw;
+  background-color: $blue;
+  z-index: 100;
+  transition: left 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+}
+
 
 
 
