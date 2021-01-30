@@ -4,45 +4,54 @@
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-  transition: all 5s;
+  transition: background-color 5s ease;
 }
 
 .Main-red {
   @include randomColor;
   background-color: $red;
 }
+
 .Main-orange {
   @include randomColor;
   background-color: $orange;
 }
+
 .Main-blue {
   @include randomColor;
   background-color: $blue;
 }
+
 .Main-yellow {
   @include randomColor;
   background-color: $yellow;
 }
+
 .Main-cyan {
   @include randomColor;
   background-color: $cyan;
 }
+
 .Main-lime {
   @include randomColor;
   background-color: $lime;
 }
+
 .Main-teal {
   @include randomColor;
   background-color: $teal;
 }
+
 .Main-violet {
   @include randomColor;
   background-color: $violet;
 }
+
 .Main-pink {
   @include randomColor;
   background-color: $pink;
 }
+
 .Main-random {
   box-shadow: none;
   @include randomColor;
@@ -50,47 +59,59 @@
 }
 
 $colors: $blue, $red, $orange, $teal, $cyan, $violet, $lime, $yellow, $pink;
+
 @keyframes interval {
+
   10% {
     $nth: nth($colors, random(8) +1);
       background-color: $nth;
   }
+
   20% {
     $nth: nth($colors, random(8) +1);
       background-color: $nth;
   }
+
   30% {
     $nth: nth($colors, random(8) +1);
       background-color: $nth;
   }
+
   40% {
     $nth: nth($colors, random(8) +1);
       background-color: $nth;
   }
+
   50% {
     $nth: nth($colors, random(8) +1);
       background-color: $nth;
   }
+
   60% {
     $nth: nth($colors, random(8) +1);
       background-color: $nth;
   }
+
   70% {
     $nth: nth($colors, random(8) +1);
       background-color: $nth;
   }
+
   80% {
     $nth: nth($colors, random(8) +1);
       background-color: $nth;
   }
+
   90% {
     $nth: nth($colors, random(8) +1);
       background-color: $nth;
   }
+
   100% {
     $nth: nth($colors, random(8) +1);
       background-color: $nth;
   }
+
 }
 
 button {
@@ -149,24 +170,19 @@ button {
 }
 
 @keyframes drift {
-  from { transform: rotate(0deg); }
-  from { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media all and (max-width: 800px) {
   
   @mixin wave {
-    opacity: .25;
-    position: absolute;
     top: 88%;
     left: -750%;
-    background: rgb(226, 226, 226);
-    width: 7000px;
-    height: 7000px;
-    transform-origin: 50% 50%;
-    border-radius: 43%;
-    animation: drift 15000ms infinite linear;
-    transition: all 2s;
   }
   
   .wave-one {
@@ -175,9 +191,6 @@ button {
   
   .wave-two {
     @include wave;
-    animation: drift 15000ms infinite linear;
-    opacity: .09;
-    background-color: white;
     transform-origin: 50% 50%;
     left: -850%;
     top: 91%;

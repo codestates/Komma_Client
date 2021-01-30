@@ -6,6 +6,7 @@ import pointerLeft from '../img/pointer-left.png';
 import pointerRight from '../img/pointer-right.png';
 import touch from '../img/touch.png';
 import touchGuide from '../img/start-grey.png';
+import arrow from '../img/volume-arrow.png';
 import axios from 'axios';
 
 interface ListProps {
@@ -94,7 +95,7 @@ const MainList: React.FC<ListProps> = ({
 
   // 서버에서 노래정보 가져오기
   useEffect(() => {
-    axios('http://www.kommaa.shop/users/songlist', {
+    axios('http://www.kommaa.shop/playlist/songlist', {
       method: 'get',
       headers: { 'Content-Type': 'application/json' }
     })
@@ -361,6 +362,29 @@ export const TouchGuide: React.FC<GuideProps> = ({ degree, handleDegree }) => {
     <div className='touch-guide'>
       <img src={touchGuide} alt='' className='pointer left touch' onClick={touchLeft}/>
       <img src={touchGuide} alt='' className='pointer right touch' onClick={touchRight}/>
+    </div>
+  );
+}
+
+export const VolumeGuide: React.FC = () => {
+
+  // 볼륨 가이드 플리커
+  const flickerRef: any = useRef();
+  useEffect(() => {
+    let target: any = flickerRef.current.style;
+    setTimeout(() => {
+      target.transform = 'scale(1)';
+    }, 6000);
+    setTimeout(() => {
+      target.transform = 'scale(0)';
+    }, 11000);
+  }, []);
+
+  return(
+    <div className='volume-arrow' ref={flickerRef}>
+      <img src={arrow} alt=''/>
+      <p>Volume</p>
+      <p>Controller</p>
     </div>
   );
 }

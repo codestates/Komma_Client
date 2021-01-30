@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import MainHeaderContainer from '../containers/MainHeaderContainer';
-import { ListTutorial, TouchGuide } from './MainList';
+import { ListTutorial, TouchGuide, VolumeGuide } from './MainList';
 import MainListContainer from '../containers/MainListContainer';
 import MainFavContainer from '../containers/MainFavContainer';
 import MainSelectContainer from '../containers/MainSelectedContainer';
@@ -127,6 +127,7 @@ const Main: React.FC<MainProps> = ({
               let randomOne: object = soundList[Math.floor(Math.random() * (5 - 0 + 1)) + 0];
               modifiedMixtape[0].savesongs.push(randomOne);
             }
+            console.log(modifiedMixtape);
             setMixtapeProperty(modifiedMixtape);
             console.log(modifiedMixtape)
             console.log('믹스테잎 업데이트 및 섞기');
@@ -139,40 +140,14 @@ const Main: React.FC<MainProps> = ({
           //! 세션만료 모달, 로그인 해제
           localStorage.clear();
           handleLogin();
+          window.location.reload();
           return alert('세션이 만료되었습니다. 다시 로그인 해주세요');
         }
       })
     }
     console.log('로그인유지 작동');
   }, [])
-/*
-  // 컬러 랜덤 핸들링
-  let Myinterval: any;
-  let mainRef: any = useRef();
-  let delay: number | null;
-  useEffect(() => {
-    if(color === 'random') {
-      console.log('인터벌 시작')
-      delay = 10000;
-      isRandomOn = true; // to true;
-      Myinterval = setInterval(generateRandomColor, delay);
-    }
-    else {
-      isRandomOn = false;
-      delay = NaN;
-      clearInterval(Myinterval);
-      console.log('인터벌 종료') // to false;
-    }
-  }, [color])
 
-  // 인터벌 함수
-  const generateRandomColor = () => {
-    if(isRandomOn) {
-      console.log('인터벌 실행중')
-      mainRef.current.className = `Main-random-${Math.floor(Math.random() * (9 - 1) +1 )}`
-    }
-  }
-*/
   return(
     <main
       className={`Main-${color}`}
@@ -183,6 +158,7 @@ const Main: React.FC<MainProps> = ({
       <MainListContainer />
       <ListTutorial width={width} handleWindowSize={handleWindowSize}/>
       { width < 1100 ? <TouchGuide degree={degree} handleDegree={handleDegree}/> : null }
+      <VolumeGuide />
       {
         playList.length > 0 ? 
         <div className='waveBox'>
