@@ -28,16 +28,14 @@ const IntroFooter = ({ onHandleIntro
     <div className='introFooterBody'>
       <div className='fadein' ref={fadeRef}/>
       <div className='introFooter'>
-      <Fade><div className='controlcolor2' /></Fade>
+        <Fade><div className='controlcolor2' /></Fade>
         <Fade up delay={900}>
           <div className='introFooter_description'>
             Komma
         </div>
         </Fade>
-        <Fade up delay={1200}>
-          <Flash delay={1300}>
-            <button className="introFooter_button" onClick={handleIntro}>Use Service</button>
-          </Flash>
+        <Fade delay={1700}>
+          <button className="introFooter_button" onClick={onHandleIntro}>Use Service</button>
         </Fade>
         <div className='footerInformation'>
           <div className='information'>
@@ -83,7 +81,7 @@ const IntroFooter = ({ onHandleIntro
             <div className="getTheAPPS">
               GET THE APPS
               <div className="getTheAPPSContent">
-                <img className="app" src={app} alt="app"/>
+                <img className="app" src={app} alt="app" />
               </div>
             </div>
             <div className="footerSince">
