@@ -71,7 +71,7 @@ const initialState: MixtapeState = {
           iconImg: "https://i.imgur.com/xLdYxZL.png",
           id: 20,
           play: true,
-          soundFile: "http://www.kommaa.shop/sounds/mami.mp3",
+          soundFile: "https://kommaa.shop/sounds/mami.mp3",
           title: "매미"
         },
         {
@@ -79,7 +79,7 @@ const initialState: MixtapeState = {
           iconImg: "https://i.imgur.com/80XYaTr.png",
           id: 28,
           play: true,
-          soundFile: "http://www.kommaa.shop/sounds/rain.mp3",
+          soundFile: "https://kommaa.shop/sounds/rain.mp3",
           title: "비"
         },
         {
@@ -87,7 +87,7 @@ const initialState: MixtapeState = {
           iconImg: "https://i.imgur.com/lWziGz2.png",
           id: 8,
           play: true,
-          soundFile: "http://www.kommaa.shop/sounds/country.mp3",
+          soundFile: "https://kommaa.shop/sounds/country.mp3",
           title: "시골밤",
         }
       ]
@@ -103,7 +103,7 @@ const initialState: MixtapeState = {
           iconImg: "https://i.imgur.com/iHRwLhb.png",
           id: 17,
           play: false,
-          soundFile: "http://www.kommaa.shop/sounds/sunrise_sea.mp3",
+          soundFile: "https://kommaa.shop/sounds/sunrise_sea.mp3",
           title: "파도"
         },
         {
@@ -111,7 +111,7 @@ const initialState: MixtapeState = {
           iconImg: "https://i.imgur.com/fEMbGe7.png",
           id: 18,
           play: false,
-          soundFile: "http://www.kommaa.shop/sounds/galmagi.mp3",
+          soundFile: "https://kommaa.shop/sounds/galmagi.mp3",
           title: "갈매기",
         }
       ]
@@ -127,7 +127,7 @@ const initialState: MixtapeState = {
           iconImg: "https://i.imgur.com/ixbmiS3.png",
           id: 23,
           play: false,
-          soundFile: "http://www.kommaa.shop/sounds/church.mp3",
+          soundFile: "https://kommaa.shop/sounds/church.mp3",
           title: "교회",
         },
         {
@@ -135,7 +135,7 @@ const initialState: MixtapeState = {
           iconImg: "https://i.imgur.com/HnZDCjb.png",
           id: 3,
           play: false,
-          soundFile: "http://www.kommaa.shop/sounds/leaves.mp3",
+          soundFile: "https://kommaa.shop/sounds/leaves.mp3",
           title: "낙엽",
         }
       ]

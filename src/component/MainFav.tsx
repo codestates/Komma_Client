@@ -179,7 +179,7 @@ export const SingleFav: React.FC<SingleFavProps> = ({
   const deleteMixtape = () => {
     let token = localStorage.getItem('token');
     axios.post(
-      'https://www.kommaa.shop/playlist/deleteplaylist',
+      'https://kommaa.shop/playlist/deleteplaylist',
       { id: id },
       { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
     )
@@ -187,7 +187,7 @@ export const SingleFav: React.FC<SingleFavProps> = ({
     .then(data => {
       console.log(data);
       return axios.get(
-        'https://www.kommaa.shop/users/userinfo',
+        'https://kommaa.shop/users/userinfo',
         { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
       )
     })
@@ -356,7 +356,7 @@ export const FavAddModal: React.FC<FavAddProps> = ({
       return;
     }
     axios.post(
-      'https://www.kommaa.shop/playlist/saveplaylist',
+      'https://kommaa.shop/playlist/saveplaylist',
       { ...mixtape },
       { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
     )
@@ -364,7 +364,7 @@ export const FavAddModal: React.FC<FavAddProps> = ({
       .then(data => {
         console.log(data)
         return axios.get(
-          'https://www.kommaa.shop/users/userinfo',
+          'https://kommaa.shop/users/userinfo',
           { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
         )
       })
