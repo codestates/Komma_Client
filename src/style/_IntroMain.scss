@@ -12,6 +12,7 @@
   height: 100vh;
   overflow: hidden;
 }
+
 .background{
   position: absolute;
   width: 100vw;
@@ -62,9 +63,9 @@
 
 .intro_Mainbutton{
   position: relative; 
-  width: 10vw;
-  height: 6vh;
-  font-size: 1.1vw;
+  width: 160px;
+  height: 65px;
+  font-size: 20px;
   border-radius: 30px;
   color: black;
   background-color:white ;
@@ -119,9 +120,29 @@
   left:35vw;
 }
 
+.fadein {
+  position: absolute;
+  width: 100vw;
+  height: 200vh;
+  top: -100vh;
+  left: 100vw;
+  background-color: $blue;
+  z-index: 100;
+  transition: left 0.2s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+}
 
 
 
+@media all and (min-width:801px) and (max-width:1023px)  {
+  .intro_Mainbutton{
+    width: 140px;
+    height: 55px;
+    font-size: 18px;
+  }
+  .description_1{
+    font-size: 15px;
+  }
+}
 
 
 @media all and (max-width: 800px) {
@@ -191,9 +212,9 @@
   
   .intro_Mainbutton{
     position: relative; 
-    width: 21vw;
-    height: 4vh;
-    font-size: 2.8vw;
+    width: 125px;
+    height: 40px;
+    font-size: 15px;
     border-radius: 30px;
     color: black;
     background-color:white ;
@@ -219,14 +240,14 @@
     height: 2vh;
     bottom: 15vh;
     left: 46vw;
-    top:53vh;
+    top:60vh;
   }
   
   .description_1{
     position: relative;
     color: white;
     top:5vh;
-    font-size: 1.4vw;
+    font-size: 12px;
     font-family: 'Noto Sans KR', sans-serif;
   }
   .blank{
