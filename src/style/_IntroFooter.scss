@@ -23,12 +23,6 @@
   font-family: 'Noto Sans KR', sans-serif;
   z-index: 1;
 }
-
-.button_Container{
-  display: flex;
-  justify-content: center;
-  width: 98.5vw;
-}
 .introFooter_button{
   position: absolute;
   width: 10vw;
@@ -39,7 +33,11 @@
   color:#1565c0 ;
   border: none;
   top:28vh;
+  cursor: pointer;
   font-family: 'Noto Sans KR', sans-serif;
+  &:focus {
+    outline: none;
+  }
 }
 
 .controlcolor2{
