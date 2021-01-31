@@ -65,7 +65,17 @@
 }
 
 
+@media all and (min-width:801px) and (max-width:1023px)  {
 
+  .intro_Fn1_description2{
+    position: absolute;
+    font-size: 17px;
+    top:40vh;
+    left: 57vw;
+    font-family: 'Noto Sans KR', sans-serif;
+    color:#1D1E20;
+  }
+}
 
 
 
@@ -110,7 +120,7 @@
   }
   .intro_Fn1_description{
     position: absolute;
-    font-size: 9vw;
+    font-size: 30px;
     left:5vw;
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 800;
@@ -120,7 +130,7 @@
   }
   .intro_Fn1_description2{
     position: absolute;
-    font-size: 3vw;
+    font-size: 15px;
     top:21vh;
     left: 5vw;
     font-family: 'Noto Sans KR', sans-serif;
