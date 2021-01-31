@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Fade from 'react-reveal/Fade';
 import Flash from 'react-reveal/Flash';
 import member1 from '../../img/member1.png'
@@ -15,8 +15,18 @@ interface IntroFooterProps {
 
 const IntroFooter = ({ onHandleIntro
 }: IntroFooterProps) => {
+
+  const fadeRef: any = useRef();
+  const handleIntro = () => {
+    fadeRef.current.style.left = '0';
+    setTimeout(() => {
+      onHandleIntro();
+    }, 300)
+  }
+
   return (
     <div className='introFooterBody'>
+      <div className='fadein' ref={fadeRef}/>
       <div className='introFooter'>
         <Fade><div className='controlcolor2' /></Fade>
         <Fade up delay={900}>

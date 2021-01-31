@@ -1,5 +1,3 @@
-import sounds from '../sounds/index';
-
 // 액션
 const GET_SOUNDLIST = 'list/GET_SOUNDLIST'as const;
 const SET_SOUNDLIST_PROPERTY = 'list/SET_SOUNDLIST_PROPERTY'as const;

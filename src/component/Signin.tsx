@@ -40,7 +40,7 @@ const Signin: React.FC<SigninProps> = ({
     }
     else {
       axios.post(
-        'http://www.kommaa.shop/users/login',
+        'https://www.kommaa.shop/users/login',
         { email: email, password: password },
         { withCredentials: true }
       )
@@ -123,7 +123,7 @@ const Signup: React.FC<SignupProps> = ({ handleLoginModal, handleSignupModal }) 
     }
     else {
       axios.post(
-        'http://www.kommaa.shop/users/signup',
+        'https://www.kommaa.shop/users/signup',
         { email: email, username: username, password: password },
         { withCredentials: true }
       )
