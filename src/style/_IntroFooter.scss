@@ -23,15 +23,20 @@
   font-family: 'Noto Sans KR', sans-serif;
   z-index: 1;
 }
+
+.button_Container{
+  display: flex;
+  justify-content: center;
+  width: 98.5vw;
+}
 .introFooter_button{
-  position: absolute;; 
+  position: absolute;
   width: 10vw;
   height: 6vh;
-  font-size: 1vw;
+  font-size: 20px;
   border-radius: 30px;
   background-color: white;
   color:#1565c0 ;
-  left:45vw;
   border: none;
   top:28vh;
   font-family: 'Noto Sans KR', sans-serif;
@@ -178,7 +183,13 @@
 
 
 
-
+@media all and (min-width:801px) and (max-width:1323px)  {
+  .introFooter_button{
+    width: 120px;
+    height: 48px;
+    font-size: 17px;
+  }
+}
 
 
 
@@ -207,9 +218,9 @@
   }
 
   .introFooter_button{
-    width: 18vw;
-    height: 3.5vh;
-    left: 39vw;
+    width: 115px;
+    height: 40px;
+    font-size: 15px;
     top:12vh;
   }
   
@@ -256,28 +267,33 @@
     height: 30vh;
     left:8vw;
     top:3vh;
+    font-size: 10px;
   }
 
   .getTheAPPS{
     left:58vw;
     top:5vh;
     width: 30vw;
+    font-size: 10px;
   }
 
   .footerSince{
     position: relative;
     left:10vw;
     top:19vh;
+    font-size: 12px;
   }
 
   .front_end{
     top: 1vh;
     left:0vw;
+    font-size: 14px;
     width: 20vw;
   }
   
   .back_end{
     top: 1.5vh;
+    font-size: 14px;
     left:0vw;
   }
 
