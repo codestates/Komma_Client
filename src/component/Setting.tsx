@@ -51,7 +51,7 @@ const Setting: React.FC<SettingProps> = ({
   useEffect(() => {
     let token = localStorage.getItem('token');
     axios.get(
-      'https://www.kommaa.shop/users/userinfo',
+      'https://kommaa.shop/users/userinfo',
       { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
     )
     .then(res => res.data)
@@ -60,7 +60,7 @@ const Setting: React.FC<SettingProps> = ({
       getEmailFromServer(data.userInfo.email);
     })
     .catch(error => {
-      console.log(error.response);
+      // console.log(error.response);
       if(error.response.status === 400) {
         //! 세션만료 모달, 로그인 해제
         localStorage.clear();
@@ -75,17 +75,17 @@ const Setting: React.FC<SettingProps> = ({
   const changeTheColor = (color: string) => {
     let token: any = localStorage.getItem('token');
     axios.post(
-      'https://www.kommaa.shop/users/userinfoup',
+      'https://kommaa.shop/users/userinfoup',
       { sitecolor: color },
       { headers: { authorization: `Bearer ${token}` }, withCredentials: true }
     )
     .then(res => res.data)
     .then(data => {
-      console.log(data);
+      // console.log(data);
       changeColor(color);
     })
     .catch(error => {
-      console.log(error.response);
+      // console.log(error.response);
       if(error.response.status === 400) {
         //! 세션만료 모달, 로그인 해제
         localStorage.clear();
@@ -111,17 +111,17 @@ const Setting: React.FC<SettingProps> = ({
     }
     let token = localStorage.getItem('token');
     axios.post(
-      'https://www.kommaa.shop/users/userinfoup',
+      'https://kommaa.shop/users/userinfoup',
       { username: name, password: newPwd },
       { headers: { authorization: `Bearer ${token}` }, withCredentials: true }
     )
     .then(res => res.data)
     .then(data => {
-      console.log(data);
+      // console.log(data);
       handleUserInfoChangeMode();
     })
     .catch(error => {
-      console.log(error.response);
+      // console.log(error.response);
       if(error.response.status === 400) {
         //! 세션만료 모달, 로그인 해제
         localStorage.clear();
@@ -136,7 +136,7 @@ const Setting: React.FC<SettingProps> = ({
   const logout = () => {
     let token = localStorage.getItem('token');
     axios.post(
-      'https://www.kommaa.shop/users/logout',
+      'https://kommaa.shop/users/logout',
       { logout: 'please' },
       { headers: { authorization: `Bearer ${token}` }, withCredentials: true }
     )

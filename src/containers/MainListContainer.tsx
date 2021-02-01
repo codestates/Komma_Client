@@ -4,12 +4,14 @@ import { RootState } from '../modules';
 import MainList from '../component/MainList';
 import { addList, deleteList, setList } from '../modules/selected';
 import { getSoundList, setSoundListProperty } from '../modules/list';
+import { setMixtapeProperty } from '../modules/mixtape';
 
 const MainSelectedContainer: React.FC = () => {
 
   const playList = useSelector((state: RootState) => state.selected?.playList);
   const soundList = useSelector((state: RootState) => state.list.soundList);
   const width = useSelector((state: RootState) => state.setting.windowWidth);
+  const mixtape = useSelector((state: RootState) => state.mixtape?.mixtapes);
   const dispatch = useDispatch();
 
   const addTheList = (item: object) => {
@@ -27,10 +29,14 @@ const MainSelectedContainer: React.FC = () => {
   const getTheSoundList = (modifiedSoundList: any[]) => {
     dispatch(getSoundList(modifiedSoundList));
   };
+  const settingMixtapeProperty = (modifiedSoundList: any[]) => {
+    dispatch(setMixtapeProperty(modifiedSoundList));
+  };
 
   return (
     <MainList
       playList={playList}
+      mixtape={mixtape}
       width={width}
       soundList={soundList}
       addList={addTheList}
@@ -38,6 +44,7 @@ const MainSelectedContainer: React.FC = () => {
       setList={setTheList}
       setSoundListProperty={setTheSoundListProperty}
       getSoundList={getTheSoundList}
+      setMixtapeProperty={settingMixtapeProperty}
     />
   );
 }

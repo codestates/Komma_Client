@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import medi from '../img/meditation.png';
 import wheelUp from '../img/wheelup.png';
 import wheelDown from '../img/wheeldown.png';
 import pointerLeft from '../img/pointer-left.png';
@@ -13,11 +12,13 @@ interface ListProps {
   width: number;
   playList?: any[];
   soundList: any[];
+  mixtape?: any[];
   addList: (item: object) => void;
   deleteList: (itemId: number) => void;
   setList: (list: any[]) => void;
   setSoundListProperty: (modifiedSoundList: any[]) => void;
   getSoundList: (sounds: any[]) => void;
+  setMixtapeProperty: (modifiedMixtape: any[]) => void;
 }
 
 interface SingleSoundProps {
@@ -37,12 +38,14 @@ interface SingleSoundProps {
 
 const MainList: React.FC<ListProps> = ({
   playList,
+  mixtape,
   width,
   soundList,
   addList,
   deleteList,
   setList,
   setSoundListProperty,
+  setMixtapeProperty,
   getSoundList
 }) => {
 
@@ -95,13 +98,13 @@ const MainList: React.FC<ListProps> = ({
 
   // 서버에서 노래정보 가져오기
   useEffect(() => {
-    axios('https://www.kommaa.shop/playlist/songlist', {
+    axios('https://kommaa.shop/playlist/songlist', {
       method: 'get',
       headers: { 'Content-Type': 'application/json' }
     })
     .then(res => res.data)
     .then(data => {
-      console.log(data.songlist);
+      // console.log(data.songlist);
       getSoundList(data.songlist);
     })
   }, []);
@@ -220,7 +223,7 @@ const SingleSoundCard: React.FC<SingleSoundProps> = ({
         else {
           modifiedSoundList[i].defaultVolume = 0.2;
         }
-        console.log(modifiedSoundList[i].defaultVolume)
+        // console.log(modifiedSoundList[i].defaultVolume)
         setSoundListProperty(modifiedSoundList);
       }
     }
@@ -344,7 +347,7 @@ export const TouchGuide: React.FC<GuideProps> = ({ degree, handleDegree }) => {
 
   useEffect(() => {
     soundList = document.querySelector('.sound-list-m');
-    console.log(soundList)
+    // console.log(soundList)
     soundList.style.transform = `rotate(${degree}deg)`;
   }, [degree]);
 

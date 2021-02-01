@@ -40,7 +40,7 @@ const Signin: React.FC<SigninProps> = ({
     }
     else {
       axios.post(
-        'https://www.kommaa.shop/users/login',
+        'https://kommaa.shop/users/login',
         { email: email, password: password },
         { withCredentials: true }
       )
@@ -123,13 +123,13 @@ const Signup: React.FC<SignupProps> = ({ handleLoginModal, handleSignupModal }) 
     }
     else {
       axios.post(
-        'https://www.kommaa.shop/users/signup',
+        'https://kommaa.shop/users/signup',
         { email: email, username: username, password: password },
         { withCredentials: true }
       )
       .then(res => res.data)
       .then(data => {
-        console.log(data);
+        // console.log(data);
         if(data.message === 'email exists') {
           errorRef.current.textContent = '존재하는 이메일 입니다'
         }
@@ -140,7 +140,7 @@ const Signup: React.FC<SignupProps> = ({ handleLoginModal, handleSignupModal }) 
         }
       })
       .catch(error => {
-        console.log(error.response);
+        // console.log(error.response);
         if(error.response.status === 409) {
           errorRef.current.textContent = '존재하는 이메일 입니다'
         }

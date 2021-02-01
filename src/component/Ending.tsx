@@ -1,5 +1,4 @@
 import React from 'react';
-import MainContainer from '../containers/MainContainer';
 
 interface EndingProps {
   handleEndingModal: () => void;
