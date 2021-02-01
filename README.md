@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+<img src="https://i.imgur.com/iFAPlDa.png" alt="logo" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'>
+# 🎵 프로젝트 소개
+팀 명 :Deul-eo jo
+   <br>
+프로젝트 명 : Komma
+   <br>
+프로젝트 형태 : 수강생 프로젝트
+   <br>
+팀원 : 황순환, 김태수, 정연주, 배석재
+   <br>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+코로나로 집밖으로 잘 나오지 못하는 답답함,  반복되는 일상의 지겨움,
 
-## Available Scripts
+당신의 스트레스 가득한 삶에 여유를 드리기 위해 !
 
-In the project directory, you can run:
+저희 들어조에서 콤마서비스를 만들었습니다. 
 
-### `yarn start`
+콤마와 함께 시작한다면 당신의 하루는 달라질껍니다. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+여러가지 백색소음으로 당신의 청각과 마음까지 힐링 시켜 드립니다. 💙🎵
+ # 프로젝트 링크 
+  [Komma](https://komma.co.kr)
+  
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+ # 🔧기술 스택 소개
+  <img src="https://i.imgur.com/kTahJW2.png" alt="tech" border="0"></a><br /><a target='_blank' href='https://i.imgur.com/FbfxZWs.png'>
+  ## **Front**
 
-### `yarn test`
+- React [ React Hooks ]
+- Redux
+- TypeScript
+- sass
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## **Back**
 
-### `yarn build`
+- Node.js
+- Express
+- typescript
+- MySQL
+- typeOrm
+- JWT
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## **Deploy**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- AWS (RDS , S3, CloudFront, Route53, EC2, Load Balancer)
+- gabia_site
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Communication
 
-### `yarn eject`
+- Git
+- DBdiagram
+- github
+- slac
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ # 🌈기능 Flow
+ <br>
+ <img src="https://i.imgur.com/zvZ4u1X.png" alt="tech" border="0"></a><br /><a target='_blank' href='https://i.imgur.com/FbfxZWs.png'>
+ <img src="https://i.imgur.com/gKHlDuP.jpg" alt="tech" border="0"></a><br /><a target='_blank' href='https://i.imgur.com/FbfxZWs.png'>
+  <img src="https://i.imgur.com/Wtm4a7P.png" alt="tech" border="0"></a><br /><a target='_blank' href='https://i.imgur.com/FbfxZWs.png'>
+  
+# DB Schema
+<img src="https://i.imgur.com/lXUEU9L.png" alt="tech" border="0"></a><br /><a target='_blank' href='https://i.imgur.com/FbfxZWs.png'>
+  
+  
