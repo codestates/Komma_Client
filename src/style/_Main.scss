@@ -5,7 +5,6 @@
   width: 100vw;
   height: 100vh;
   transition: background-color 5s ease;
-  transition: margin 0.5s ease;
 }
 
 .Main-red {
@@ -64,52 +63,52 @@ $colors: $blue, $red, $orange, $teal, $cyan, $violet, $lime, $yellow, $pink;
 @keyframes interval {
 
   10% {
-    $nth: nth($colors, random(8) +1);
+    $nth: nth($colors, random(8));
       background-color: $nth;
   }
 
   20% {
-    $nth: nth($colors, random(8) +1);
+    $nth: nth($colors, random(8));
       background-color: $nth;
   }
 
   30% {
-    $nth: nth($colors, random(8) +1);
+    $nth: nth($colors, random(8));
       background-color: $nth;
   }
 
   40% {
-    $nth: nth($colors, random(8) +1);
+    $nth: nth($colors, random(8));
       background-color: $nth;
   }
 
   50% {
-    $nth: nth($colors, random(8) +1);
+    $nth: nth($colors, random(8));
       background-color: $nth;
   }
 
   60% {
-    $nth: nth($colors, random(8) +1);
+    $nth: nth($colors, random(8));
       background-color: $nth;
   }
 
   70% {
-    $nth: nth($colors, random(8) +1);
+    $nth: nth($colors, random(8));
       background-color: $nth;
   }
 
   80% {
-    $nth: nth($colors, random(8) +1);
+    $nth: nth($colors, random(8));
       background-color: $nth;
   }
 
   90% {
-    $nth: nth($colors, random(8) +1);
+    $nth: nth($colors, random(8));
       background-color: $nth;
   }
 
   100% {
-    $nth: nth($colors, random(8) +1);
+    $nth: nth($colors, random(8));
       background-color: $nth;
   }
 
@@ -166,7 +165,7 @@ button {
   background-color: white;
   transform-origin: 51% 51%;
   left: -210%;
-  top: 72%;
+  top: 75%;
   border-radius: 42%;
 }
 
@@ -197,6 +196,23 @@ button {
     top: 91%;
     border-radius: 42.5%;
   }
+}
+
+@media all and (min-width: 1500px) {
+
+  @mixin wave {
+    left: -120%;
+  }
+
+  .wave-one {
+    @include wave;
+  }
+  
+  .wave-two {
+    @include wave;
+    left: -140%;
+  }
+  
 }
 
 

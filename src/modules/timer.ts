@@ -57,11 +57,11 @@ const timer = (state = initialState, action: TimerAction) => {
 // 1초씩 시간차감 함수, 00초에 도달할 시 1분 감소시키고 59초로 회귀
 const oneTic = (state: any) => {
   if(state.seconds === 0) {
-    console.log('분이 바껴요');
+    // console.log('분이 바껴요');
     return Object.assign({}, state, {seconds: 59, minute: state.minute - 1});
   }
   else {
-    console.log('틱')
+    // console.log('틱')
     return Object.assign({}, state, {seconds: state.seconds - 1});
   }
 }

@@ -1,22 +1,20 @@
 import React, { useRef, useEffect } from 'react';
 import Slider from 'react-slick';
-import img_medi from '../img/meditation.png';
-import img_sleep from '../img/sleep.png';
 import img_add from '../img/plus.png';
 import img_delete from '../img/trash.png';
 import x from '../img/plus_black.svg';
-import computer from '../img/computer.png'
-import cycling from '../img/cycling.png'
-import heart from '../img/heart.png'
-import question from '../img/question.png'
-import man from '../img/man.png'
-import rating from '../img/rating.png'
-import shuffle from '../img/shuffle.png'
-import smile1 from '../img/smile (1).png'
-import smile from '../img/smile.png'
-import woman from '../img/woman.png'
-import yoga from '../img/yoga.png'
-import moon from '../img/moon.png'
+import computer from '../img/computer.png';
+import cycling from '../img/cycling.png';
+import heart from '../img/heart.png';
+import question from '../img/question.png';
+import man from '../img/man.png';
+import rating from '../img/rating.png';
+import shuffle from '../img/shuffle.png';
+import smile1 from '../img/smile (1).png';
+import smile from '../img/smile.png';
+import woman from '../img/woman.png';
+import yoga from '../img/yoga.png';
+import moon from '../img/moon.png';
 import axios from 'axios';
 import { setMixtapeProperty } from '../modules/mixtape';
 
@@ -179,21 +177,21 @@ export const SingleFav: React.FC<SingleFavProps> = ({
   const deleteMixtape = () => {
     let token = localStorage.getItem('token');
     axios.post(
-      'https://www.kommaa.shop/playlist/deleteplaylist',
+      'https://kommaa.shop/playlist/deleteplaylist',
       { id: id },
       { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
     )
     .then(res => res.data)
     .then(data => {
-      console.log(data);
+      // console.log(data);
       return axios.get(
-        'https://www.kommaa.shop/users/userinfo',
+        'https://kommaa.shop/users/userinfo',
         { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
       )
     })
     .then(res => res.data)
     .then(data => {
-      console.log(data);
+      // console.log(data);
       if(mixtapes) {
         let modifiedMixtape = mixtapes.slice(0, 3);
         if(data.playlist) {
@@ -209,7 +207,7 @@ export const SingleFav: React.FC<SingleFavProps> = ({
       window.location.reload();
     })
     .catch(error => {
-      console.log(error.response);
+      // console.log(error.response);
       if(error.response.status === 400) {
         //! 세션만료 모달, 로그인 해제
         localStorage.clear();
@@ -261,8 +259,8 @@ export const SingleFav: React.FC<SingleFavProps> = ({
     }
     onsetSoundListProperty(modifiedSoundlist)
     onsetMixtapeProperty(modifiedMixtapes)
-    console.log(soundList)
-    console.log(mixtapes)
+    // console.log(soundList)
+    // console.log(mixtapes)
   }
 
   return (
@@ -356,27 +354,27 @@ export const FavAddModal: React.FC<FavAddProps> = ({
       return;
     }
     axios.post(
-      'https://www.kommaa.shop/playlist/saveplaylist',
+      'https://kommaa.shop/playlist/saveplaylist',
       { ...mixtape },
       { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
     )
       .then(res => res.data)
       .then(data => {
-        console.log(data)
+        // console.log(data)
         return axios.get(
-          'https://www.kommaa.shop/users/userinfo',
+          'https://kommaa.shop/users/userinfo',
           { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
         )
       })
       .then(res => res.data)
       .then(data => {
-        console.log(data);
+        // console.log(data);
         onaddItem(data.playlists[data.playlists.length - 1]);
         onhandleSelectedIcon('');
         onhandleListAddModal();
       })
       .catch(error => {
-        console.log(error.response);
+        // console.log(error.response);
         if(error.response.status === 400) {
           //! 세션만료 모달, 로그인 해제
           localStorage.clear();

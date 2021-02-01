@@ -21,14 +21,14 @@ const IntroFn2: React.FC<IntroFn2Props> = (
 
   let whellEvent = (delta: any) => {
     if (delta.wheelDelta >= 0) {
-      console.log('++');
-      console.log(delta.wheelDelta);
+      // console.log('++');
+      // console.log(delta.wheelDelta);
       ref.current.style.transform = `rotate(${degree}deg)`;
       degree = degree - 0.8;
     }
     else {
-      console.log('--');
-      console.log(delta.wheelDelta);
+      // console.log('--');
+      // console.log(delta.wheelDelta);
       ref.current.style.transform = `rotate(${degree}deg)`;
       degree = degree + 0.8;
     }

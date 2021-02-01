@@ -1,9 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import selected from '../modules/selected';
 import plus from '../img/list-button.png';
 import small_plus from '../img/plus.png';
-import sleep from '../img/sleep.png';
-import { idText } from 'typescript';
 
 interface SelectedProps {
   soundList: any[];
@@ -129,7 +126,7 @@ export const SingleList: React.FC<SingleListProps> = ({
         else {
           modifiedSoundList[i].defaultVolume = 0.2;
         }
-        console.log(modifiedSoundList[i].defaultVolume)
+        // console.log(modifiedSoundList[i].defaultVolume)
         setSoundListProperty(modifiedSoundList);
       }
     }

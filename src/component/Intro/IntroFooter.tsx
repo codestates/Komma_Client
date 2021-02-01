@@ -35,7 +35,7 @@ const IntroFooter = ({ onHandleIntro
         </div>
         </Fade>
         <Fade delay={1700}>
-          <button className="introFooter_button" onClick={onHandleIntro}>Use Service</button>
+          <button className="introFooter_button" onClick={handleIntro}>Use Service</button>
         </Fade>
         <div className='footerInformation'>
           <div className='information'>
